@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "修复 CI 草稿 Release 权限问题",
-  "pub_date": "2026-03-10T09:00:00Z",
+  "version": "0.1.8",
+  "notes": "修复 CI macOS updater + 推送顺序优化",
+  "pub_date": "2026-03-10T11:36:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.7/%E6%99%BA%E7%A0%81%20AICoder_0.1.7_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSStwdGEwUTJoOFpKQUJVbjdrSDJZbWZrODV0MVlYMWNKNHlUK0EwbGV5NHl5cHE3Q0VTc1M0bDM4UDdER3g1RC81SDRWNkJES2FNOGl2THpaY25DMVE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDgwNjk1CWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjdfeDY0LXNldHVwLmV4ZQp0Sy9IeHJ3Y2gvamxLcVltWDNGSmJtVk1hYVc5dENhazlsdGZYSzdVaUNyTFFlZSswL1JyT0t5NE9VSHNEWERDZ3I3OEZ0R2hPVWt0cUVCd0RVTzFCQT09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.8/%E6%99%BA%E7%A0%81%20AICoder_0.1.8_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXhUSW9tV21JS0V3R2pLREthOEQxTm5oUUVzRFd4YS9aeFFtVXlpUmVWRVBJZUpoTG50ejVNRGplZnRoK3N6S3cxUkU2ZkFYSWFtZ2xFVC95M200S3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDk5MzgyCWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjhfeDY0LXNldHVwLmV4ZQp6L0JmZEJLUzF0NlNMRWc4UnVnQlVCbEgyb0NnN1dTWGZpNDErRDBXbmNjUnRzQ0FrSFhXMkZRUm5yYW1MMzFqVzQyemhRRkZGdTVpSlAyQjIrT2xCdz09Cg=="
     }
   }
 }
