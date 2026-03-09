@@ -1,0 +1,11 @@
+{
+  "version": "0.1.2",
+  "notes": "侧边栏按项目目录分组",
+  "pub_date": "2026-03-09T18:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.2/%E6%99%BA%E7%A0%81%20AICoder_0.1.2_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXdtRnFkZGd4R3FoOFB3VUJ2ZFpTMWxUNFpjZEdRY0c4YWJ3b0wyUmttb2hkV2IxbVpWMk8rWklGZVUxU2xnUDV6Mkh3cjdiT2REMUUvY2o0S2hWMUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDY4MjU4CWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjJfeDY0LXNldHVwLmV4ZQpqbEZYMHQvQ1psZ3BFY3NRMmY3NVZ6TUhTeXJtclFGVitVamJ3L2k5bWtDV2JPMU01b2l3dzdaRlhrZ0dITkpkeTRiRVF4dE5aMEc0ZXYrL25vcXVDQT09Cg=="
+    }
+  }
+}
