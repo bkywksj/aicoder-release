@@ -40,11 +40,11 @@
 
 ## 下载安装
 
-### 最新版本: v0.1.2
+### 最新版本: v0.1.3
 
 | 平台 | 下载链接 | 大小 |
 |------|---------|------|
-| Windows x64 | [智码 AICoder_0.1.2_x64-setup.exe](releases/v0.1.2/智码%20AICoder_0.1.2_x64-setup.exe) | ~3.6 MB |
+| Windows x64 | [智码 AICoder_0.1.3_x64-setup.exe](releases/v0.1.3/智码%20AICoder_0.1.3_x64-setup.exe) | ~3.6 MB |
 
 ### 安装步骤
 
@@ -66,6 +66,11 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v0.1.3 (2026-03-10)
+
+- 新增活动热力图功能
+- 接入 GitHub Actions CI 跨平台构建
 
 ### v0.1.2 (2026-03-09)
 
@@ -112,9 +117,12 @@ aicoder-release/
     ├── v0.1.1/         # v0.1.1 版本
     │   ├── 智码 AICoder_0.1.1_x64-setup.exe      # 安装包
     │   └── 智码 AICoder_0.1.1_x64-setup.exe.sig   # 签名文件
-    └── v0.1.2/         # v0.1.2 版本
-        ├── 智码 AICoder_0.1.2_x64-setup.exe      # 安装包
-        └── 智码 AICoder_0.1.2_x64-setup.exe.sig   # 签名文件
+    ├── v0.1.2/         # v0.1.2 版本
+    │   ├── 智码 AICoder_0.1.2_x64-setup.exe      # 安装包
+    │   └── 智码 AICoder_0.1.2_x64-setup.exe.sig   # 签名文件
+    └── v0.1.3/         # v0.1.3 版本
+        ├── 智码 AICoder_0.1.3_x64-setup.exe      # 安装包
+        └── 智码 AICoder_0.1.3_x64-setup.exe.sig   # 签名文件
 ```
 
 ## 发布新版本流程
