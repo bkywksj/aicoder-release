@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "CI 全平台更新支持 + 签名修复",
-  "pub_date": "2026-03-10T06:00:00Z",
+  "version": "0.1.6",
+  "notes": "修复 CI 草稿 Release 查询 + Linux 编译警告",
+  "pub_date": "2026-03-10T08:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.5/%E6%99%BA%E7%A0%81%20AICoder_0.1.5_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTNMOWJqQStDTS9tSHU5bGpaT2NZejlZSm9XdEU0c2JUdVAvVVVieDUrRW0vamxxR2d5cVV6NG5zZHMwSXpWTDZucXFObGlnNVc4Mk1STmhNdmQrQXdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDc3MDg3CWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjVfeDY0LXNldHVwLmV4ZQpDcmJQSUFISVVaQW5oSEY2KzVhNDJBdHFTU1VtdnJuVGIwcUU4WFQ2emJnazU4YVd4VUxEdmorVTlhTWFKVVkyZEZQN0J6Y3dieEJqc0VBYkgrZzZBQT09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.6/%E6%99%BA%E7%A0%81%20AICoder_0.1.6_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdlcE9sKzlzWjU0aGR5YnZHWjZxeTFaUWRoZlcxZzhKQmdGV2dIMFB0UTYxK21Iek1OeG5KbXEzRzFBRHlNLzU3bjU2TGRrWU1yODNBUlkrQkh0OUFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDc4OTU2CWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjZfeDY0LXNldHVwLmV4ZQptUDNSS1pyY3pYNTNCc09CQkIwWU9lSndFK3NZZEgxQ2F4Yi8rZzUyQzBwUFNEWXV0elpkS2dKMjlOWWg3UksvVWlUSDcrR0RoUDB6ZVpqTy90TGpEUT09Cg=="
     }
   }
 }
