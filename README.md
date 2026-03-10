@@ -40,11 +40,11 @@
 
 ## 下载安装
 
-### 最新版本: v0.1.9
+### 最新版本: v0.2.0
 
 | 平台 | 下载链接 | 大小 |
 |------|---------|------|
-| Windows x64 | [智码 AICoder_0.1.9_x64-setup.exe](releases/v0.1.9/智码%20AICoder_0.1.9_x64-setup.exe) | ~3.6 MB |
+| Windows x64 | [智码 AICoder_0.2.0_x64-setup.exe](releases/v0.2.0/智码%20AICoder_0.2.0_x64-setup.exe) | ~3.6 MB |
 
 ### 安装步骤
 
@@ -66,6 +66,10 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v0.2.0 (2026-03-10)
+
+- Bug 修复 + 性能优化
 
 ### v0.1.9 (2026-03-10)
 
@@ -168,9 +172,12 @@ aicoder-release/
     ├── v0.1.8/         # v0.1.8 版本
     │   ├── 智码 AICoder_0.1.8_x64-setup.exe      # 安装包
     │   └── 智码 AICoder_0.1.8_x64-setup.exe.sig   # 签名文件
-    └── v0.1.9/         # v0.1.9 版本
-        ├── 智码 AICoder_0.1.9_x64-setup.exe      # 安装包
-        └── 智码 AICoder_0.1.9_x64-setup.exe.sig   # 签名文件
+    ├── v0.1.9/         # v0.1.9 版本
+    │   ├── 智码 AICoder_0.1.9_x64-setup.exe      # 安装包
+    │   └── 智码 AICoder_0.1.9_x64-setup.exe.sig   # 签名文件
+    └── v0.2.0/         # v0.2.0 版本
+        ├── 智码 AICoder_0.2.0_x64-setup.exe      # 安装包
+        └── 智码 AICoder_0.2.0_x64-setup.exe.sig   # 签名文件
 ```
 
 ## 发布新版本流程
