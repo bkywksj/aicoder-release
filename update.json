@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "修复 CI macOS updater + 推送顺序优化",
-  "pub_date": "2026-03-10T11:36:00Z",
+  "version": "0.1.9",
+  "notes": "修复更新弹窗 + CI 增加 dmg/deb",
+  "pub_date": "2026-03-10T14:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.8/%E6%99%BA%E7%A0%81%20AICoder_0.1.8_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXhUSW9tV21JS0V3R2pLREthOEQxTm5oUUVzRFd4YS9aeFFtVXlpUmVWRVBJZUpoTG50ejVNRGplZnRoK3N6S3cxUkU2ZkFYSWFtZ2xFVC95M200S3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMDk5MzgyCWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjhfeDY0LXNldHVwLmV4ZQp6L0JmZEJLUzF0NlNMRWc4UnVnQlVCbEgyb0NnN1dTWGZpNDErRDBXbmNjUnRzQ0FrSFhXMkZRUm5yYW1MMzFqVzQyemhRRkZGdTVpSlAyQjIrT2xCdz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v0.1.9/%E6%99%BA%E7%A0%81%20AICoder_0.1.9_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTR3Zll4SHcyN2JkWVJPdDVHTkJKZ3o2YWszL3JZejUxT0loT0l0UUllaFhTbG5BTmk0NGltSTJxdHpvV3kxcWEzc3Nrb014VkxLYkJEZi9xMjgwekFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMTAxOTk3CWZpbGU65pm656CBIEFJQ29kZXJfMC4xLjlfeDY0LXNldHVwLmV4ZQpZSmV4Z2ErbHd5YXlJdWFQZG5KZTFBa01yT1FQVEFtellZYys2ampZc0lpZk5iLyttRXJhZGp1QTZRUC9QR2tkdDcweThEQWpCY0FQTWgvUWY3ZERDQT09Cg=="
     }
   }
 }
