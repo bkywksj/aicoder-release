@@ -33,7 +33,7 @@
 
 ## 系统要求
 
-- **操作系统**: Windows 10/11 (x64)、macOS (Apple Silicon / Intel)、Linux (x64)
+- **操作系统**: Windows 10/11 (x64)、macOS (Apple Silicon / Intel)
 - **运行时**: 无需额外安装（Windows WebView2 已内置于 Windows 10+）
 - **磁盘**: ~10 MB 安装空间
 - **前置**: 需已安装 [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)
@@ -47,8 +47,6 @@
 | Windows x64 | [AICoder_0.2.0_x64-setup.exe](releases/v0.2.0/AICoder_0.2.0_x64-setup.exe) |
 | macOS Apple Silicon | [AICoder_0.2.0_aarch64.dmg](releases/v0.2.0/AICoder_0.2.0_aarch64.dmg) |
 | macOS Intel | [AICoder_0.2.0_x64.dmg](releases/v0.2.0/AICoder_0.2.0_x64.dmg) |
-| Linux x64 (AppImage) | [AICoder_0.2.0_amd64.AppImage](releases/v0.2.0/AICoder_0.2.0_amd64.AppImage) |
-| Linux x64 (deb) | [AICoder_0.2.0_amd64.deb](releases/v0.2.0/AICoder_0.2.0_amd64.deb) |
 
 ### 安装步骤
 
@@ -176,27 +174,27 @@ aicoder-release/
     ├── v0.1.8/         # v0.1.8 版本
     │   ├── 智码 AICoder_0.1.8_x64-setup.exe      # 安装包
     │   └── 智码 AICoder_0.1.8_x64-setup.exe.sig   # 签名文件
-    ├── v0.1.9/         # v0.1.9 版本（CI 自动推送）
+    ├── v0.1.9/         # v0.1.9 版本
     │   ├── AICoder_0.1.9_x64-setup.exe           # Windows 安装包
     │   ├── AICoder_0.1.9_aarch64.dmg             # macOS Apple Silicon
     │   ├── AICoder_0.1.9_x64.dmg                 # macOS Intel
-    │   ├── AICoder_0.1.9_amd64.AppImage          # Linux AppImage
-    │   ├── AICoder_0.1.9_amd64.deb               # Linux deb
     │   └── ...                                    # updater 签名文件
-    └── v0.2.0/         # v0.2.0 版本（CI 自动推送）
+    └── v0.2.0/         # v0.2.0 版本
         ├── AICoder_0.2.0_x64-setup.exe           # Windows 安装包
+        ├── AICoder_0.2.0_x64-setup.exe.sig       # Windows updater 签名
         ├── AICoder_0.2.0_aarch64.dmg             # macOS Apple Silicon
+        ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+        ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
         ├── AICoder_0.2.0_x64.dmg                 # macOS Intel
-        ├── AICoder_0.2.0_amd64.AppImage          # Linux AppImage
-        ├── AICoder_0.2.0_amd64.deb               # Linux deb
-        └── ...                                    # updater 签名文件
+        ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+        └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
 ```
 
 ## 发布新版本流程
 
 1. 在主项目中更新版本号（`tauri.conf.json` / `Cargo.toml` / `package.json`）
-2. 打 Git Tag（`v*.*.*` 格式）并推送到 GitHub，CI 自动构建三平台安装包
-3. CI 自动推送产物和 `update.json` 到本仓库
+2. 打 Git Tag（`v*.*.*` 格式）并推送到 GitHub，CI 自动构建 Windows + macOS 安装包
+3. 从 GitHub Release 下载产物，本地推送到本仓库并生成 `update.json`
 
 ## 许可证
 
