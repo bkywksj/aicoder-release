@@ -44,7 +44,7 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_1.1.2_x64-setup.exe](releases/v1.1.2/AICoder_1.1.2_x64-setup.exe) |
+| Windows x64 | [智码 AICoder_1.1.2_x64-setup.exe](releases/v1.1.2/智码%20AICoder_1.1.2_x64-setup.exe) |
 | macOS Apple Silicon | 本版本暂无 macOS 构建 |
 | macOS Intel | 本版本暂无 macOS 构建 |
 
@@ -243,8 +243,8 @@ aicoder-release/
     │   ├── AICoder_1.1.1_x64-setup.exe           # Windows 安装包
     │   └── AICoder_1.1.1_x64-setup.exe.sig       # Windows updater 签名
     └── v1.1.2/         # v1.1.2 版本（仅 Windows）
-        ├── AICoder_1.1.2_x64-setup.exe           # Windows 安装包
-        └── AICoder_1.1.2_x64-setup.exe.sig       # Windows updater 签名
+        ├── 智码 AICoder_1.1.2_x64-setup.exe      # Windows 安装包
+        └── 智码 AICoder_1.1.2_x64-setup.exe.sig  # Windows updater 签名
 ```
 
 ## 发布新版本流程
