@@ -40,13 +40,13 @@
 
 ## 下载安装
 
-### 最新版本: v1.0.1
+### 最新版本: v1.1.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_1.0.1_x64-setup.exe](releases/v1.0.1/AICoder_1.0.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_1.0.1_aarch64.dmg](releases/v1.0.1/AICoder_1.0.1_aarch64.dmg) |
-| macOS Intel | [AICoder_1.0.1_x64.dmg](releases/v1.0.1/AICoder_1.0.1_x64.dmg) |
+| Windows x64 | [AICoder_1.1.0_x64-setup.exe](releases/v1.1.0/AICoder_1.1.0_x64-setup.exe) |
+| macOS Apple Silicon | 本版本暂无 macOS 构建 |
+| macOS Intel | 本版本暂无 macOS 构建 |
 
 ### 安装步骤
 
@@ -68,6 +68,16 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v1.1.0 (2026-03-11)
+
+- 多开实例配置隔离（每个实例独立 Claude/Codex 配置目录，支持多账号并行）
+- 双击标题栏最大化/还原窗口
+- 多开实例首次启动自动复制默认配置文件（解决 onboarding 问题）
+- 支持自定义 shell 配置并添加 Windows PowerShell→CMD 回退机制
+- 过滤非正式版本的 Codex 安装列表
+- 为开发环境创建独立数据目录
+- 添加窗口置顶功能
 
 ### v1.0.1 (2026-03-11)
 
@@ -205,15 +215,18 @@ aicoder-release/
     │   ├── AICoder_1.0.0_x64.dmg                 # macOS Intel
     │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
     │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
-    └── v1.0.1/         # v1.0.1 版本
-        ├── AICoder_1.0.1_x64-setup.exe           # Windows 安装包
-        ├── AICoder_1.0.1_x64-setup.exe.sig       # Windows updater 签名
-        ├── AICoder_1.0.1_aarch64.dmg             # macOS Apple Silicon
-        ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
-        ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
-        ├── AICoder_1.0.1_x64.dmg                 # macOS Intel
-        ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
-        └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
+    ├── v1.0.1/         # v1.0.1 版本
+    │   ├── AICoder_1.0.1_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_1.0.1_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_1.0.1_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_1.0.1_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
+    └── v1.1.0/         # v1.1.0 版本（仅 Windows）
+        ├── AICoder_1.1.0_x64-setup.exe           # Windows 安装包
+        └── AICoder_1.1.0_x64-setup.exe.sig       # Windows updater 签名
 ```
 
 ## 发布新版本流程
