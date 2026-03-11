@@ -40,13 +40,13 @@
 
 ## 下载安装
 
-### 最新版本: v1.1.2
+### 最新版本: v1.1.3
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [智码 AICoder_1.1.2_x64-setup.exe](releases/v1.1.2/智码%20AICoder_1.1.2_x64-setup.exe) |
-| macOS Apple Silicon | 本版本暂无 macOS 构建 |
-| macOS Intel | 本版本暂无 macOS 构建 |
+| Windows x64 | [AICoder_1.1.3_x64-setup.exe](releases/v1.1.3/AICoder_1.1.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_1.1.3_aarch64.dmg](releases/v1.1.3/AICoder_1.1.3_aarch64.dmg) |
+| macOS Intel | [AICoder_1.1.3_x64.dmg](releases/v1.1.3/AICoder_1.1.3_x64.dmg) |
 
 ### 安装步骤
 
@@ -68,6 +68,11 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v1.1.3 (2026-03-12)
+
+- 功能更新
+- 新增双 GitHub CI 仓库支持（额度切换）
 
 ### v1.1.2 (2026-03-11)
 
@@ -242,9 +247,18 @@ aicoder-release/
     ├── v1.1.1/         # v1.1.1 版本（仅 Windows）
     │   ├── AICoder_1.1.1_x64-setup.exe           # Windows 安装包
     │   └── AICoder_1.1.1_x64-setup.exe.sig       # Windows updater 签名
-    └── v1.1.2/         # v1.1.2 版本（仅 Windows）
-        ├── 智码 AICoder_1.1.2_x64-setup.exe      # Windows 安装包
-        └── 智码 AICoder_1.1.2_x64-setup.exe.sig  # Windows updater 签名
+    ├── v1.1.2/         # v1.1.2 版本（仅 Windows）
+    │   ├── 智码 AICoder_1.1.2_x64-setup.exe      # Windows 安装包
+    │   └── 智码 AICoder_1.1.2_x64-setup.exe.sig  # Windows updater 签名
+    └── v1.1.3/         # v1.1.3 版本
+        ├── AICoder_1.1.3_x64-setup.exe           # Windows 安装包
+        ├── AICoder_1.1.3_x64-setup.exe.sig       # Windows updater 签名
+        ├── AICoder_1.1.3_aarch64.dmg             # macOS Apple Silicon
+        ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+        ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+        ├── AICoder_1.1.3_x64.dmg                 # macOS Intel
+        ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+        └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
 ```
 
 ## 发布新版本流程
