@@ -1,11 +1,19 @@
 {
-  "version": "1.1.2",
-  "notes": "Release v1.1.2",
-  "pub_date": "2026-03-11T22:00:00Z",
+  "version": "1.1.3",
+  "notes": "Release v1.1.3",
+  "pub_date": "2026-03-12T12:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.2/%E6%99%BA%E7%A0%81%20AICoder_1.1.2_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdQSUM3TGx3YVBWZWdtMzIvc09IZWdiQS84L3VIVGgwczN4dUdwZDRKWmk0ZG92UDdacXg0NjJhUmVuV3hwL0NuY3RqWGttUTY2cHd3VDJrMVdKdlFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjI0OTQ2CWZpbGU65pm656CBIEFJQ29kZXJfMS4xLjJfeDY0LXNldHVwLmV4ZQpYTUxvTVBlUlJ4eFdjNllUM0RzWUZQcVZwWFQ3Si9vdTBEMnFnL005eGZ3Y1hWRXhSczNPb1p1aXJpeFdnNWFpWkFBUlNjbkcwV1hSdjNTakwzajZBZz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.3/AICoder_1.1.3_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTltRTVUREdLZ3BKZ1lZdnRFbnFEYmJqcDNjMjZ5RTVqaDFDSTZtYWwxMEllTWZQWmtsSGovUEFqR3VZY09Oc3hGdlFlYTVoWS9IeW1BWEZKUjhYalFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjUwNjEwCWZpbGU65pm656CBIEFJQ29kZXJfMS4xLjNfeDY0LXNldHVwLmV4ZQpKdittT2JjQzdaRkRqSmpackFWVFIyVE5PVS95czlMc2RHY21aUWs4TVBwNjJnV05xdXh1aUliRGs5eUcrTzQzV1psZk9ib1lkempsU0FLbmM4TENEQT09Cg=="
+    },
+    "darwin-aarch64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.3/AICoder_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXdicE55bXorUWVkSGFrZFpuL240V1MxclFpYytSZE1uUEVsc0toYTF1TjBpcDlFNkVlNTVjb0FYYmV1SkRqcFFxc2w3T0FlQzFGYXRLSGxrRS9PdUFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjUwMDAxCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpuVXo5UlV2SmNsdnoyQ1FjdW8xOE5pOTMrVjVmSHI0VXZ4MjZDZXN4OTZXSmJsUGZPR3J2VG9FN3VDUXdaR0Y2ZXI3azIwYW1vMzNTTW43Um85MnFEdz09Cg=="
+    },
+    "darwin-x86_64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.3/AICoder_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSThkeE96SFpHYUk2TWNUUGp3bzBmR09xWCtlSXRGTFdBL3RRL1AwdFVpMmdrVGpYVU9rYTlyOXErc2tBMXlSUnFJRG40VHJSNnNmbHdCMnBTT0MrQndRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjUwMDA2CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpEdWhoS0NFQkNwaUlOWDBteUxicFcwUWdReVZSTFFzU3pvV1V2ckYvRXAyNDJ5NzAzSFpuSHp2c2JUZHJ1Y0E0WEdIbnJCMi9BQTRPTnBHVVNSbHJBZz09Cg=="
     }
   }
 }
