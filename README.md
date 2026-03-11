@@ -40,11 +40,11 @@
 
 ## 下载安装
 
-### 最新版本: v1.1.0
+### 最新版本: v1.1.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_1.1.0_x64-setup.exe](releases/v1.1.0/AICoder_1.1.0_x64-setup.exe) |
+| Windows x64 | [AICoder_1.1.1_x64-setup.exe](releases/v1.1.1/AICoder_1.1.1_x64-setup.exe) |
 | macOS Apple Silicon | 本版本暂无 macOS 构建 |
 | macOS Intel | 本版本暂无 macOS 构建 |
 
@@ -68,6 +68,13 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v1.1.1 (2026-03-11)
+
+- Rust 侧授权守门（过期状态下禁止创建会话/片段，前端无法绕过）
+- HMAC-SHA256 缓存完整性校验（防篡改本地授权缓存文件）
+- StatusLine 统计插件多实例隔离（支持 CLAUDE_CONFIG_DIR 环境变量）
+- 可执行文件名从 tauri.exe 更名为 aicoder.exe
 
 ### v1.1.0 (2026-03-11)
 
@@ -224,9 +231,12 @@ aicoder-release/
     │   ├── AICoder_1.0.1_x64.dmg                 # macOS Intel
     │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
     │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
-    └── v1.1.0/         # v1.1.0 版本（仅 Windows）
-        ├── AICoder_1.1.0_x64-setup.exe           # Windows 安装包
-        └── AICoder_1.1.0_x64-setup.exe.sig       # Windows updater 签名
+    ├── v1.1.0/         # v1.1.0 版本（仅 Windows）
+    │   ├── AICoder_1.1.0_x64-setup.exe           # Windows 安装包
+    │   └── AICoder_1.1.0_x64-setup.exe.sig       # Windows updater 签名
+    └── v1.1.1/         # v1.1.1 版本（仅 Windows）
+        ├── AICoder_1.1.1_x64-setup.exe           # Windows 安装包
+        └── AICoder_1.1.1_x64-setup.exe.sig       # Windows updater 签名
 ```
 
 ## 发布新版本流程
