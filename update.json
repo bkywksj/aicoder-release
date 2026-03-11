@@ -1,11 +1,11 @@
 {
-  "version": "1.1.1",
-  "notes": "Release v1.1.1",
-  "pub_date": "2026-03-11T20:00:00Z",
+  "version": "1.1.2",
+  "notes": "Release v1.1.2",
+  "pub_date": "2026-03-11T21:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.1/AICoder_1.1.1_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXcxOWYybGZtdmNQZVNEYlQ4bmJscUphZFI1TVpqZFlpNWNMa3U0YUM5NS9BMG85VVpzb1BYTk0xN1ZZWXgwRk5PUmJGM1RPUFU5cjZmNXZpU3lyNFF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjIwODQzCWZpbGU65pm656CBIEFJQ29kZXJfMS4xLjFfeDY0LXNldHVwLmV4ZQpoOEE5aTJqZmJYaGxuWVFudy9CUVFBQ1FpUzhUUEpiaVA3YkxZUFVhcXJDMVNLSld0S0xISUQ4RkxqK1dKQnJYMnpRTW16VjhsU0NHYUI1RzdxOU5DZz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v1.1.2/AICoder_1.1.2_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXdqOThTbW80eUwvWnBCY2M5L3IrS2xoc2dCcEtQVjV4ZitpaHVkWXJYTEczTjI2QzRwMDB2dkVGcTRrT3FmenlLTkkxSUp4ZklxSXJST21meHV6aUFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMjIyODU1CWZpbGU6QUlDb2Rlcl8xLjEuMl94NjQtc2V0dXAuZXhlCnFDVk5QWUF4bGNBTzQ2eWh5bzVaenZIa1hQQTd5SUZ3SlJjM1VOUG5YOSt1UzRVd0FvMXhTam1FTGhiWjBKTHNuanN3YUMwMG9sN1djTDI4M3pHc0RBPT0K"
     }
   }
 }

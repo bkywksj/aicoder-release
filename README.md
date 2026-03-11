@@ -40,11 +40,11 @@
 
 ## 下载安装
 
-### 最新版本: v1.1.1
+### 最新版本: v1.1.2
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_1.1.1_x64-setup.exe](releases/v1.1.1/AICoder_1.1.1_x64-setup.exe) |
+| Windows x64 | [AICoder_1.1.2_x64-setup.exe](releases/v1.1.2/AICoder_1.1.2_x64-setup.exe) |
 | macOS Apple Silicon | 本版本暂无 macOS 构建 |
 | macOS Intel | 本版本暂无 macOS 构建 |
 
@@ -68,6 +68,11 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v1.1.2 (2026-03-11)
+
+- 启动时确保 hasCompletedOnboarding=true（跳过 Claude Code onboarding 交互）
+- 打包产物文件名去掉中文前缀（统一为 AICoder_ 格式）
 
 ### v1.1.1 (2026-03-11)
 
@@ -234,9 +239,12 @@ aicoder-release/
     ├── v1.1.0/         # v1.1.0 版本（仅 Windows）
     │   ├── AICoder_1.1.0_x64-setup.exe           # Windows 安装包
     │   └── AICoder_1.1.0_x64-setup.exe.sig       # Windows updater 签名
-    └── v1.1.1/         # v1.1.1 版本（仅 Windows）
-        ├── AICoder_1.1.1_x64-setup.exe           # Windows 安装包
-        └── AICoder_1.1.1_x64-setup.exe.sig       # Windows updater 签名
+    ├── v1.1.1/         # v1.1.1 版本（仅 Windows）
+    │   ├── AICoder_1.1.1_x64-setup.exe           # Windows 安装包
+    │   └── AICoder_1.1.1_x64-setup.exe.sig       # Windows updater 签名
+    └── v1.1.2/         # v1.1.2 版本（仅 Windows）
+        ├── AICoder_1.1.2_x64-setup.exe           # Windows 安装包
+        └── AICoder_1.1.2_x64-setup.exe.sig       # Windows updater 签名
 ```
 
 ## 发布新版本流程
