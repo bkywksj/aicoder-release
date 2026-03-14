@@ -40,13 +40,13 @@
 
 ## 下载安装
 
-### 最新版本: v1.2.0
+### 最新版本: v1.2.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_1.2.0_x64-setup.exe](releases/v1.2.0/AICoder_1.2.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_1.2.0_aarch64.dmg](releases/v1.2.0/AICoder_1.2.0_aarch64.dmg) |
-| macOS Intel | [AICoder_1.2.0_x64.dmg](releases/v1.2.0/AICoder_1.2.0_x64.dmg) |
+| Windows x64 | [AICoder_1.2.1_x64-setup.exe](releases/v1.2.1/AICoder_1.2.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_1.2.1_aarch64.dmg](releases/v1.2.1/AICoder_1.2.1_aarch64.dmg) |
+| macOS Intel | [AICoder_1.2.1_x64.dmg](releases/v1.2.1/AICoder_1.2.1_x64.dmg) |
 
 ### 安装步骤
 
@@ -68,6 +68,11 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v1.2.1 (2026-03-14)
+
+- 新增关闭窗口询问确认弹窗（最小化到托盘/退出程序，支持记住选择）
+- 设置页关闭行为新增"每次询问"选项
 
 ### v1.2.0 (2026-03-14)
 
@@ -323,13 +328,22 @@ aicoder-release/
     │   ├── AICoder_1.1.6_x64.dmg                 # macOS Intel
     │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
     │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
-    └── v1.2.0/         # v1.2.0 版本
-        ├── AICoder_1.2.0_x64-setup.exe           # Windows 安装包
-        ├── AICoder_1.2.0_x64-setup.exe.sig       # Windows updater 签名
-        ├── AICoder_1.2.0_aarch64.dmg             # macOS Apple Silicon
+    ├── v1.2.0/         # v1.2.0 版本
+    │   ├── AICoder_1.2.0_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_1.2.0_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_1.2.0_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_1.2.0_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
+    └── v1.2.1/         # v1.2.1 版本
+        ├── AICoder_1.2.1_x64-setup.exe           # Windows 安装包
+        ├── AICoder_1.2.1_x64-setup.exe.sig       # Windows updater 签名
+        ├── AICoder_1.2.1_aarch64.dmg             # macOS Apple Silicon
         ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
         ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
-        ├── AICoder_1.2.0_x64.dmg                 # macOS Intel
+        ├── AICoder_1.2.1_x64.dmg                 # macOS Intel
         ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
         └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
 ```
