@@ -62,13 +62,13 @@
 
 ## 下载安装
 
-### 最新版本: v2.1.0
+### 最新版本: v2.2.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_2.1.0_x64-setup.exe](releases/v2.1.0/AICoder_2.1.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_2.1.0_aarch64.dmg](releases/v2.1.0/AICoder_2.1.0_aarch64.dmg) |
-| macOS Intel | [AICoder_2.1.0_x64.dmg](releases/v2.1.0/AICoder_2.1.0_x64.dmg) |
+| Windows x64 | [AICoder_2.2.0_x64-setup.exe](releases/v2.2.0/AICoder_2.2.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_2.2.0_aarch64.dmg](releases/v2.2.0/AICoder_2.2.0_aarch64.dmg) |
+| macOS Intel | [AICoder_2.2.0_x64.dmg](releases/v2.2.0/AICoder_2.2.0_x64.dmg) |
 
 ### 安装步骤
 
@@ -90,6 +90,16 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v2.2.0 (2026-03-17)
+
+- 新增 AI 记忆管理系统（支持多 AI 提供商的记忆生成）
+- 新增垃圾桶功能，实现会话软删除
+- 新增会话压缩功能
+- 新增侧边栏文件夹排序功能
+- 新增工具版本批量更新功能
+- 统一子进程命令创建和输出解码处理
+- 优化 CLI 工具版本检测日志输出
 
 ### v2.1.0 (2026-03-17)
 
@@ -395,13 +405,22 @@ aicoder-release/
     │   ├── AICoder_2.0.0_x64.dmg                 # macOS Intel
     │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
     │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
-    └── v2.1.0/         # v2.1.0 版本
-        ├── AICoder_2.1.0_x64-setup.exe           # Windows 安装包
-        ├── AICoder_2.1.0_x64-setup.exe.sig       # Windows updater 签名
-        ├── AICoder_2.1.0_aarch64.dmg             # macOS Apple Silicon
+    ├── v2.1.0/         # v2.1.0 版本
+    │   ├── AICoder_2.1.0_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_2.1.0_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_2.1.0_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_2.1.0_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
+    └── v2.2.0/         # v2.2.0 版本
+        ├── AICoder_2.2.0_x64-setup.exe           # Windows 安装包
+        ├── AICoder_2.2.0_x64-setup.exe.sig       # Windows updater 签名
+        ├── AICoder_2.2.0_aarch64.dmg             # macOS Apple Silicon
         ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
         ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
-        ├── AICoder_2.1.0_x64.dmg                 # macOS Intel
+        ├── AICoder_2.2.0_x64.dmg                 # macOS Intel
         ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
         └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
 ```
