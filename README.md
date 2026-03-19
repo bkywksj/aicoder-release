@@ -12,21 +12,25 @@
 
 ![主界面](screenshots/1.jpg)
 
-### 项目右键菜单 — 新建会话 / 导入导出 / 文件管理
+### 多标签终端 — 代码 Diff 视图 + 多项目会话管理
 
-![项目菜单](screenshots/2.jpg)
+![多标签终端](screenshots/2.jpg)
 
-### 会话右键菜单 — 重命名 / 收藏 / 导出 / 压缩会话
+### 项目右键菜单 — 导入导出 / 记忆管理 / 文件操作
 
-![会话菜单](screenshots/3.jpg)
+![项目菜单](screenshots/3.jpg)
+
+### 状态栏 — Token 用量统计 + 会话耗时追踪
+
+![状态栏](screenshots/4.jpg)
 
 ### 设置面板 — API 配置 / CLI 工具管理 / 版本切换
 
-![设置面板](screenshots/4.jpg)
+![设置面板](screenshots/5.jpg)
 
 ### 内置浏览器 — 分屏预览网页应用
 
-![内置浏览器](screenshots/5.jpg)
+![内置浏览器](screenshots/6.jpg)
 
 ## 核心功能
 
