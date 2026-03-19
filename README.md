@@ -1,10 +1,10 @@
 # 智码 AICoder
 
-> 基于 Tauri 2.x 构建的 Claude Code 桌面管理工具
+> 一站式 AI 编程助手管理平台 — 支持 Claude Code / Codex / Gemini CLI
 
 ## 简介
 
-智码 AICoder 是一款轻量级桌面应用，专为 Claude Code CLI 用户打造。它提供了可视化的会话管理、终端集成和开发效率工具，让你在桌面端高效使用 Claude Code 进行 AI 辅助编程。
+智码 AICoder 是一款轻量级桌面应用，为 AI CLI 编程工具打造统一管理平台。支持 **Claude Code**、**Codex CLI**、**Gemini CLI** 三大 AI 编程助手，提供可视化的会话管理、多标签终端、Token 统计和开发效率工具，让你在一个桌面应用中高效管理所有 AI 编程工作流。
 
 ## 应用预览
 
@@ -30,17 +30,25 @@
 
 ## 核心功能
 
-- **终端管理** — 内置 PTY 终端，直接运行 Claude Code，支持多标签页并行会话
-- **会话管理** — 创建、切换、收藏会话，按项目组织工作区
-- **Claude 会话浏览** — 查看 Claude Code 历史对话记录，支持搜索和导出（Markdown/HTML）
-- **代码片段** — 保存常用 Prompt 和代码模板，一键插入终端
-- **Token 统计** — 实时追踪 API 用量，可视化消耗统计
+- **多工具统一管理** — 支持 Claude Code、Codex CLI、Gemini CLI，自动检测已安装工具和版本，一键切换
+- **终端管理** — 内置 PTY 终端，支持多标签页并行会话，会话可弹出为独立窗口
+- **会话管理** — 创建、切换、收藏会话，按项目自动分组，8 种颜色标记，模糊搜索秒找历史对话
+- **多账号隔离** — 多实例完全独立（登录凭据/API Key/会话记录/配置），支持同时使用公司和个人账号
+- **Claude 会话浏览** — 查看历史对话记录，支持搜索和导出（Markdown/HTML），自动生成会话摘要
+- **Token 统计** — 实时追踪 API 用量（输入/输出/缓存分别统计），每日趋势图 + 月度总览 + 180 天热力图
+- **代码片段** — 保存常用 Prompt 和代码模板，支持模板变量，一键插入终端
+- **AI 记忆管理** — 支持多 AI 提供商的记忆生成和管理
+- **快捷命令面板** — `Ctrl+K` 整合内置指令、项目命令、代码片段，智能排序
+- **内置浏览器** — 分屏预览网页应用
+- **文件浏览器** — 树形浏览项目文件，20+ 种文件类型图标
+- **Git 面板** — 查看当前分支、提交日志、文件变更状态
 - **API 配置管理** — 多 API Profile 切换，支持不同密钥和端点配置
 - **MCP Server 管理** — 可视化管理 Model Context Protocol 服务器配置
 - **CLAUDE.md 编辑器** — 项目级和全局 CLAUDE.md 在线编辑
 - **深色/浅色主题** — 跟随系统或手动切换，护眼舒适
 - **系统托盘** — 最小化到托盘，常驻后台
 - **自动更新** — 内置 OTA 更新，新版本自动推送
+- **零额外开销** — CLI 原生运行，不拦截/不修改/不转发 API 请求，费用与直接用终端完全一样
 
 ## 技术栈
 
@@ -58,17 +66,20 @@
 - **操作系统**: Windows 10/11 (x64)、macOS (Apple Silicon / Intel)
 - **运行时**: 无需额外安装（Windows WebView2 已内置于 Windows 10+）
 - **磁盘**: ~10 MB 安装空间
-- **前置**: 需已安装 [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)
+- **前置**: 需已安装以下至少一个 AI CLI 工具：
+  - [Claude Code](https://docs.anthropic.com/en/docs/claude-code)（Anthropic）
+  - [Codex CLI](https://github.com/openai/codex)（OpenAI）
+  - [Gemini CLI](https://github.com/google-gemini/gemini-cli)（Google）
 
 ## 下载安装
 
-### 最新版本: v2.2.1
+### 最新版本: v2.3.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_2.2.1_x64-setup.exe](releases/v2.2.1/AICoder_2.2.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_2.2.1_aarch64.dmg](releases/v2.2.1/AICoder_2.2.1_aarch64.dmg) |
-| macOS Intel | [AICoder_2.2.1_x64.dmg](releases/v2.2.1/AICoder_2.2.1_x64.dmg) |
+| Windows x64 | [AICoder_2.3.0_x64-setup.exe](releases/v2.3.0/AICoder_2.3.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_2.3.0_aarch64.dmg](releases/v2.3.0/AICoder_2.3.0_aarch64.dmg) |
+| macOS Intel | [AICoder_2.3.0_x64.dmg](releases/v2.3.0/AICoder_2.3.0_x64.dmg) |
 
 ### 安装步骤
 
@@ -90,6 +101,10 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v2.3.0 (2026-03-19)
+
+- 新功能发布
 
 ### v2.2.1 (2026-03-18)
 
@@ -429,13 +444,22 @@ aicoder-release/
     │   ├── AICoder_2.2.0_x64.dmg                 # macOS Intel
     │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
     │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
-    └── v2.2.1/         # v2.2.1 版本
-        ├── AICoder_2.2.1_x64-setup.exe           # Windows 安装包
-        ├── AICoder_2.2.1_x64-setup.exe.sig       # Windows updater 签名
-        ├── AICoder_2.2.1_aarch64.dmg             # macOS Apple Silicon
+    ├── v2.2.1/         # v2.2.1 版本
+    │   ├── AICoder_2.2.1_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_2.2.1_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_2.2.1_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_2.2.1_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
+    └── v2.3.0/         # v2.3.0 版本
+        ├── AICoder_2.3.0_x64-setup.exe           # Windows 安装包
+        ├── AICoder_2.3.0_x64-setup.exe.sig       # Windows updater 签名
+        ├── AICoder_2.3.0_aarch64.dmg             # macOS Apple Silicon
         ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
         ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
-        ├── AICoder_2.2.1_x64.dmg                 # macOS Intel
+        ├── AICoder_2.3.0_x64.dmg                 # macOS Intel
         ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
         └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
 ```
