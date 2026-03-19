@@ -54,17 +54,6 @@
 - **自动更新** — 内置 OTA 更新，新版本自动推送
 - **零额外开销** — CLI 原生运行，不拦截/不修改/不转发 API 请求，费用与直接用终端完全一样
 
-## 技术栈
-
-| 组件 | 技术 |
-|------|------|
-| 框架 | Tauri 2.x（Rust + WebView） |
-| 前端 | React 19 + TypeScript 5.8 |
-| UI | Ant Design 6 + TailwindCSS 4 |
-| 状态管理 | Zustand 5 |
-| 终端 | xterm.js 6 + tauri-plugin-pty |
-| 数据库 | SQLite（rusqlite） |
-
 ## 系统要求
 
 - **操作系统**: Windows 10/11 (x64)、macOS (Apple Silicon / Intel)
