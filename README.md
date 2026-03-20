@@ -66,13 +66,13 @@
 
 ## 下载安装
 
-### 最新版本: v2.4.1
+### 最新版本: v2.4.2
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_2.4.1_x64-setup.exe](releases/v2.4.1/AICoder_2.4.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_2.4.1_aarch64.dmg](releases/v2.4.1/AICoder_2.4.1_aarch64.dmg) |
-| macOS Intel | [AICoder_2.4.1_x64.dmg](releases/v2.4.1/AICoder_2.4.1_x64.dmg) |
+| Windows x64 | [AICoder_2.4.2_x64-setup.exe](releases/v2.4.2/AICoder_2.4.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_2.4.2_aarch64.dmg](releases/v2.4.2/AICoder_2.4.2_aarch64.dmg) |
+| macOS Intel | [AICoder_2.4.2_x64.dmg](releases/v2.4.2/AICoder_2.4.2_x64.dmg) |
 
 ### 安装步骤
 
@@ -108,6 +108,11 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v2.4.2 (2026-03-20)
+
+- 修复 macOS 非标准路径安装 Node.js（如 ServBay）后 CLI 工具检测不到的问题
+- 通过 `npm prefix -g` 动态获取全局 bin 目录，兼容所有 Node.js 安装方式
 
 ### v2.4.1 (2026-03-20)
 
@@ -313,6 +318,15 @@ aicoder-release/
 ├── update.json         # 自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
 └── releases/           # 版本发布目录
+    ├── v2.4.2/         # v2.4.2 版本
+    │   ├── AICoder_2.4.2_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_2.4.2_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_2.4.2_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_2.4.2_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
     ├── v2.4.1/         # v2.4.1 版本
     │   ├── AICoder_2.4.1_x64-setup.exe           # Windows 安装包
     │   ├── AICoder_2.4.1_x64-setup.exe.sig       # Windows updater 签名
