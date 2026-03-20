@@ -82,6 +82,20 @@
 4. 按提示完成安装
 5. 启动应用，开始使用
 
+### macOS 安全提示
+
+首次打开应用时，macOS 可能会提示：
+
+> 未打开"智码 AICoder.app"，Apple 无法验证"智码 AICoder.app"是否包含可能危害 Mac 安全或泄漏隐私的恶意软件。
+
+这是因为应用未经过 Apple 公证（Notarization），**并非恶意软件**。请执行以下命令解除限制：
+
+```bash
+sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
+```
+
+输入 Mac 登录密码后即可正常打开应用。
+
 ## 更新机制
 
 应用内置自动更新功能：
