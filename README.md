@@ -66,13 +66,13 @@
 
 ## 下载安装
 
-### 最新版本: v2.3.0
+### 最新版本: v2.4.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_2.3.0_x64-setup.exe](releases/v2.3.0/AICoder_2.3.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_2.3.0_aarch64.dmg](releases/v2.3.0/AICoder_2.3.0_aarch64.dmg) |
-| macOS Intel | [AICoder_2.3.0_x64.dmg](releases/v2.3.0/AICoder_2.3.0_x64.dmg) |
+| Windows x64 | [AICoder_2.4.0_x64-setup.exe](releases/v2.4.0/AICoder_2.4.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_2.4.0_aarch64.dmg](releases/v2.4.0/AICoder_2.4.0_aarch64.dmg) |
+| macOS Intel | [AICoder_2.4.0_x64.dmg](releases/v2.4.0/AICoder_2.4.0_x64.dmg) |
 
 ### 安装步骤
 
@@ -94,6 +94,12 @@
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v2.4.0 (2026-03-20)
+
+- 修复 OpenCode 模型选择不生效问题
+- 支持复用 Claude OAuth 认证到 OpenCode（自动同步 auth.json）
+- 优化 OpenCode 认证模式检测（API Key / OAuth 自动适配）
 
 ### v2.3.0 (2026-03-19)
 
@@ -288,6 +294,15 @@ aicoder-release/
 ├── update.json         # 自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
 └── releases/           # 版本发布目录
+    ├── v2.4.0/         # v2.4.0 版本
+    │   ├── AICoder_2.4.0_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_2.4.0_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_2.4.0_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_2.4.0_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
     └── v2.3.0/         # v2.3.0 版本
         ├── AICoder_2.3.0_x64-setup.exe           # Windows 安装包
         ├── AICoder_2.3.0_x64-setup.exe.sig       # Windows updater 签名
