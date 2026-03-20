@@ -66,13 +66,13 @@
 
 ## 下载安装
 
-### 最新版本: v2.4.0
+### 最新版本: v2.4.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_2.4.0_x64-setup.exe](releases/v2.4.0/AICoder_2.4.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_2.4.0_aarch64.dmg](releases/v2.4.0/AICoder_2.4.0_aarch64.dmg) |
-| macOS Intel | [AICoder_2.4.0_x64.dmg](releases/v2.4.0/AICoder_2.4.0_x64.dmg) |
+| Windows x64 | [AICoder_2.4.1_x64-setup.exe](releases/v2.4.1/AICoder_2.4.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_2.4.1_aarch64.dmg](releases/v2.4.1/AICoder_2.4.1_aarch64.dmg) |
+| macOS Intel | [AICoder_2.4.1_x64.dmg](releases/v2.4.1/AICoder_2.4.1_x64.dmg) |
 
 ### 安装步骤
 
@@ -108,6 +108,11 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 更新清单文件: [update.json](update.json)
 
 ## 版本历史
+
+### v2.4.1 (2026-03-20)
+
+- macOS 安装 CLI 工具权限不足时自动弹出系统密码框提权（EACCES 错误自动处理）
+- README 添加 macOS Gatekeeper 安全提示和 xattr 解除限制指引
 
 ### v2.4.0 (2026-03-20)
 
@@ -308,6 +313,15 @@ aicoder-release/
 ├── update.json         # 自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
 └── releases/           # 版本发布目录
+    ├── v2.4.1/         # v2.4.1 版本
+    │   ├── AICoder_2.4.1_x64-setup.exe           # Windows 安装包
+    │   ├── AICoder_2.4.1_x64-setup.exe.sig       # Windows updater 签名
+    │   ├── AICoder_2.4.1_aarch64.dmg             # macOS Apple Silicon
+    │   ├── AICoder_aarch64.app.tar.gz            # macOS ARM updater 产物
+    │   ├── AICoder_aarch64.app.tar.gz.sig        # macOS ARM updater 签名
+    │   ├── AICoder_2.4.1_x64.dmg                 # macOS Intel
+    │   ├── AICoder_x64.app.tar.gz               # macOS Intel updater 产物
+    │   └── AICoder_x64.app.tar.gz.sig           # macOS Intel updater 签名
     ├── v2.4.0/         # v2.4.0 版本
     │   ├── AICoder_2.4.0_x64-setup.exe           # Windows 安装包
     │   ├── AICoder_2.4.0_x64-setup.exe.sig       # Windows updater 签名
