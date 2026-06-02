@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.0.1
+### 最新版本: v4.0.2
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.0.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.0.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.0.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.0.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.0.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.0.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.0.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_aarch64.dmg) |
+| macOS Intel | [AICoder_4.0.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.0.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.0.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.4.0
 
@@ -210,6 +210,12 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.0.2 (2026-06-02)
+
+🔧 修复安装器升级失败：
+
+- **🐛 修复升级安装时报「无法写入 aicoder-pty-host.exe」装不上的问题** — PTY 主机是游离进程（与守护进程解耦以便会话续传），旧安装脚本「单次结束进程 + 固定等待 1 秒」挡不住守护进程的秒级重启竞态，导致升级覆盖文件时 PTY 主机仍被占用。现改为「循环结束进程树 + 轮询确认已退出」，并补充结束 MCP sidecar 进程，根治升级装不上。
 
 ### v4.0.1 (2026-06-02)
 
@@ -366,7 +372,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.1 / v4.0.0 / v3.9.3）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.2 / v4.0.1 / v4.0.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
