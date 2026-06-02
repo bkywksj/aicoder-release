@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.0.2
+### 最新版本: v4.0.3
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.0.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.0.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_aarch64.dmg) |
-| macOS Intel | [AICoder_4.0.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.0.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.0.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.2/AICoder_4.0.2_amd64.AppImage) |
+| Windows x64 | [AICoder_4.0.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.0.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_aarch64.dmg) |
+| macOS Intel | [AICoder_4.0.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.0.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.0.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.4.0
 
@@ -210,6 +210,15 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.0.3 (2026-06-03)
+
+🌐 外部浏览器窗 + 嵌入面板会话归属 + 本地优先恢复：
+
+- **🚀 外部站点独立浏览器窗** — 工具栏移到外层（宿主窗 React），网页作为子 webview 直连，不再被网页固定顶栏遮挡；内置浏览器面板按会话归属，切换会话自动隐藏/恢复，关闭会话自动回收子窗
+- **🏷️ 标题栏版本号胶囊** — 新增版本号显示，点击一键检测更新
+- **🏠 关闭重开只恢复本地会话** — 重开软件不再自动连接/恢复远程（服务器）会话，只恢复本地；远程会话的 tmux 仍在服务器运行，需要时手动切到对应远程工作区即可继续
+- **🐛 修复目录被误当文件打开** — 提交面板 / Diff 视图中，未跟踪目录或嵌套 Git 仓库不再被当成文件打开而报「拒绝访问」，改为友好提示（勾选复选框仍可整目录提交）
 
 ### v4.0.2 (2026-06-02)
 
@@ -372,7 +381,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.2 / v4.0.1 / v4.0.0）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.3 / v4.0.2 / v4.0.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
