@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.0.0
+### 最新版本: v4.0.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.0.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.0/AICoder_4.0.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.0.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.0/AICoder_4.0.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.0.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.0/AICoder_4.0.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.0.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.0/AICoder_4.0.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.0.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.0/AICoder_4.0.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.0.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.0.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.0.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.0.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.0.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.1/AICoder_4.0.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.4.0
 
@@ -210,6 +210,15 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.0.1 (2026-06-02)
+
+🔀 IDEA 风格 Git 推送弹窗 + diff 高亮：
+
+- **🚀 新增 IDEA 风格 Git 推送弹窗** — `Ctrl+Shift+K` 打开、`Alt+K` 一键推送；支持多远端勾选（如 github + gitee 同时推），左侧待推送提交列表 + 路由行，右侧变更文件树
+- **🔍 推送弹窗内点击文件查看改动 diff** — 远端版 ↔ 本地 HEAD 并排比对，带代码语法高亮
+- **🎨 修复 diff 比对视图缺少语法高亮** — 与文件编辑器一致的着色（暗/亮主题分别适配）
+- **⌨️ Git 提交/推送快捷键拆分** — `Ctrl+K` 提交、`Ctrl+Shift+K` 推送，主窗口与工作区一致
 
 ### v4.0.0 (2026-06-02)
 
@@ -357,7 +366,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.0 / v3.9.3 / v3.9.2）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.1 / v4.0.0 / v3.9.3）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
