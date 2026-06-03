@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.0.3
+### 最新版本: v4.0.4
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.0.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.0.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_aarch64.dmg) |
-| macOS Intel | [AICoder_4.0.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.0.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.0.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.3/AICoder_4.0.3_amd64.AppImage) |
+| Windows x64 | [AICoder_4.0.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.0.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_aarch64.dmg) |
+| macOS Intel | [AICoder_4.0.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.0.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.0.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.4.0
 
@@ -210,6 +210,14 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.0.4 (2026-06-03)
+
+🔧 修复 MCP 接入 + 内置浏览器开发者工具：
+
+- **🐛 修复「一键接入 Claude Code」接入不生效** — 生产环境（安装版）下一键接入会把配置写到错误的文件位置，导致设置页显示「已接入」但 Claude Code 实际读不到 aicoder MCP。现按 Claude Code CLI 实际读取规则统一配置路径，接入后终端 `/mcp` 即可看到 aicoder（修复后需重新点一次「一键接入」写到正确位置）
+- **🚀 内置浏览器支持开发者工具** — 生产环境的内置浏览器（含 AI 自动打开的预览面板）现可用 F12 / 右键「检查」打开开发者工具调试网页；应用主界面本身仍不暴露，安全无虞
+- **🐛 修复 macOS 旧版系统终端路径链接崩溃** — 旧版 macOS 系统 WebView 不支持某正则语法，导致终端里的文件路径点击功能整体失效，现改为等价写法兼容
 
 ### v4.0.3 (2026-06-03)
 
@@ -381,7 +389,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.3 / v4.0.2 / v4.0.1）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.4 / v4.0.3 / v4.0.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
