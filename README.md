@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.0.4
+### 最新版本: v4.1.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.0.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.0.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_aarch64.dmg) |
-| macOS Intel | [AICoder_4.0.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.0.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.0.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.0.4/AICoder_4.0.4_amd64.AppImage) |
+| Windows x64 | [AICoder_4.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.4.0
 
@@ -210,6 +210,21 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.1.0 (2026-06-04)
+
+🚀 模型切换 + 多平台模型适配 + 终端体验：
+
+- **🚀 底部状态栏一键切换模型** — 点状态栏模型名即可切换：Claude 即时热切当前会话，Codex/Gemini/OpenCode 重启会话生效；下拉显示当前 API 配置（Profile）的真实模型（小米 MiMo / GLM / DeepSeek 等），不再误显示 Anthropic 机型
+- **🚀 Codex 第三方模型上下文窗口自动写入** — 切换配置时按模型自动写入真实上下文窗口（MiMo 1M、GLM 200K、DeepSeek 128K 等），避免提前压缩、用满超长上下文
+- **🚀 Claude 第三方端点别名映射** — 接小米/GLM/Kimi 等第三方端点时，`/model` 选 Opus/Sonnet 也能正确跑实际模型，不再报错
+- **🚀 添加账号登录终端支持点击聚焦 + 右键粘贴** — 贴 OAuth code 更顺手
+- **🚀 提交弹窗可点文件查看 diff（HEAD ↔ 工作区）+ 主题感知**
+- **🛡️ 下一步建议发送前自动脱敏** — 密钥类 + PII 强制常开；建议显示 30 秒后半透明、hover 恢复
+- **⚡ 终端内存优化** — scrollback 默认 10000→5000，pty-host 常驻内存减半；远程 PTY 改走统一后端抽象
+- **🐛 修复 Gemini 会话记录不上 / 每次需手动 resume**
+- **🐛 修复历史查看器/导出把工具结果误标为用户消息**
+- **🐛 侧边栏 AICoder 助手目录稳定置顶；关闭会话清理通知时间戳累积**
 
 ### v4.0.4 (2026-06-03)
 
@@ -389,7 +404,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.0.4 / v4.0.3 / v4.0.2）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.1.0 / v4.0.4 / v4.0.3）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
