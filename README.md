@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.2.0
+### 最新版本: v4.2.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.2.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.2.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.2.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.2.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.2.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,13 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.2.1 (2026-06-05)
+
+🔧 安装体验 + 多会话恢复修复：
+
+- **🐛 根治安装/卸载卡在「停止守护进程」** — 安装器改为优雅停止守护进程：先停 watchdog 并轮询确认其真正退出（每 200ms 补刀、最多约 3 秒），再依次清理主进程 / MCP / pty-host 各一次，消除安装与卸载时卡在「停止守护进程」约 10 秒的体验问题；若无守护进程在运行则立即跳过。
+- **🐛 修复多个 Codex 会话恢复后内容张冠李戴** — 同一项目开多个 Codex 会话时，升级重启自动恢复后可能出现「会话名正确、点进去内容却是别的会话」。根因是恢复时会话指针被错绑到相邻会话的记录文件；现恢复已有会话不再重新猜测文件，根治串号（你的真实对话从未丢失，仅指针指错）。
 
 ### v4.2.0 (2026-06-05)
 
@@ -425,7 +432,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.1.0 / v4.0.4 / v4.0.3）
+├── releases/           # 桌面端版本（最近版本：v4.2.1 / v4.2.0 / v4.1.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
