@@ -66,27 +66,27 @@
 
 ## 下载安装
 
-### 最新版本: v4.1.0
+### 最新版本: v4.2.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.1.0/AICoder_4.1.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.0/AICoder_4.2.0_amd64.AppImage) |
 
-### 移动端伴侣 · v0.4.0
+### 移动端伴侣 · v0.5.0
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.4.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.5.0。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.4.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.4.0/AICoder-mobile-v0.4.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.4.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.4.0/AICoder-mobile-v0.4.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.5.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.5.0/AICoder-mobile-v0.5.0.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.5.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.5.0/AICoder-mobile-v0.5.0.aab) | Google Play 上架用（暂存档） |
 
-**🆕 v0.4.0 — 配置档案切换 / 指令面板 / Provider 选择**：移动端补齐三大常用功能，详见 [移动端版本历史](#移动端版本历史)。
+**🆕 v0.5.0 — 手机端可用性修复**：新建会话补 claude_session_id 根治「收不到消息/暂无历史」、默认带 --dangerously-skip-permissions、项目目录必填、永久授权(-1)显示「永久」、接收指示器回复完自动归位，详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -125,6 +125,16 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.5.0 (2026-06-05)
+
+🐛 手机端可用性修复（守护进程上线后多项失效）：
+
+- **🔑 新建会话收不到消息根治** — 新建会话补齐 `claude_session_id`（UUID v4）：缺它后端定位不到 JSONL，会话永远「暂无历史消息」收不到消息
+- **🔓 默认带 --dangerously-skip-permissions** — 新建会话按工具填默认 CLI 参数，桌面起 Claude 不再卡每步权限弹窗
+- **📁 项目目录改必填** — 新建会话强制选目录，避免后端因 project_path 为空返回空消息
+- **♾️ 永久授权显示「永久」** — 授权天数 -1 正确显示「永久」（对齐桌面端），不再误显示「-1 天」或误弹续费提示
+- **✨ 接收指示器自动归位** — 「接收中」改 idle 定时器状态机，PC 端回复完手机 2.5s 内停止闪烁（根治「已回复完仍一直转」）
 
 ### mobile-v0.4.0 (2026-05-11)
 
@@ -210,6 +220,17 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.2.0 (2026-06-05)
+
+🚀 工作区 Git 增强 + 标题栏开关：
+
+- **🗂️ 工作区目录树右键菜单** — 工作区提交面板改为 IDEA 风格目录树，右键支持暂存/取消暂存/暂存整个目录、打开 Diff、在编辑器/IDEA/系统程序打开、复制相对·绝对路径·文件名、在资源管理器显示
+- **🗑️ Git 丢弃改动** — 新增「丢弃改动…」：把选中文件还原到上次提交（未跟踪文件直接删除），带二次确认
+- **🤖 文件级 AI 操作** — 右键可把文件 @引用 发送到主窗口 AI 终端、复制 @引用、让 AI 解释/审查此文件
+- **🚫 一键加入 .gitignore** — 右键未跟踪文件直接写入 .gitignore
+- **🔗 标题栏官网链接显隐开关** — 设置→通用新增开关，关掉后标题栏只保留应用名，适合录屏/演示
+- **⚡ 面板打开无延迟** — 遮罩面板打开的瞬间同步隐藏子 webview，消除「设置先显示、webview 后隐藏」的可见延迟
 
 ### v4.1.0 (2026-06-04)
 
