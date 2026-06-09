@@ -1,4 +1,4 @@
-﻿# 智码 AICoder
+# 智码 AICoder
 
 > 一站式 AI 编程助手管理平台 — 支持 Claude Code / Codex / Gemini CLI
 
@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.2.1
+### 最新版本: v4.3.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.2.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.2.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.2.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.2.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.2.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.2.1/AICoder_4.2.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,17 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.3.0 (2026-06-09)
+
+- 🐛 修复扫描器生成的 Java 启动命令在中文路径下乱码/找不到类（BOM + argfile 编码）
+- 🐛 修复输入法候选窗在终端输入时闪烁
+- 🚀 远程会话跨电脑统一（远程 JSONL 对账补建）
+- 🚀 工作区 diff/编辑器补齐 Java/SQL 等语言高亮
+- 🚀 Tab 数量默认不限制 + 内存触发阈值调整
+- 🐛 修复多实例内置浏览器串窗
+- 🐛 修复主窗口大内容渲染卡死（markdown/历史浮层/diff 降级）
+- 🚀 扫描器支持 CMakePresets 双层布局
 
 ### v4.2.1 (2026-06-05)
 
