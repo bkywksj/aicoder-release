@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.4.0
+### 最新版本: v4.4.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.4.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.4.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.4.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.4.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.4.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,16 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.4.1 (2026-06-10)
+
+主线程卡死（未响应）专项根治
+
+- 🚀 24 个高频文件读写/子进程/统计命令移出主线程（会话标题轮询、历史读取、全文搜索、工具检测、仪表盘统计），根治"用着用着未响应"
+- 🚀 数据库读写分离：慢查询/聚合走独立只读连接，不再阻塞界面操作
+- 🚀 Token 统计增量化：只解析有变化的会话文件，消除每分钟全量扫描 GB 级会话数据的磁盘洪峰
+- 🔍 新增主线程慢命令取证日志（SLOW-CMD / HANG-SUSPECT），再遇卡顿可直接定位到具体命令
+- 🔄 回退「tab 重开插回原位」功能
 
 ### v4.4.0 (2026-06-10)
 
@@ -447,7 +457,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（仅保留最近 3 版：v4.4.0 / v4.3.0 / v4.2.0）
+├── releases/           # 桌面端版本（最新：v4.4.1 / v4.4.0 / v4.3.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
