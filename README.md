@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.3.0
+### 最新版本: v4.4.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.3.0/AICoder_4.3.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.0/AICoder_4.4.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -221,6 +221,17 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 
 ## 版本历史
 
+### v4.4.0 (2026-06-10)
+
+- 🚀 新增「禁用 GPU 加速」开关：远程桌面（向日葵/远程桌面等）或老显卡下界面闪烁/撕裂时，可在设置→通用一键让本应用改用软件渲染（只影响本软件，不碰系统，重启生效）
+- 🚀 Tab 栏新增「查看完整历史」按钮：一键查看当前会话完整对话（读 JSONL，不受终端 5000 行限制）
+- 🚀 Tab 栏三个按钮悬停改用主题色提示，「下一个已完成」常态显示
+- 🚀 点击边缘 Tab 自动露出相邻 Tab，方便连续切换
+- 🚀 新增 Claude Fable 5 模型，修正后端 Sonnet 4.5 无效 ID/默认
+- 🐛 修复多开实例终端调度串窗（注入实例端点）
+- 🐛 修复 PTY 自动重连导致的终端渲染错乱（精确续订 offset + 直写背压）
+- 🚀 推送弹窗点提交可查看该提交变更
+
 ### v4.3.0 (2026-06-09)
 
 - 🐛 修复扫描器生成的 Java 启动命令在中文路径下乱码/找不到类（BOM + argfile 编码）
@@ -231,13 +242,6 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 - 🐛 修复多实例内置浏览器串窗
 - 🐛 修复主窗口大内容渲染卡死（markdown/历史浮层/diff 降级）
 - 🚀 扫描器支持 CMakePresets 双层布局
-
-### v4.2.1 (2026-06-05)
-
-🔧 安装体验 + 多会话恢复修复：
-
-- **🐛 根治安装/卸载卡在「停止守护进程」** — 安装器改为优雅停止守护进程：先停 watchdog 并轮询确认其真正退出（每 200ms 补刀、最多约 3 秒），再依次清理主进程 / MCP / pty-host 各一次，消除安装与卸载时卡在「停止守护进程」约 10 秒的体验问题；若无守护进程在运行则立即跳过。
-- **🐛 修复多个 Codex 会话恢复后内容张冠李戴** — 同一项目开多个 Codex 会话时，升级重启自动恢复后可能出现「会话名正确、点进去内容却是别的会话」。根因是恢复时会话指针被错绑到相邻会话的记录文件；现恢复已有会话不再重新猜测文件，根治串号（你的真实对话从未丢失，仅指针指错）。
 
 ### v4.2.0 (2026-06-05)
 
@@ -443,7 +447,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最近版本：v4.2.1 / v4.2.0 / v4.1.0）
+├── releases/           # 桌面端版本（仅保留最近 3 版：v4.4.0 / v4.3.0 / v4.2.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB

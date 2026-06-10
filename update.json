@@ -1,23 +1,23 @@
 {
-    "version":  "4.3.0",
-    "notes":  "🐛 修复扫描器生成的 Java 启动命令在中文路径下乱码/找不到类（BOM + argfile 编码）\n🐛 修复输入法候选窗在终端输入时闪烁\n🚀 远程会话跨电脑统一（远程 JSONL 对账补建）\n🚀 工作区 diff/编辑器补齐 Java/SQL 等语言高亮\n🚀 Tab 数量默认不限制 + 内存触发阈值调整\n🐛 修复多实例内置浏览器串窗\n🐛 修复主窗口大内容渲染卡死（markdown/历史浮层/diff 降级）\n🚀 扫描器支持 CMakePresets 双层布局",
-    "pub_date":  "2026-06-09T09:21:24Z",
-    "platforms":  {
-                      "windows-x86_64":  {
-                                             "url":  "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.3.0/AICoder_4.3.0_x64-setup.exe",
-                                             "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXptNFowMUQ1Y3NrK0tGVDFSNmZDZW1xcHpEcDVpODNqcXhpamZNY2l1eHJ1WGlxRTBkcFpCRmFIM0N1elpmbWVpbVNac1hXTlY4TnVnVUlQMnppVndBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgwOTkzNzk4CWZpbGU65pm656CBIEFJQ29kZXJfNC4zLjBfeDY0LXNldHVwLmV4ZQpUVXNZbG5BeEdIbWZXZzB3c2pVOWVSMm9WK2ZaT3FGWlBWeDJzejA4N2JxcUZ4UWh0ck44djFzUG1pNExabjNaalhvOTVPRnlQWTlXVkxSZzRRSHJEQT09Cg=="
-                                         },
-                      "darwin-aarch64":  {
-                                             "url":  "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.3.0/AICoder_aarch64.app.tar.gz",
-                                             "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTlnV0JkdWEyK1M0eGhONTY2MElVVndEdHYvVmlSVWk2SmhFeE5BSVQyNGdXK3NrS0hzd0FqS0NSK1VLeWZHRFJPWVpEUFpQdDdwOUg1NmpsSmpaYkE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgwOTkyOTY0CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negp1Y0R2YlQvRG8yeng0VTFtUUxyNC8xckF2a3Y1RGt0SDRtK2tEdEdtZXRvcWsxK00xUitVcE9JaVNnQS9tRnVmcWxxSUpUcmpUK0pDWU1YWnVYcWRDQT09Cg=="
-                                         },
-                      "darwin-x86_64":  {
-                                            "url":  "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.3.0/AICoder_x64.app.tar.gz",
-                                            "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSThoM0JEOHFzQWtUSlU1aGt0WDkxOE12WWIrWmNoTVQyKzVqREtFTGczQUpsM3E5ZytBYUdYZlhyMHhnM09VWUhVM2k4MlVHVjZCaWUwT1NGWHpvMFFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgwOTkyOTEyCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpUV0tLeXBkeHdYblRiNWdIbjVOcndhUTRWb1hHMnFXOVFReDlsVksyOStmMzVtMjVtQzdwcE1CaFBDQVhIZU0yMXZwZ21IKzR0ZUpMd3VSOVh4V2ZBUT09Cg=="
-                                        },
-                      "linux-x86_64":  {
-                                           "url":  "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.3.0/AICoder_4.3.0_amd64.AppImage",
-                                           "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXdRYy83OXRTdTYwQmhUSEZZU2hGYk5RZ0hQcVBhK3NEV2RZeXM4SytLdDJLYkZNWWxaLzFmVy9RSk16ZTlWQWJVOVk0TlFGVUtNMElDQ1I0YnBBK3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgwOTkzMDI5CWZpbGU65pm656CBIEFJQ29kZXJfNC4zLjBfYW1kNjQuQXBwSW1hZ2UKRFlZb216dElFOHBMWUdjZ2k5Zk9PcTFsVU5sZkpNV3J1U1hpM0ZTY3Vld0pYUmdlMTk4UU5EM1p0SnhZTjRDSzJTclhBMHJSU25wcDhQdEhMY3NBQ3c9PQo="
-                                       }
-                  }
+  "version": "4.4.0",
+  "notes": "新增「禁用 GPU 加速」开关：远程桌面/老显卡渲染闪烁时可在设置→通用一键降级软件渲染\\n新增 Tab 栏「查看完整历史」按钮 + 三按钮主题色提示 + 边缘 tab 点击露出相邻 tab\\n新增 Claude Fable 5 模型\\n修复多开实例终端调度串窗\\n修复 PTY 自动重连导致的终端渲染错乱\\n推送弹窗点提交可查看该提交变更",
+  "pub_date": "2026-06-10T05:49:10Z",
+  "platforms": {
+    "windows-x86_64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.0/AICoder_4.4.0_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTl4emRzc2NiT2lwNStpL1hDQmhkREhvbXhhczlwekNPRkFOaG1Ia3FpZGVoTGt5VW11cXhYOXZtSUJzaFhTU3Jsc2RtRDNHMWd1RkFZbnlDdlRFTUFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMDcwMTA2CWZpbGU65pm656CBIEFJQ29kZXJfNC40LjBfeDY0LXNldHVwLmV4ZQplbmVYS1F4Yy84TnlwUmJkRjZSVzFnczBGd2xmMHpiZk95enNpWUJBMkIxLzd3a0M4ZEVIdkFucWhWNExIL2g2UGF3ZVBVS2JPMlZzYlJ6dyt4TFhBUT09Cg=="
+    },
+    "darwin-aarch64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.0/AICoder_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXdPMGZ6YmRpUDFpOWpLS1dFaEtoSVhXZ0VDODJEemlpNXJ2WDRtTldQZ2ovdHJwcE5ncEE0aHdUa09LN1hhUUI5aUMzMkJKajNVN1h2TTR4SFRnandJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMDY5MTkwCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpmbU0rR3RlT3RDazlkMWRkeTMvOUV0UEc4NjNEdzFSQkRWN29UcTY0di9ZUnIzZkp0QWYvNE9jemxHZ2ttTDAwemRpdkNxeW9JcDY0WVVpOHdMUjBEQT09Cg=="
+    },
+    "darwin-x86_64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.0/AICoder_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSThnaGd5QTZGUlR2cVI1My9OYW5PdUxpMjFDOHZHby9OWEtDN3NsM2FPSkcxa3hIa0cyenRpQi81MGFRRnNSZHRHMTRyOXJoTFVWa3BXV3pMM1Q3VWdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMDY5MTQxCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpBRWVFMDI4Z3NGS1h5bmVwb1JwU3dCNHNlQjlaVnBnL0t6SVRpZ1cwNk1JVksyZlJrS244YkpuK21sNlUxc0ttbnkwdmljY0dFVmxySWdNeFkwTmNBZz09Cg=="
+    },
+    "linux-x86_64": {
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.0/AICoder_4.4.0_amd64.AppImage",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSThMeitaZ0MrOTVJOW4xb3dDUmNqRVZmckJCdHVqYldXS3k2U0VzUFBDWitvQkJVYlpDN0ZCckVDZ1V1S3cyc1RDM0o0NVNRbnNybHY0bnJ5TEpXTFFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMDY5MzYwCWZpbGU65pm656CBIEFJQ29kZXJfNC40LjBfYW1kNjQuQXBwSW1hZ2UKL3F2cEtid3hudkZxQWF5c0h0c3J5cUNRcTVVM09DRXRvWHMxcUlHUm5CQU9XaDFHNW5oaUNwaU5JUWFnVjlsbldrTUpFT3RET0trVElKcDVYdUJaREE9PQo="
+    }
+  }
 }
