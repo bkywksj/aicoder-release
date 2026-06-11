@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.4.1
+### 最新版本: v4.4.2
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.4.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.4.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.4.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.4.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.4.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.1/AICoder_4.4.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.4.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.4.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_aarch64.dmg) |
+| macOS Intel | [AICoder_4.4.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.4.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.4.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,14 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.4.2 (2026-06-12)
+
+侧边栏会话筛选 + 关于页生态产品矩阵
+
+- 🆕 **侧边栏「只看已打开会话」筛选** — 搜索框旁新增漏斗开关，一键收起未打开的历史会话，仅保留当前打开为标签页的会话（目录分组照常显示），方便在大量会话中快速定位；再点一下恢复显示全部
+- 📖 **关于页新增生态产品矩阵** — 介绍三款姊妹应用：Sigil（AI 凭据金库，密钥永不离手）、Reeve（服务器管理 + 受控 AI 接入）、AgileShot（AI 时代截图标注工具）
+- 🔧 AI 工作站模块数更新（55+ → 60+）
 
 ### v4.4.1 (2026-06-10)
 
@@ -457,7 +465,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.4.1 / v4.4.0 / v4.3.0）
+├── releases/           # 桌面端版本（最新：v4.4.2 / v4.4.1 / v4.4.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
