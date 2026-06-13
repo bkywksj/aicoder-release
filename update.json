@@ -1,23 +1,23 @@
 {
-  "version": "4.4.2",
-  "notes": "侧边栏新增「只看已打开会话」筛选开关，一键收起未打开的历史会话，目录分组照常显示，方便快速定位\\n关于页新增生态产品矩阵：Sigil（AI 凭据金库）/ Reeve（服务器管理 + 受控 AI 接入）/ AgileShot（截图标注工具）\\nAI 工作站模块数更新（55+ → 60+）",
-  "pub_date": "2026-06-11T17:46:00Z",
+  "version": "4.5.0",
+  "notes": "v4.5.0 更新内容：\n\n【重要修复】\n· 根治键盘输入引发的「未响应」死锁（移植上游 tao #1215）\n· 修复部分电脑终端 Ctrl+V 无法粘贴\n· 修复新 WebView2 内核下终端滚动条消失\n· 修复内置浏览器切换会话时的闪现与归属错绑\n\n【新功能 / 改进】\n· 仪表盘大幅升级：费用按版本正确计价、活动时间线每日 token 按真实日期分桶、概览加本月输入/输出 Token、详细页改每月花费柱状图+明细表\n· 工作区分支视图加提交历史 + 改动详情\n· 内置浏览器支持 file:// 与本地路径预览\n· 状态栏 git 分支切换即时刷新\n· 新增智谱 GLM glm-5.2 模型\n· MCP 接入新增「接入自家工具」卡片",
+  "pub_date": "2026-06-13T21:02:50Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.2/AICoder_4.4.2_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTEzZTRTaVROa3RPdmt5NjBUQjhKdEN1R1lpaDhwOEUrUk1EOEIxQUVGNDF6NFdUcXR1bFdVWWc4dEZFZU9mUEVTQzVUajRuYVp0a202WGhnb1JtR3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMTk4Mzc2CWZpbGU65pm656CBIEFJQ29kZXJfNC40LjJfeDY0LXNldHVwLmV4ZQpMRE5kZ2dWZ2Q5azhlWUJVQkZ4cjNibzBZQnBmemVUQlR3b3BYbUpPYk9rSVlGRXFZNXQxOVFONGlNQk4xNHVaWmhzSmRTdGkva2NIdHRFVXJMTlBEZz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.5.0/AICoder_4.5.0_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdvRXVQOHhXRnZtSE1zTFZPVXpoUWpkRUhHUm52WVRjckVmVzRNc3lxOXRZSStrd2FXdmszSmxTdHF4Rm1NUjdUNjFheHdpUSt4bXNHTkkxSWROT1FrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMzgzODM3CWZpbGU65pm656CBIEFJQ29kZXJfNC41LjBfeDY0LXNldHVwLmV4ZQo4U1Bqc1ZsRXRlengxZVd0ZFZxWnFsOWNFTzBUWlArSUVReXEvY3U2WTZTdGM4Nk5iNmpUV3ZOK1loUS94djhKWjVrdjBERGw5Y1dWL2pCM0dwREhBUT09Cg=="
     },
     "darwin-aarch64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.2/AICoder_aarch64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTBheC92dlRSM2pzU0s2Y253WTAyY1NGeUYzVU1DN0RheWFHVXpoV3BaOUlGcTM5THZMUEtHckFFTUh4VkU5b3pZYUFENCtSRjZvNHJmTncwSFh1NndJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMTk3NTA4CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negp3UVRDdXp2R1RlcmdJc1RvdngvNERFcmR0K0JRK1cza0FLQWxJUnhIUkJYOFpFeVNVTWJsTkNPVVYxbXBJS1BZODdyYUwwZkYrSzBxU2crcjJwYkhDdz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.5.0/AICoder_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdNb1FzdXZBN3RvK3BTbG5qdnpMcnA3UzNjalNCUTVPMDJQU2pua2MxaU5XalZ2dnYwTm0yTE1SODBkSjZaVHFtNWZtK2haZlNRQzNyM2lHbERXN1FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMzgyNzg4CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpESDQ3dEovYms2Z2RQRmVWWVhQdXFIRXdNL21JNUJyRENWMk5NVFpKSXRxZWxIN1VQUHROeFZuKzBzdUI4aDRaalVsOE0yMm5QRXdwMW9DSHFlU2FBQT09Cg=="
     },
     "darwin-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.2/AICoder_x64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTNiN05GOWdSNnFQTzJZUmdlU0dsNnZMRE5IQVVEVk5BVEJYNjlIcjUrTXpBNnZacUNPWUFyU2x6azVjb3labFQzWVJnWkZzczJwS1ZaMGdybjdTcVEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMTk3NjczCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negp6VXc5eTBSVDM2THFTbFV4dGFVSTNRTUxFNk5GM3ZPWVFIS1FOcEF1d0dkcklVd21TdTQ0OUFNMm85ZGE4UHozQkN4YXpEZjVESUI4MGw0REJ4b3pEQT09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.5.0/AICoder_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTN5WlYyTkFQeWExSWN6NWR6eDhydHZnNHJYNjlOSXJiZzlBdW9EbVA1MUhib205KytsdlBQbUlkS0IwdUVpS2RGMElxZndQbklzVVcvVXArOWpCbEFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMzgyOTY4CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpEN3Z5SXFyNTAzdStZcjRxL0RoOE9adEViQnRndzd1T1lJa3hvTlhRNGtqS3I4ZlRQNkZzU2RwVmJRYkhKaE14aFRlbzVkMFBNR1UrZ1lxa2NSQ1NBdz09Cg=="
     },
     "linux-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.4.2/AICoder_4.4.2_amd64.AppImage",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSXhta2Z6bEIvZXBvSVJmRHlNeXNOd3NyL0VTUFhYVW84V2V2Qm1Mbm1vWjczMG5EUmpTUUdNZnBiTG9MRWFQTGFsdW5DN2JKamhHVjMzNHJkUFE4MFFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMTk3NzIxCWZpbGU65pm656CBIEFJQ29kZXJfNC40LjJfYW1kNjQuQXBwSW1hZ2UKdk50L0hFMVJXNE5QbVhTdlFRM0xyeHhKd1VyT2F3RlZYTzR0WTM5NGpOSkplUXN0K2JWbGJSWVZuaTlnbFBTREdQUUtCYnUrdEpLUXM2L01UT2tkQlE9PQo="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.5.0/AICoder_4.5.0_amd64.AppImage",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdyS0pDOWhuUStZYWdQSjl1QVFRQ1E1VkJRN3hjWmlNempRaTdaMHZCNUR1VHdETTJPZWh1K1pZekxLZElZUVlGY2pycEJveWRMOEhDZ3lmS1RqTXdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMzgzMTc5CWZpbGU65pm656CBIEFJQ29kZXJfNC41LjBfYW1kNjQuQXBwSW1hZ2UKR2M3ZGpsaUh3aUo4enhQL2ZpTXhHQzkyZVlsOG02dDQvUFFrbGtWMTNZci9wSG96dFo3eW9udlloY2ZmNnpNLzV4dVJOc1M5eVN3TmtIaVJZandWQ1E9PQo="
     }
   }
 }

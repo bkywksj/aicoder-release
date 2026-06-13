@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.4.2
+### 最新版本: v4.5.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.4.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.4.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_aarch64.dmg) |
-| macOS Intel | [AICoder_4.4.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.4.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.4.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.4.2/AICoder_4.4.2_amd64.AppImage) |
+| Windows x64 | [AICoder_4.5.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.5.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.5.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.5.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.5.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,21 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.5.0 (2026-06-14)
+
+未响应死锁根治 + 仪表盘大幅升级 + 多项修复：
+
+- 🐛 **根治键盘输入引发的「未响应」死锁** — 移植上游 tao #1215，把 PeekMessage 移出输入锁作用域，从根上消除输入卡死
+- 🐛 **修复部分电脑终端 Ctrl+V 无法粘贴** — 大小写/IME/空剪贴板三因
+- 🐛 **修复新 WebView2 内核（Chromium≥121）下终端滚动条消失**
+- 🐛 **修复内置浏览器切换会话时的闪现与归属错绑**
+- 🚀 **仪表盘大幅升级** — 费用按模型版本正确计价（修正 Opus 旧价 3× 高估）、活动时间线每日 token 按真实日期分桶、概览新增「本月输入/输出 Token」、详细页改为「每月花费」柱状图 + 每月输入/输出/花费明细表
+- 🚀 **工作区分支视图加提交历史** — 点击分支查看其提交记录 + 提交详情/改动文件面板（master-detail）
+- 🚀 **内置浏览器支持 file:// 与本地绝对路径预览**
+- 🚀 **底部状态栏 git 分支切换即时刷新**
+- 🚀 **新增智谱 GLM glm-5.2 模型**
+- 🚀 **MCP 接入新增「接入自家工具」提示卡片**（Sigil / Reeve / AgileShot / AICoder）
 
 ### v4.4.2 (2026-06-12)
 
@@ -465,7 +480,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.4.2 / v4.4.1 / v4.4.0）
+├── releases/           # 桌面端版本（最新：v4.5.0 / v4.4.2 / v4.4.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
