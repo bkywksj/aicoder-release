@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.5.0
+### 最新版本: v4.6.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.5.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.5.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.5.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.5.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.5.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.5.0/AICoder_4.5.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.6.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.6.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.6.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.6.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.6.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,20 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.6.0 (2026-06-16)
+
+Antigravity Provider 接入 + MCP 自主会话 + 会话历史搜索 + 多项稳定性修复：
+
+- 🚀 **Antigravity (agy) Provider 完整接入** — 骨架/图标/模型目录(Gemini 3 Pro/Flash)/远程检测/配置编辑器(settings.json + mcp_config.json)/一键安装/「走代理」开关解决 Google OAuth 登录
+- 🚀 **aicoder MCP 新增 start_agent_session 自主会话工具** — 外部 AI 可建会话 + 喂提示词自主开跑（配 spawn-agents 拆任务并行多开）
+- 🚀 **会话历史查看器 + 工作区 AI 对话历史新增站内关键字搜索** — 命中高亮 + 上/下跳转
+- 🚀 **内置浏览器嵌入面板** — accent 描边 + 边缘拖拽改大小
+- 🚀 **快捷指令面板 /mcp 置顶** — 高频用免找
+- 🐛 **终端路径链接** — 识别中文标签前缀的相对路径，并改 Ctrl/Cmd+点击打开
+- 🐛 **「在资源管理器中显示」** — 修 Windows 下打开「文档」而非定位真实文件/目录
+- 🐛 **aicoder-mcp sidecar 连接韧性加固** — 启动打不死 + 退避重试 + 关连接池（少断连 + 断连自愈）
+- 🐛 **侧边栏会话提问缓存加 LRU 上限** — 根治用久了鼠标滚轮滚动卡顿
 
 ### v4.5.0 (2026-06-14)
 
@@ -480,7 +494,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.5.0 / v4.4.2 / v4.4.1）
+├── releases/           # 桌面端版本（最新：v4.6.0 / v4.5.0 / v4.4.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
