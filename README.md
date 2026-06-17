@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.6.0
+### 最新版本: v4.6.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.6.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.6.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.6.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.6.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.6.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.0/AICoder_4.6.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.6.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.6.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.6.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.6.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.6.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,15 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.6.1 (2026-06-17)
+
+API key 自动启用 + 自主会话回车修复 + 终端链接防误触 + 终端渲染修复：
+
+- 🐛 **切第三方 API key 自动启用** — 换普通 API key 档案时自动预批准 customApiKeyResponses，不用再 `/config` 手动开「Use custom API key」开关
+- 🐛 **自主会话修复** — `start_agent_session` 喂入提示词后自动回车开跑（之前只填进输入框不提交）
+- 🔗 **终端链接改 Ctrl+左键打开** — 防误触，悬停仍显示为链接（路径 + URL 统一，覆盖主/任务/工作区终端）
+- 🖥️ **终端渲染修复** — 根治 Claude 回答时「冒号后内容永久消失」+「回答中拖窗口/插拔投屏致正文错位」
 
 ### v4.6.0 (2026-06-16)
 
