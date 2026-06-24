@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.6.1
+### 最新版本: v4.7.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.6.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.6.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.6.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.6.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.6.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.6.1/AICoder_4.6.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.7.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.7.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.7.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.7.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.7.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -101,17 +101,15 @@
 
 ### macOS 安全提示
 
-首次打开应用时，macOS 可能会提示：
+首次打开应用时，macOS 可能会提示「无法验证开发者」，或在 Apple Silicon 上提示「已损坏，无法打开，你应该将它移到废纸篓」。
 
-> 未打开"智码 AICoder.app"，Apple 无法验证"智码 AICoder.app"是否包含可能危害 Mac 安全或泄漏隐私的恶意软件。
-
-这是因为应用未经过 Apple 公证（Notarization），**并非恶意软件**。请执行以下命令解除限制：
+这是因为应用走 ad-hoc 签名、未经 Apple 公证（Notarization），**并非恶意软件**。请打开「终端」执行以下命令解除限制，再重新打开应用：
 
 ```bash
-sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
+sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ```
 
-输入 Mac 登录密码后即可正常打开应用。
+输入 Mac 登录密码后即可正常打开应用。若没把应用拖进 Applications，可把 `.app` 直接拖进终端窗口自动补全路径。
 
 ## 更新机制
 
@@ -220,6 +218,16 @@ sudo xattr -d com.apple.quarantine /Applications/智码\ AICoder.app
 ---
 
 ## 版本历史
+
+### v4.7.1 (2026-06-25)
+
+🐾 全新桌面桌宠系统 + 🌐 远程 SSH 增强 + ⚡ 终端性能 + 推广返佣：
+
+- **🐾 全新桌面桌宠系统** — 独立透明窗 + 16 个可插拔角色 + 互动反应（点击爱心/双击转圈/连点彩蛋/拖拽回弹）+ 羁绊气场养成（自动 Lv1-6 + Lv6 镀金）+ 节日皮肤（圣诞/万圣/元旦/春节自动饰品）+ 拟真情绪（空闲打盹 Zzz + 心情值）+ 对话 Agent（意图操作 App + 搜索会话定位）+ 语音输入 + 番茄钟 + 边缘停靠游走 + 长期记忆「关于我」
+- **🌐 远程 SSH 增强** — 真·OAuth 登录 + 按主机代理三模式（直连 / 远程自己代理 / 反向隧道借本地电脑代理出网）+ 各 CLI 配置面板一键「配置代理」直达对应主机 + 远程工作区添加 Claude 账号
+- **⚡ 终端性能** — 修复长时间运行后终端滚动变卡 + 内存泄漏清理 + 默认 Tab 上限 20 + 侧边栏滚动合成层隔离
+- **🎁 推广返佣来源识别** — 推广来源识别弹窗 + 注册表无感归因捕获
+- **🔧 体验修复** — 右上角通知偏移避开顶部 tab 栏（不再遮挡）+ 桌宠右键菜单固定宽度（长角色名不再忽宽忽窄抖动）
 
 ### v4.6.1 (2026-06-17)
 
@@ -503,7 +511,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.6.0 / v4.5.0 / v4.4.2）
+├── releases/           # 桌面端版本（最新：v4.7.1 / v4.6.1 / v4.6.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
