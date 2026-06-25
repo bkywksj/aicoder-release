@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.7.1
+### 最新版本: v4.8.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.7.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.7.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.7.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.7.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.7.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.7.1/AICoder_4.7.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.8.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.8.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.8.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.8.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.8.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.8.0 (2026-06-25)
+
+🐾 桌宠大招特效 + 🌐 远程增强 + 🍎 macOS 修复 + 🔁 API Profile 切换重启：
+
+- **🐾 桌宠** — 「发大招」全屏特效专属大招（右键菜单 / 连点 10 下 / 升满级三触发）+ Agent 当前目录建会话/切会话/答完单击聚焦该会话 + 多开实例识别角标 + 空闲随机搭话默认开启 + 撒花错峰优化 + 右键菜单防截断
+- **🌐 远程 SSH** — 登录终端复制粘贴/光标修复 + 本地代理默认值兜底 + 未连接提示带「去远程主机设置」跳转按钮 + 远程 codex 默认带免审批参数
+- **🍎 macOS** — 禁用原生全屏（绿灯改 Zoom，避免全屏下 Esc 被系统吞致终端 CLI 收不到中断）+ 文件浏览器不再隐式枚举 TCC 受保护目录（消除相册/日历/文档误索权）
+- **🔁 切换 Claude API Profile 后自动重启会话** 使新端点生效
+- **⚡ 快捷短语** — 状态栏 split-button 衍生项 + 提交按钮 + 主窗口加宽
+- **🔐 开代理时授权请求不走系统代理**（no_proxy），修复 clash 等代理把国内授权服务器走国外节点致验证失败、新建会话被拦
+- **🔧 终端** — 子任务终端长驻命令窄列硬换行修复 + 相对路径含中文目录段可 Ctrl+点击打开
 
 ### v4.7.1 (2026-06-25)
 
@@ -511,7 +523,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.7.1 / v4.6.1 / v4.6.0）
+├── releases/           # 桌面端版本（最新：v4.8.0 / v4.7.1 / v4.6.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
