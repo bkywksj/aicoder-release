@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.8.0
+### 最新版本: v4.9.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.8.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.8.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.8.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.8.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.8.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.8.0/AICoder_4.8.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.9.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.9.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.9.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.9.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.9.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,17 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.9.0 (2026-06-25)
+
+🐾 桌宠自定义角色 + 🗂️ 会话历史体验大改 + 🧩 工作区 AI 气泡 + ✅ 任务手动添加：
+
+- **🐾 桌宠自定义角色包** — 支持导入/导出自定义角色（静态图 / 序列帧），通用渲染器数据驱动；全屏「发大招」特效保留
+- **🗂️ 完整历史改右侧覆盖式抽屉** — 不再用居中弹窗，贴右侧滑出、不挤压也不打断终端
+- **💬 会话历史 AI 回复合并** — 同一轮回答不再被拆成多条框；工具调用收成轻量 chip，与正文视觉隔离
+- **🔎 提问记录增强** — 新增「加载更多」；点击已滚出终端 5000 行缓存的提问，自动打开完整历史并定位到该条
+- **🧩 工作区 AI 历史** — 改左右气泡布局 + 工具调用 chip 隔离 + 提问记录浮窗点击定位
+- **✅ 项目任务手动添加弹窗**
 
 ### v4.8.0 (2026-06-25)
 
