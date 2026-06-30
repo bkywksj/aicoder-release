@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.9.0
+### 最新版本: v4.10.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.9.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.9.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.9.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.9.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.9.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.9.0/AICoder_4.9.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.10.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.10.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.10.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.10.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.10.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,20 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.10.0 (2026-06-30)
+
+🪟 Windows 工具检测加固 + 🐾 桌宠靠边躲藏 + 🤖 AICoder 助手 Codex 后端 + 🔗 终端链接弹窗：
+
+- **🪟 Windows 工具检测加固** — Node / nvm / Claude 等「装了却检测不到」根治：读系统注册表里的真实 PATH，装完点「刷新检测」即可识别、无需重启应用；新增固定安装位置直探、nvm 未启用版本的可操作提示、自定义 Node 路径兜底
+- **🐾 桌宠靠边躲藏** — 贴边吸附更靠边，真身可探头 / 拖出，带防抖
+- **⚡ Claude Code ultracode 热切档** — xHigh + 多 agent 编排
+- **🤖 AICoder 助手支持 Codex 后端** — AGENTS.md + 全局 config.toml 挂载 aicoder
+- **🔗 终端链接点击统一为风格化确认弹窗** — 普通左键弹窗 / Ctrl 直开，TUI 下也生效
+- **🌐 OpenCode 自定义 OpenAI 兼容网关** — 托管 provider 写入 opencode.json
+- **🍎 macOS 麦克风权限失配引导** — 设置悬停提示 + 被拒弹窗带 tccutil 重置命令
+- **⚡ 会话恢复改走 --resume 直恢复** — Claude Code 2.1.170 已修复崩溃 bug
+- **🐛 修复** — 远程 SSH 工作区显示降级 / 失败态、macOS 原生全屏恢复（Esc 直达终端）、mac 剪贴板走原生 arboard、提问记录浮钮不再挡终端输入框
 
 ### v4.9.0 (2026-06-25)
 
@@ -534,7 +548,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.8.0 / v4.7.1 / v4.6.1）
+├── releases/           # 桌面端版本（最新：v4.10.0 / v4.9.0 / v4.8.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
