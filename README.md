@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.10.0
+### 最新版本: v4.10.1
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.10.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.10.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.10.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.10.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.10.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.0/AICoder_4.10.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.10.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.10.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_aarch64.dmg) |
+| macOS Intel | [AICoder_4.10.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.10.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.10.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,16 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.10.1 (2026-07-01)
+
+🐛 稳定性与体验修复：
+
+- **🤖 修复 MCP 自主会话并发丢提示词** — 让 AI 一次开多个自主会话时，只有最后一个会话收到任务提示词的问题（注入定时器改为每会话独立闭包，不再共享单槽状态）
+- **📋 终端复制优化** — 复制内容预览遇 emoji 不再显示乱码（按 Unicode 码点截断）；右键复制改为写入成功后才清除选区并记入剪贴板历史，避免「复制失败却提示已复制」
+- **🍎 终端 macOS 复制改走原生剪贴板** — Cmd+C / 右键复制走 arboard，复制成功提示带内容预览
+- **🔗 Codex 第三方网关 Base URL 自动补 /v1** — 输入框失焦自动补全 + 校验提示
+- **📱 移动端安全区避让** — 修复系统虚拟导航键遮挡聊天输入框
 
 ### v4.10.0 (2026-06-30)
 
@@ -548,7 +558,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.10.0 / v4.9.0 / v4.8.0）
+├── releases/           # 桌面端版本（最新：v4.10.1 / v4.10.0 / v4.9.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
