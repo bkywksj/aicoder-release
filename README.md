@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.10.1
+### 最新版本: v4.11.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.10.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.10.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.10.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.10.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.10.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.10.1/AICoder_4.10.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.11.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.11.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.11.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.11.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.11.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.11.0 (2026-07-02)
+
+🆕 新模型 + 更新体验 + 稳定性修复：
+
+- **🆕 新增 Claude Sonnet 5 模型** — 前后端模型列表加入 Claude Sonnet 5
+- **🔄 更新就绪确认窗** — 重启前弹确认窗展示本次更新摘要，两处入口统一收口
+- **🐛 修复多会话恢复串号** — 同一项目多会话恢复不再张冠李戴（点 A 会话却恢复出 B 的内容）
+- **🖥️ 修复亮色终端 Codex 输入框黑块** — ConPTY 拦截 OSC11 背景查询代答黑
+- **🔗 修复添加账号弹窗 OAuth 链接检测** — 改读 xterm buffer 重建逻辑行，Ink 硬折的 OAuth URL 也能正确识别
+- **✨ 终端悬浮按钮透明度优化** — 右下角悬浮按钮平时高透明，仅悬停本身才提亮
+- **🍎 提升 macOS 剪贴板复制稳定性**
 
 ### v4.10.1 (2026-07-01)
 
@@ -558,7 +570,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.10.1 / v4.10.0 / v4.9.0）
+├── releases/           # 桌面端版本（最新：v4.11.0 / v4.10.1 / v4.10.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
