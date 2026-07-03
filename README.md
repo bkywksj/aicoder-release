@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.11.0
+### 最新版本: v4.12.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.11.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.11.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.11.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.11.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.11.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.11.0/AICoder_4.11.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.12.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.0/AICoder_4.12.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.12.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.0/AICoder_4.12.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.12.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.0/AICoder_4.12.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.12.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.0/AICoder_4.12.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.12.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.0/AICoder_4.12.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,15 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.12.0 (2026-07-03)
+
+🗂️ 工作区远程仓库管理 + 最近目录不限量 + 代理修复：
+
+- **🗂️ 工作区分支面板「远程仓库管理」** — 查看每个远程的地址，支持添加 / 改地址 / 重命名 / 删除远程；本地分支直接显示追踪的上游分支 + 领先/落后提交数，可一键设置 / 取消上游
+- **📁 新建会话「最近目录」不再限 20 个** — 全量记录，列表最多两行、超出折叠，用搜索框快速定位
+- **🐛 修复开系统代理（Clash 等）时内置浏览器 CDP 操作全废** — 网页自动化 / 截图 / 点击等恢复正常（本地回环走 no_proxy）
+- **✨ 分支面板 Fetch / Pull 图标区分更清晰**
 
 ### v4.11.0 (2026-07-02)
 
@@ -570,7 +579,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.11.0 / v4.10.1 / v4.10.0）
+├── releases/           # 桌面端版本（最新：v4.12.0 / v4.11.0 / v4.10.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
