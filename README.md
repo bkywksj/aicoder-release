@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.12.1
+### 最新版本: v4.12.2
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.12.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.1/AICoder_4.12.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.12.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.1/AICoder_4.12.1_aarch64.dmg) |
-| macOS Intel | [AICoder_4.12.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.1/AICoder_4.12.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.12.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.1/AICoder_4.12.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.12.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.1/AICoder_4.12.1_amd64.AppImage) |
+| Windows x64 | [AICoder_4.12.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.12.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_aarch64.dmg) |
+| macOS Intel | [AICoder_4.12.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.12.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.12.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,15 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.12.2 (2026-07-07)
+
+🐛 Codex 会话历史丢失根治：
+
+- **🐛 修复打开有历史的 Codex 会话变成空白新会话 / 写坏会话指针** — 存在性检查抖动、慢扫描、目录读取失败等假阴性不再被当成「会话不存在」；打开会话改为三态判定（存在 / 确认不存在 / 暂不可判定），只有确认不存在才回退，杜绝把有历史的会话静默判丢
+- **🐛 修复英文界面会话标题「New Session」永远不被自动更新** — 标题「是否默认」改按 title_source 字段判定，不再依赖本地化字面
+- **✨ Codex 会话目录扫描改完整 UUID 精确匹配** — 替换旧的子串匹配，避免误配到别的会话；目录扫描错误不再被静默吞掉
+- **🐛 远程工作区 Codex 会话不再被本机误判为「历史丢失」**
 
 ### v4.12.1 (2026-07-04)
 
@@ -586,7 +595,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.12.1 / v4.12.0 / v4.11.0）
+├── releases/           # 桌面端版本（最新：v4.12.2 / v4.12.1 / v4.12.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
