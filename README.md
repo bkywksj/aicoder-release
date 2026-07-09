@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.12.2
+### 最新版本: v4.13.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.12.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.12.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_aarch64.dmg) |
-| macOS Intel | [AICoder_4.12.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.12.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.12.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.12.2/AICoder_4.12.2_amd64.AppImage) |
+| Windows x64 | [AICoder_4.13.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.13.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.13.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.13.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.13.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,14 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.13.0 (2026-07-09)
+
+🐛 codex 指令面板修复 + 多工具项目命令 + 一键建会话：
+
+- **🐛 修复 codex 底部指令面板点击斜杠命令(/mcp)不执行** — codex(ratatui) 有 120ms 回车抑制窗口，paste 后紧跟的回车被当成换行而非提交；改为延迟发送回车绕过抑制窗口，点击即执行
+- **✨ 指令面板「项目命令」按当前工具各扫各的目录** — codex→`~/.codex/prompts`、gemini→`.gemini/commands`、opencode→`.opencode/commands`，非 Claude 会话不再误显示 Claude 专属命令；空状态提示同步按工具显示对应目录
+- **✨ 侧边栏目录右侧加号支持一键直建本地会话** — 按默认设置不弹窗直接新建（含免审批等默认参数，与打开弹窗直接确认一致），远程会话仍走弹窗做 SSH 可达性预检
 
 ### v4.12.2 (2026-07-07)
 
@@ -595,7 +603,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.12.2 / v4.12.1 / v4.12.0）
+├── releases/           # 桌面端版本（最新：v4.13.0 / v4.12.2 / v4.12.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
