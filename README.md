@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.13.0
+### 最新版本: v4.14.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.13.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.13.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.13.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.13.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.13.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.13.0/AICoder_4.13.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.14.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.14.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.14.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.14.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.14.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,15 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.14.0 (2026-07-10)
+
+🚀 Codex GPT-5.6 家族 + 危险命令防护默认关闭 + 日志诊断工具：
+
+- **🚀 接入 Codex GPT-5.6 Terra/Sol/Luna 模型家族** — Codex / OpenCode 内置三档模型（Terra 均衡默认 / Sol 旗舰 / Luna 轻量），Codex 默认切到 gpt-5.6-terra；effort 档位补齐 minimal / ultra（对齐 Codex CLI 0.144）
+- **🛡️ 危险命令防护改为默认关闭** — 首次启动不再自动部署 hook，改由「设置 → Hooks」手动开启；拦截弹窗新增「定位到发起此命令的会话」，一键切到对应终端 Tab 对照上下文再决定放行
+- **🔧 设置 → 数据管理新增日志工具** — 「打开日志目录」一键定位 startup / forensics / panic 崩溃取证日志；「导出诊断包」把全部日志 + 运行诊断报告打成一个 zip，排查时一键发给开发者（不再漏发关键日志）
+- **💡 诊断区四个按钮增加悬停说明** — 复制日志 / CLI 诊断 / 打开日志目录 / 导出诊断包各自说明用途
 
 ### v4.13.0 (2026-07-09)
 
@@ -603,7 +612,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.13.0 / v4.12.2 / v4.12.1）
+├── releases/           # 桌面端版本（最新：v4.14.0 / v4.13.0 / v4.12.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
