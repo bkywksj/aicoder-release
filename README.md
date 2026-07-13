@@ -66,15 +66,15 @@
 
 ## 下载安装
 
-### 最新版本: v4.14.0
+### 最新版本: v4.16.0
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.14.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.14.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.14.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.14.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.14.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.14.0/AICoder_4.14.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.16.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.16.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.16.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.16.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.16.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +218,20 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.16.0 (2026-07-14)
+
+🎨 终端右侧交互按钮微调 + 桌宠光环重设计：
+
+- **🆕 滚动条快速跳转** — 终端右侧滚动条上/下端各新增「回到顶部 / 回到底部」跳转按钮，一键定位长输出的首尾（仅对话式 provider 显示）
+- **🎯 右下角悬浮按钮对齐** — 语音 / 回车 / 停止按钮尺寸统一为 44×44，与右侧「提问记录 / 查看历史」竖排两两间距一致；提问记录位置固定，不再随「查看历史」的存隐而位移
+- **✨ 桌宠等级光环重设计** — 重绘桌宠等级光环视觉
+
+### v4.15.0 (2026-07-12)
+
+🆕 侧边栏「文件夹快速定位器」：
+
+- **🆕 文件夹快速定位器** — 顶部工具栏新增「定位文件夹」按钮，拖动滚览条 + 搜索框快速跳转并聚焦文件夹；搜索框聚焦时自动展开整行、失焦还原
 
 ### v4.14.0 (2026-07-10)
 
@@ -612,7 +626,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.14.0 / v4.13.0 / v4.12.2）
+├── releases/           # 桌面端版本（最新：v4.16.0 / v4.15.0 / v4.14.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
