@@ -66,15 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.16.0
+### 最新版本: v4.17.0
+
+> 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.16.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.16.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.16.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.16.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.16.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.16.0/AICoder_4.16.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.17.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.17.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.17.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.17.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.17.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -218,6 +220,16 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.17.0 (2026-07-15)
+
+🔐 全平台代码签名 + 新手引导 + 终端悬停预览：
+
+- **🔐 Windows / macOS 代码签名** — Windows 用 EV 证书签主程序 + sidecar + 安装器，消除「智能应用控制」拦截；macOS 用 Developer ID 签名并通过 Apple 公证（notarytool + 钉票据），消除 Gatekeeper「未验证开发者」提示
+- **🧭 首次启动新手引导** — 环境体检向导 + 3 步上手 + 主界面聚光导览 + 标题栏常驻「?」帮助入口
+- **👀 终端链接悬停预览** — 文件/URL 悬停即预览（图片缩略 / 文本文件头 / PDF·视频·Office 系统缩略图 / 真实网页截图），渲染 markdown 排版、可滚动、加「内置浏览器打开」
+- **🔌 更多上游接入** — Codex 内置 Responses↔Chat 转换代理，可接硅基流动 / Ollama 等 Chat-only 上游；Claude Code 预设新增「硅基流动」
+- **🐛 终端复制修复** — 修复复制「内容有误 / 快捷键复制不了」多处根因；提问记录支持右键复制原文
 
 ### v4.16.0 (2026-07-14)
 
@@ -626,7 +638,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.16.0 / v4.15.0 / v4.14.0）
+├── releases/           # 桌面端版本（最新：v4.17.0 / v4.16.0 / v4.15.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
