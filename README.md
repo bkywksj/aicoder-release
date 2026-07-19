@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.17.0
+### 最新版本: v4.18.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.17.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.17.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.17.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.17.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.17.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.17.0/AICoder_4.17.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.18.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.18.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.18.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.18.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.18.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,23 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.18.0 (2026-07-19)
+
+🚀 Kimi Code 订阅接入 + 会话真克隆 + OAuth 自动续期 + 一批终端/会话修复：
+
+- **🔌 Kimi Code 订阅接入** — 新增 Kimi Code 订阅端点，可直接驱动 Claude Code 与 Codex
+- **📑 会话右键真克隆** — Codex 会话支持真克隆，继承完整历史后独立往下聊（原仅 Claude 支持）
+- **🔄 Claude OAuth 自动续期** — token 临近过期自动用 refresh_token 换新写回，减少重新登录
+- **🎯 diff 视图逐处跳转** — 工作区 diff 支持 F8/Shift+F8 在变更间跳转，带位置计数
+- **🪟 内置浏览器按会话隔离** — 浏览器面板按会话归属隔离，默认不再跨会话共用
+- **📋 侧边栏任务启动日志感知** — dev server / 构建任务能感知启动成功或失败
+- **⚙️ 设置增强** — 快捷短语改可编辑下拉项、主题选择器迷你窗口预览、侧边栏「展开更多」改分页展开
+- **🐛 根治内置浏览器/工具「无效 token」永久卡死** — MCP 401 鉴权失败纳入自愈重试
+- **🐛 Codex 多行粘贴修复** — 修 Windows 下多行粘贴被逐行拆条提交，快捷短语/队列立即发送对齐 bracketed paste
+- **🐛 终端链接修复** — 支持 file:// 本地文件链接、含空格的绝对路径链接可点击
+- **🐛 终端渲染修复** — 修回答完毕后粘贴路径/宽表格「重复+坍缩」、新建会话按钮左上角点不动、Codex 新建会话标题不更新/下次不恢复
+- **🐛 AICoder 助手按钮点了没反应** — 修静默失败 + sidecar 未就绪整体失败
 
 ### v4.17.0 (2026-07-15)
 
@@ -638,7 +655,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.17.0 / v4.16.0 / v4.15.0）
+├── releases/           # 桌面端版本（最新：v4.18.0 / v4.17.0 / v4.16.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
