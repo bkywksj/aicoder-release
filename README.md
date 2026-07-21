@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.18.0
+### 最新版本: v4.30.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.18.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.18.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.18.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.18.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.18.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.18.0/AICoder_4.18.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.30.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.30.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.30.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.30.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.30.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,20 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.30.0 (2026-07-21)
+
+🌐 内置浏览器大升级（多标签 + 代理模式）+ Codex 压缩会话 + 一批终端/会话修复：
+
+- **🌐 内置浏览器全局单窗多标签** — 会话浏览器统一到一个多标签窗口，标签栏带 favicon / 复制网址 / 窗口控制
+- **🛡️ 浏览器代理模式（智能 / 始终走代理 / 从不）** — 智能模式直连失败自动走 App 代理并按域名记忆，根治雅虎等地域封锁站；代理 tab 用独立 WebView2 环境使 `--proxy-server` 真正生效
+- **🪟 浏览器窗不抢焦点** — 默认藏主窗背后、定位屏幕右上角，后台打开不遮挡聊天；新建标签＝空白页 + 最近访问卡片（每行 5 个最多 10 个，按域名去重）；工具栏加「访问本地 localhost」快捷按钮
+- **🔌 MCP browser_open 加 proxy 参数** — AI 可主动为被墙站开代理，打开任意网站默认走内置浏览器
+- **📑 Codex 支持压缩会话** — 对齐 Claude Code，未打开的 Codex 会话也可压缩；克隆/派生/压缩会话后可靠定位到新会话
+- **⭐ 收藏会话保留目录组并置顶** — 收藏区显示所属目录
+- **🐛 子任务启动/重启偶发无输出修复** — session_id 唯一化 + TabBar 走原子 restart
+- **🐛 快捷指令注入 Codex「发不出去变换行 / 多行多次发送」修复** — 改用 Alt+Enter 分内部换行与提交
+- **🐛 终端渲染修复** — 终端右侧悬浮按钮避让滚动条；关闭 Claude 全屏渲染根治宿主 XTerm 滚动条消失
 
 ### v4.18.0 (2026-07-19)
 
@@ -655,7 +669,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.18.0 / v4.17.0 / v4.16.0）
+├── releases/           # 桌面端版本（最新：v4.30.0 / v4.18.0 / v4.17.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
