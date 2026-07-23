@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.30.0
+### 最新版本: v4.31.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.30.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.30.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.30.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.30.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.30.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.30.0/AICoder_4.30.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.31.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.31.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.31.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.31.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.31.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,16 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.31.0 (2026-07-23)
+
+🔌 通义千问接入 + 📊 Codex 用量限额展示 + 终端复制增强 + Claude 账号恢复：
+
+- **🔌 通义千问 qianwenai 接入** — Claude Code + Codex 预设，跨厂商模型（GLM / DeepSeek / Kimi / MiniMax），按端点过滤 + 分档校正
+- **📊 Codex 用量限额展示** — 5 小时 / 每周窗口用量，状态栏 Tag + 仪表盘卡片 + 远程 workspace 读取 + 事件驱动刷新 + Provider 切换器
+- **🖱️ 终端复制增强** — 新增「鼠标优先用于选择文本」（免按 Shift 拖选复制）；修复 mouse tracking 下终端右键复制失效
+- **🔑 Claude 账号恢复** — OAuth 档案失效可一键重新登录，删除时清理磁盘幽灵登录态；添加账号代理默认继承全局
+- **🐛 修复** — macOS 点网址/外链无弹窗崩溃重启根治；GPT-5.6 Sol 模型置顶；开发版橙色徽章；工作站 Authorization 头一键填 Bearer
 
 ### v4.30.0 (2026-07-21)
 
@@ -669,7 +679,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.30.0 / v4.18.0 / v4.17.0）
+├── releases/           # 桌面端版本（最新：v4.31.0 / v4.30.0 / v4.18.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
