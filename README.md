@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.31.0
+### 最新版本: v4.32.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.31.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.31.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.31.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.31.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.31.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.31.0/AICoder_4.31.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.32.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.32.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.32.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.32.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.32.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,17 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.32.0 (2026-07-26)
+
+修复多开实例的账号与终端环境串扰，新增 MCP 指令引导与剪贴板兜底：
+
+- **多开实例环境隔离修复** — 多开实例下添加 Claude 账号会落到别的实例、且不弹「保存账号」表单。根因是生产版真实 PTY 跑在 pty-host 子进程里，它与主进程是兄弟关系、收不到主进程设置的实例隔离环境变量，已在 RPC 边界统一补齐（同时覆盖任务系统与工作区终端）
+- **MCP 指令引导** — MCP 接入卡每家客户端新增入口，一键把智码协作规则写入当前实例的 CLAUDE.md / AGENTS.md
+- **剪贴板兜底** — 剪贴板被向日葵等远程工具占用时复制/粘贴仍可用：应用内复制缓冲 + 图片粘贴 arboard 兜底 + 串行化 broker
+- **工作区增强** — 图片文件走内置预览不再当文本读；分段切换器圆点新增运行中会话绿色呼吸指示
+- **安装优化** — 一键安装 npm 全局包统一走国内镜像源，不再卡在 registry.npmjs.org；新增超时兜底防孤儿进程
+- **其它修复** — 关掉独立浏览器后再点终端网址打开一片空白；远程会话删除后重连复活；官方 OAuth「测试」因 Anthropic 封禁第三方探活而误报失败，改为本地校验；macOS 点击特殊链接崩溃的两处残留入口
 
 ### v4.31.0 (2026-07-23)
 
@@ -679,7 +690,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.31.0 / v4.30.0 / v4.18.0）
+├── releases/           # 桌面端版本（最新：v4.32.0 / v4.31.0 / v4.30.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
