@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.32.0
+### 最新版本: v4.50.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.32.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.32.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.32.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.32.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.32.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.32.0/AICoder_4.32.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.50.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.50.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.50.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.50.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.50.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,19 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.50.0 (2026-07-29)
+
+新增主窗口几何持久化与协议转换代理，修复会话跟踪与终端显示多处问题：
+
+- **主窗口几何持久化** — 启动时还原上次的窗口位置与大小，拖动/缩放后自动保存；设置 → 通用新增「还原默认大小」入口
+- **Anthropic ↔ Chat Completions 协议转换代理** — 新增「OpenAI 兼容端点」提供商，只提供 Chat 协议的网关（智谱、硅基流动等）也能驱动 Claude Code；档案 key 优先于请求头，避免 401
+- **助手工作区支持 Gemini / OpenCode** — 人设文件名改由 provider 注册中心决定；修复 OpenCode/Gemini 下点「AICoder 助手」却开出 Claude 会话
+- **接入 Claude Opus 5** — 设为默认模型 `claude-opus-5[1m]`；补齐 Antigravity(agy) 启动参数，会话不再零默认参数
+- **会话跟踪链路修复** — 嵌套 claude 子进程顶掉真身导致 `--resume` 报 No conversation found；`/clear` 后跨模糊匹配目录改绑到别的项目；无校验回写与 hook 日志无轮转
+- **终端显示修复** — 合盖开盖后输入框坍缩复发（解冻改几何稳定判定 + 恢复观察窗自愈）；状态栏模型短名把「(1M)」误当 model-id 只剩一个 1M
+- **远程与 Provider 修复** — tmux 改用独占 socket 根治陈旧进程凭据致 EACCES；远程凭据提示按 provider 分流；Codex Base URL 不再强制补 `/v1`
+- **终端性能优化** — 开久后滚轮卡、鼠标不跟手：链接解析行级缓存 + 悬停监听合并节流；子任务 tab 与会话 tab 的挪位效果对齐
 
 ### v4.32.0 (2026-07-26)
 
@@ -690,7 +703,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（最新：v4.32.0 / v4.31.0 / v4.30.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.50.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
