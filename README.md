@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.50.0
+### 最新版本: v4.51.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.50.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.50.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.50.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.50.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.50.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.50.0/AICoder_4.50.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.51.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.51.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.51.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.51.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.51.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,17 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.51.0 (2026-07-31)
+
+修正仪表盘用量统计口径，模型选择支持端点真实清单，工作区提交面板支持多选：
+
+- **仪表盘用量统计修正** — 修复 JSONL 每行重复携带 usage 导致的用量虚高；新增月度用量快照表，CLI 清理 30 天前历史后数据不再蒸发；四个入口统一接入快照合并；卡片文案与统计口径说明重写
+- **模型下拉拉取端点真实清单** — 不再只吃硬编码预设，可从当前端点拉取实际可用模型；自动滤掉图像/图注等非对话模型，支持一键还原，新建会话也能拉；下拉新增筛选框，打字时弹层不再消失
+- **厂商一致性守卫** — 第三方端点下选 Auto 不再下发 `/model default`（会切回内置 Anthropic 机型）；守卫提示不再写入终端打乱 CLI 重绘；守卫扩展到 Codex，并修正状态栏对非 Claude 工具的误判
+- **工作区提交面板多选** — 支持复选框多选文件 + 右键批量操作（丢弃/暂存等）；批量操作统一以复选框为选中依据，菜单项按作用域裁剪
+- **MCP 稳定性** — RPC 死线按工具单独计算，超时不再误报「连不上主应用」；CDP 定位加总死线；`ask_project` 补回 stdio 管道；35 处错误分类统一，并补进程树回收与耗时审计
+- **终端渲染修复** — 根治 Claude 内联渲染错位：有损 backlog / idle SIGWINCH 后补快照再同步
 
 ### v4.50.0 (2026-07-29)
 
@@ -703,7 +714,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.50.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.51.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
