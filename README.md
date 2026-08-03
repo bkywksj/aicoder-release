@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.51.0
+### 最新版本: v4.52.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.51.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.51.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.51.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.51.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.51.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.51.0/AICoder_4.51.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.52.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.52.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.52.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.52.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.52.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.52.0 (2026-08-03)
+
+终端链接、模型清单与 MCP 引导三块打磨：
+
+- **Claude 模型清单改走 Anthropic 协议** — 拉取模型列表改用 Anthropic 原生协议，失败时自动回退同域端点；档案名跟随供应商，不再固定显示
+- **MCP 规则按钮暴露写入状态** — 接入后带引导提示，明确规则写到了哪；MCP 服务不可用时自动降级，不再静默失败
+- **侧边栏「只看已打开」保留在跑子任务** — 有子任务正在运行的目录组不再被筛选条件误隐藏
+- **安装时写入推荐码** — NSIS 安装钩子打通无感归因链路最后一环
+- **终端链接修复** — 超宽路径被 TUI 硬折行后无法成链、点不开：折行拼接剥掉 Ink 的行填充空格，并补回 word wrap 吃掉的空格；折行判据不再依赖终端列数，改为单行优先
+- **快捷短语提交修复** — 在 Claude Code 下偶发只填充不提交
+- **设置面板修复** — 导入其他实例配置的弹窗不再默认全勾选；OAuth 本地校验提示时长由 8s 缩短到 3s
 
 ### v4.51.0 (2026-07-31)
 
@@ -714,7 +726,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.51.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.52.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
