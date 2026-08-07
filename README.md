@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.52.0
+### 最新版本: v4.53.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.52.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.52.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.52.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.52.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.52.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.52.0/AICoder_4.52.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.53.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.53.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.53.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.53.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.53.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.53.0 (2026-08-07)
+
+会话用量条、MCP 双通道与状态栏快切：
+
+- **会话实时用量条** — 状态栏显示本轮/累计/缓存/花费四组数据，支持展开模式查看明细；接入 OpenCode，并修正 Claude 用量解析的两处缺陷
+- **MCP 新增 streamable-http 第二通道** — 与 sidecar 共用同一份工具表，外部客户端多一种接入方式；端点掉线自动重绑，配健康指示灯
+- **MCP sidecar 抗断改造** — 构建流程不再误杀进程、panic 改为 unwind 不拖垮宿主、生命周期留痕便于排查；盲杀 pid 前先复核进程身份
+- **状态栏档案快切** — 新增 API 档案快速切换与 CLI 版本管理浮层，带待重启标记
+- **授权徽章上移标题栏** — 从状态栏移到标题栏，永久授权加 VIP 皇冠标识
+- **内置浏览器 tab 右键菜单** — 关闭键悬停反馈、截图直接入剪贴板；任务扫描新增识别非 SpringBoot 的可执行 jar
+- **终端渲染修复** — 快照重建改为「先对齐几何再抓」，并停用判据恒为真、自身即致乱源的自愈网；路径尾部紧贴说明括号时点不开
 
 ### v4.52.0 (2026-08-03)
 
@@ -726,7 +738,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.52.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.53.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
