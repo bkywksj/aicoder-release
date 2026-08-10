@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.53.0
+### 最新版本: v4.54.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.53.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.53.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.53.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.53.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.53.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.53.0/AICoder_4.53.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.54.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.54.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.54.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.54.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.54.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,20 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.54.0 (2026-08-10)
+
+Grok Build CLI 全面接入 + 窗口与检测修复：
+
+- **🚀 新增第 6 个 Provider：Grok Build CLI** — 后端全栈接入；前端 API 档案 / 订阅额度 / MCP 一键接入 / 代理引导全链路打通；补齐会话用量、系统托盘、远程网关与内置斜杠命令表
+- **🚀 Grok 会话管理增强** — 侧边栏右键克隆 / 压缩会话，恢复会话改按 ID 精确匹配；添加账号支持内置终端跑 `grok login`，同账号自动覆盖去重
+- **🐛 修复新会话标题停在「新会话」** — 会话 ID 绑定与标题推断链路修正
+- **🐛 修复自定义端点档案下代理开关被跳过** — 曾导致 CLI 启动超时
+- **🐛 修复 4 处 provider 分派缺 grok** — 状态栏支持切换配置档案，面板切换补齐完整链路
+- **🚀 窗口操作 Win32 原生兜底** — tao 派发链路失效时由原生接管；混合 DPI 多屏下窗口不再逐次放大 / 戳出屏幕
+- **🐛 后台工具检测改走 provider.detect()** — 修「装了却显示未安装」
+- **🎨 UI 打磨** — Provider 官方 Logo 统一、工具切换器 ≥6 项自适应紧凑、布局容纳第 6 个工具
+- **📱 移动端** — 软键盘不再挡住输入框，补齐 Grok / Antigravity 支持
 
 ### v4.53.0 (2026-08-07)
 
@@ -738,7 +752,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.53.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.54.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
