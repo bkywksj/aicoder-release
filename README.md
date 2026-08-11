@@ -66,17 +66,17 @@
 
 ## 下载安装
 
-### 最新版本: v4.54.0
+### 最新版本: v4.55.0
 
 > 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.54.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.54.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.54.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.54.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.54.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.54.0/AICoder_4.54.0_amd64.AppImage) |
+| Windows x64 | [AICoder_4.55.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_4.55.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_aarch64.dmg) |
+| macOS Intel | [AICoder_4.55.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_4.55.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_4.55.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +220,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v4.55.0 (2026-08-11)
+
+接入 Kimi Code 与 Antigravity MCP 面板：
+
+- **新增 Kimi Code 作为第 7 个 Provider** — 前后端全链路打通，含多实例隔离补齐
+- **Antigravity MCP 面板** — 面板接入 + 布局与文案修正
+- **补 WM_DISPLAYCHANGE 通道** — 覆盖「接外接屏合盖」这类几何剧变，窗口不再错位
+- **修 MCP 工具 schema 的布尔型 items** — Moonshot 不再拒收整个请求
+- **工作区提交面板** — 底部两个下拉浮层限高，不再撞穿屏幕顶部
+- **dev 不再冒用宿主 watchdog 身份** — 开发环境正确显示「实例 2」
+- **工作区窗口尺寸改由后端读 tauri.conf.json** — 消除两处手抄，尺寸只有一个来源
 
 ### v4.54.0 (2026-08-10)
 
@@ -752,7 +764,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.54.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v4.55.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
