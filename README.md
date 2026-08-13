@@ -66,17 +66,18 @@
 
 ## 下载安装
 
-### 最新版本: v4.55.0
+### 最新版本: v5.0.0
 
-> 🔐 **本版本 Windows 与 macOS 安装包均已正规代码签名**（Windows EV 证书 / macOS Developer ID + 公证），消除系统「未验证开发者 / 智能应用控制」安全提示。
+> 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
+> 📌 **版本号规则自本版起变更**：每一位满 10 进 1（5.0.0 → 5.0.9 → 5.1.0 → … → 5.9.9 → 6.0.0），不再出现 4.55.0 这样的两位数段。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_4.55.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_4.55.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_aarch64.dmg) |
-| macOS Intel | [AICoder_4.55.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_4.55.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_4.55.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v4.55.0/AICoder_4.55.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.0.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.0.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.0.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.0.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.0.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -220,6 +221,56 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.0.0 (2026-08-13)
+
+全新应用背景图 + Pi / CodeBuddy 两个 Provider + 大量界面打磨：
+
+**🎨 全新：应用背景图**
+
+- **自定义背景图片** — 主窗口 / 工作区窗口 / 会话窗口 / 内置浏览器四处统一生效
+- **智能裁切** — 选图后自动判断比例，与窗口差异较大时弹出裁切框；选框锁定窗口比例，拖动与滚轮缩放，裁完自动贴合
+- **四种适配方式** — 填充 / 适应 / 平铺 / 居中，切换时缩略图实时预览真实效果
+- **遮罩与模糊可调** — 鼠标划过滑块即可预览，移开自动还原
+- **历史记录** — 自动保留最近 10 张，点缩略图一键切回用过的图
+- **定时轮播** — 可选顺序或随机，间隔自定义
+- **标题栏快捷入口** — 调色板下拉里直接换图、调参数、切模式，不用专门打开设置
+- **浮层材质适配** — 弹窗、下拉菜单、右键菜单、气泡提示同步半透明，不再像贴纸浮在照片上
+
+**🆕 新增两个 AI 编码工具**
+
+- **Pi** — 作为第 9 个 Provider 接入，含配置面板、订阅登录弹窗、跨工具导入、MCP 桥接（零依赖透传 68 个工具）
+- **CodeBuddy** — 核心实现 + 多实例配置隔离 + MCP 服务器管理 + 移动端显示与分派补齐
+
+**✨ 界面改进**
+
+- **侧边栏目录层级重构** — 目录名改 14px 加粗提亮，与会话标题拉开层级；文件夹图标改用独立语义色，不再与收藏的金色撞车
+- **主题下拉悬停预览** — 鼠标划过主题即套用查看，关闭下拉自动还原，点选才真正保存
+- **主窗口加宽** — 默认 1500、侧边栏 300，工具切换器紧凑阈值随之调整
+- **七个 API 配置面板** — 统一表单形态与按钮规格
+- **官方申请链接** — 各 Provider 面板增加申请入口
+- **标签锁定** — 锁定后不会被内存压力或数量上限自动关闭
+- **右键菜单调整** — 「关闭所有标签」归入关闭组，四个关闭项连排更好找
+- **授权徽章分档** — 剩余 30 天以上显到期日，30 天内显倒计时
+
+**🐛 问题修复**
+
+- 修复调整窗口大小时终端闪白块与内容错位
+- 修复 Claude 输入框按方向键后紧接着的空格被吃掉
+- 修复激活的 API 配置档案会绕过全局代理开关
+- 修复内置浏览器休眠标签页导航报「嵌入面板不存在」
+- 修复标签锁定后目录名左右位移
+- 修复「恢复上次会话」提示一次性消失
+
+**🔧 其他改进**
+
+- MCP 快捷预设改为先预览再添加，可顺手填入免费 API Key
+- 压缩会话功能覆盖 7 家工具，注入等待过程有可见反馈
+- 更新免责声明与商标归属说明
+
+**📌 版本号规则变更**
+
+自本版起版本号每一位满 10 进 1（5.0.0 → 5.0.9 → 5.1.0 → … → 5.9.9 → 6.0.0），不再出现 4.55.0 这样的两位数段，避免与 4.5.5 混淆。
 
 ### v4.55.0 (2026-08-11)
 
@@ -764,7 +815,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v4.55.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.0.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB

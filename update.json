@@ -1,23 +1,23 @@
 {
-  "version": "4.55.0",
-  "notes": "接入 Kimi Code 与 Antigravity MCP 面板\n\n- 新增 Kimi Code 作为第 7 个 Provider，前后端全链路打通，含多实例隔离补齐\n- Antigravity MCP 面板接入 + 布局与文案修正\n- 补 WM_DISPLAYCHANGE 通道，覆盖「接外接屏合盖」的几何剧变\n- 修 MCP 工具 schema 的布尔型 items，Moonshot 不再拒收整个请求\n- 工作区提交面板底部两个下拉浮层限高，不再撞穿屏幕顶部\n- dev 不再冒用宿主 watchdog 身份，开发环境正确显示「实例 2」\n- 工作区窗口尺寸改由后端读 tauri.conf.json，消除手抄",
-  "pub_date": "2026-08-11T15:29:34Z",
+  "version": "5.0.0",
+  "notes": "全新应用背景图 + Pi / CodeBuddy 两个 Provider + 大量界面打磨\n\n🎨 全新：应用背景图\n- 支持设置自定义背景图片，主窗口 / 工作区窗口 / 会话窗口 / 内置浏览器四处统一生效\n- 选图后自动判断比例，与窗口差异较大时弹出裁切框；选框锁定窗口比例，拖动与滚轮缩放，裁完自动贴合\n- 四种适配方式：填充 / 适应 / 平铺 / 居中，切换时缩略图实时预览真实效果\n- 遮罩浓度与模糊度可调，鼠标划过滑块即可预览，移开自动还原\n- 背景图历史自动保留最近 10 张，点缩略图一键切回用过的图\n- 支持定时自动轮播，可选顺序或随机，间隔自定义\n- 标题栏调色板下拉里直接换图、调参数、切模式，不用专门打开设置\n- 弹窗、下拉菜单、右键菜单、气泡提示等浮层同步适配半透明材质，不再像贴纸浮在照片上\n\n🆕 新增两个 AI 编码工具\n- Pi：作为第 9 个 Provider 接入，含配置面板、订阅登录弹窗、跨工具导入、MCP 桥接（零依赖透传 68 个工具）\n- CodeBuddy：核心实现 + 多实例配置隔离 + MCP 服务器管理 + 移动端显示与分派补齐\n\n✨ 界面改进\n- 侧边栏目录层级重构：目录名改 14px 加粗提亮，与会话标题拉开层级；文件夹图标改用独立语义色，不再与收藏的金色撞车\n- 主题下拉支持悬停实时预览：鼠标划过主题即套用查看，关闭下拉自动还原，点选才真正保存\n- 主窗口默认加宽至 1500、侧边栏 300，工具切换器紧凑阈值随之调整\n- 七个 API 配置面板统一表单形态与按钮规格\n- 各 Provider 面板增加官方申请链接入口\n- 标签可锁定，锁定后不会被内存压力或数量上限自动关闭\n- 标签右键菜单「关闭所有标签」归入关闭组，四个关闭项连排更好找\n- 授权徽章改为分档显示：剩余 30 天以上显到期日，30 天内显倒计时\n\n🐛 问题修复\n- 修复调整窗口大小时终端闪白块与内容错位\n- 修复 Claude 输入框按方向键后紧接着的空格被吃掉\n- 修复激活的 API 配置档案会绕过全局代理开关\n- 修复内置浏览器休眠标签页导航报「嵌入面板不存在」\n- 修复标签锁定后目录名左右位移\n- 修复「恢复上次会话」提示一次性消失\n\n🔧 其他改进\n- MCP 快捷预设改为先预览再添加，可顺手填入免费 API Key\n- 压缩会话功能覆盖 7 家工具，注入等待过程有可见反馈\n- 更新免责声明与商标归属说明\n\n📌 版本号规则变更\n自本版起，版本号每一位满 10 进 1（5.0.0 → 5.0.9 → 5.1.0 → … → 5.9.9 → 6.0.0），\n不再出现 4.55.0 这样的两位数段，避免与 4.5.5 混淆。",
+  "pub_date": "2026-08-13T10:43:36Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.55.0/AICoder_4.55.0_x64-setup.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTZQMmJzS3g0ZkdsR3lsR3FRTDZtRlJLbkJYVGh0MTlZM3JqSFN6ZncvUzYxemFWdmdsNUQveW1BY1NQT2RTSVN6SUZnKzI1dURsTUZ6V3ZjcE42MmdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDYyMDQyCWZpbGU65pm656CBIEFJQ29kZXJfNC41NS4wX3g2NC1zZXR1cC5leGUKWXZPTkVaY21wZlBsa0hOdjBsb3I0eVl1UndqcEZYMW9BMkE3bzM0Ym5CeklscC91Vm9OdEViRVhVTFZqbE05TDBuWjduUVhNL3c5bUdsT0JnVHFWQmc9PQo="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v5.0.0/AICoder_5.0.0_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTdybXovM3dMOVB2R2x1andpZ29TSHFPSFFlUHdrbXpzVDdZb0pianJZUS9HUmdyU3prWjhiVUlMRGZ4K3EwNEFRT2pkcERLMm85azhDaEp4UEpkU1FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjE3MTA3CWZpbGU65pm656CBIEFJQ29kZXJfNS4wLjBfeDY0LXNldHVwLmV4ZQpkcE92QmFQU214RjVodWN1K0JuTXRLRHczWjZwWmswUlFXK2gwK3N6eVNPbDBtYlhiKzBhRkVNOVpQVHVqb0JMVVFsRzNrbEVINE8rYjlrODVkTXZCdz09Cg=="
     },
     "darwin-aarch64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.55.0/AICoder_aarch64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTlmQmtMSGVSekovS3B5WGdqUy91RUlwVy9JK3pwcHhpcUl3SmRYWTEwS1d5OUQxby92WG5LMTJYdWQ1di9yRjNPaXZ2U1RMNDFGb0tCby9sVnk0cXdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDYwNzYxCWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpYOGRxTEJlVHZDcjhPQjczTHBZTVgvWDZJV0lZdDc1dmc0Ukw1RFF1ZEpVM2pQZTVsRzcwYXZYREgrYWtQdkxqQUdsRGhhZW94Rk9PUWR4VjZkN0lBZz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v5.0.0/AICoder_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTNzaXVNMC9HOXNEN2oyTEFIUkRCbUdUZ0Rva2JxbU80ZDlqYnZWYVlXS3dwbURaVk82b1ZaVmQ1UTZTNUNzRFNEbWl3WjFYUk9LMkluQ1Fod05ueXdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjE3MjQ3CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpwc2pCMDh1RVpaem9aSTZYMVgwRXJLdlRGVmFYOVlsRlpwUy9aVEl3ZnIwenVKQ2ZSY01xeXBkYjdEWXJJSkFKaE5vL3h3QzlkOFR1NzFNNVk0MTBBQT09Cg=="
     },
     "darwin-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.55.0/AICoder_x64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTF4OGRqWVhVUlhmZnprWTZVWHN6OGxKVmsrc2xlcVBmcTVlcmxFRmhNd1hxWTZkWlROY2xHNElxbDlqWjV3bURMemk4V2VURGx0TURWT1h6VkV2QndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDYwNTk5CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negpUUEk3SGxMR1VZY3dzdlVCVXNBZkM1UkQyQjdvelU0cm9zNWNJNWxva2NFTXNaZjQwUmVBZTR5RmZnaVFBWHV4WnBJSytaSExYcm0yTS9MNnZvT2ZCZz09Cg=="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v5.0.0/AICoder_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTFoRk8rdWJKdzlyTmdsU3pqUGpyTFdlTmlZQmNkdjdXWjBNQmRSeXpWblZuREN1TlNwa1A3SElOSHo1Uk80MUpIWlBDb2pTKytWUWRML01FQjBqbUFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjE3MjI5CWZpbGU65pm656CBIEFJQ29kZXIuYXBwLnRhci5negp2b0w5dEUwTFhLQy94MmVzeDU0MFZiQUQraWE4enJqdHVOeUJGVk91UE5uMlBDZmJpYjhyV0hvUmlwTkpoVWxqMW9MMnU5UWFUZCtIdVREZEdzREtEdz09Cg=="
     },
     "linux-x86_64": {
-      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v4.55.0/AICoder_4.55.0_amd64.AppImage",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSS9tcEJFUkpCZmhUU1htOEdzelREbmZoaXo3bmpmcDBjbEdpQmRyNStJOTdabFdCNGxDUUd1cG5tYWNhWEZramN4bjdreEJsblRSTUVrUWF2QTRYVndjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDYwNzU2CWZpbGU6QUlDb2Rlcl80LjU1LjBfYW1kNjQuQXBwSW1hZ2UKc2I4UkRmQlExamtnclBYOVR4bWdyTTlraVh3blBwVHNlMExraHM2aXA5Rk9BcXFaZ01HazYxTEJEaEZtWUozN3hqTGQ2dzFNZkFma0hmY2t3ZDhIQ0E9PQo="
+      "url": "https://github.com/bkywksj/aicoder-release/raw/master/releases/v5.0.0/AICoder_5.0.0_amd64.AppImage",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa1dqU1V1T0RmSTErSGZ5c0wvZ0dVbVQ0MWttL3l6U2gwQ0ljYzY2NUhFUUd0SkwxUTVwVk9XdHdjMnoxNHVEb2Q0N2QydVI5ZE13NmxBVDhHeTlYQmdndyt5MXU1S3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjE3NDA3CWZpbGU6QUlDb2Rlcl81LjAuMF9hbWQ2NC5BcHBJbWFnZQo1Q1AvS29Wc0RxZHdrL0h1aTF3SVo1OHROVWNKd0o5NnhrS2RLVU9qYSt4OEhsd3VqdVpYamVPU0RDTm1LdVlKNHgzbU92UlR6VXRBbEhuTHZoRktEUT09Cg=="
     }
   }
 }
