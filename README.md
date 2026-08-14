@@ -66,18 +66,19 @@
 
 ## 下载安装
 
-### 最新版本: v5.0.0
+### 最新版本: v5.1.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
-> 📌 **版本号规则自本版起变更**：每一位满 10 进 1（5.0.0 → 5.0.9 → 5.1.0 → … → 5.9.9 → 6.0.0），不再出现 4.55.0 这样的两位数段。
+> 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
+> 📌 **版本号规则自 v5.0.0 起变更**：每一位满 10 进 1（5.0.0 → 5.0.9 → 5.1.0 → … → 5.9.9 → 6.0.0），不再出现 4.55.0 这样的两位数段。
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.0.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.0.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.0.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.0.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.0.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.0.0/AICoder_5.0.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -221,6 +222,44 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.0 (2026-08-14)
+
+界面材质、标签栏与工具可见性三块打磨：
+
+**🎨 背景图与浮层材质**
+
+- **修正 AntD 6 浮层类名** — 四条背景规则一直选中不存在的元素，等于从没生效过
+- **浮层透明度重新分档** — 右键菜单、确认框、会话悬停浮窗各自单独调档，背后文字不再透上来干扰阅读
+- **材质做法调整** — 大面板去掉 backdrop-filter 只保留透明度，小浮层保留模糊
+- **背景图下统一提亮** — 最弱一级文字与标题栏图标补足对比度；激活标签翻回深底，修 accent 前景对比度只有 1.75:1 的问题
+- **历史缩略图支持单张删除**，换图不再多出中间产物
+
+**🏷️ 标签栏与侧边栏**
+
+- **回答完毕改用行首圆环/橙点标记** — 不再给标题整体变色
+- **收藏区按目录二级分组** — 去掉行内星标，目录图标改用收藏色
+- **tab 目录名改双击锁定** — 单击回归切换；锁定状态只由小锁表达，不再变色
+- **激活态改用字重表达** — 颜色整条让给完成态
+- **应用图标落到标题栏最左** — 兼任侧边栏折叠开关，撤掉独立折叠按钮
+
+**🔧 工具可见性**
+
+- **工具栏右键可隐藏/显示 CLI 工具** — 配套「显示管理」弹窗与批量隐藏口径
+- **记住上次选中的 CLI 工具** — 启动自动挑第一个已安装的
+- **新建会话弹窗宽度自适应** — 9 个 CLI 已把工具条挤出横向滚动条
+
+**🔌 Pi MCP 管理**
+
+- **新增 MCP 服务器管理界面** — 支持从其它工具导入
+- **桥接扩展支持 Streamable HTTP / SSE** — 双文件合并加载
+
+**🐛 问题修复**
+
+- **终端输入框残留** — 抢焦点打断 IME 后残留删不掉的字母/白竖线
+- **侧边栏滚轮卡顿** — 推迟 title 拦截器的强制布局，滚动期屏蔽 hover
+- **设置面板与队列提示不再可框选** — 值类内容显式放行
+- **背景图目录按实例隔离** — 排序改用文件名时间戳
 
 ### v5.0.0 (2026-08-13)
 
@@ -815,7 +854,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.0.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
