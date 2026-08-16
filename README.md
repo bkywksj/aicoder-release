@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.0
+### 最新版本: v5.1.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,11 +74,11 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.0/AICoder_5.1.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.1.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.1.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -222,6 +222,30 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.1 (2026-08-16)
+
+接入 GLM-5.3，终端与浏览器多处稳定性修复：
+
+**🚀 新增能力**
+
+- **接入 GLM-5.3（1M 上下文）** — Claude / Pi 模型列表与 Codex 窗口推断同步更新
+
+**🐛 终端修复**
+
+- **崩溃重启后输入框错乱** — 快照写完又 fit 触发整 buffer reflow，现已改为先对齐再恢复
+- **IME 输入残留字母** — 上次修复误把 xterm 刚点亮的预览层当残留摘掉
+
+**🌐 浏览器修复**
+
+- **误报「直连和代理都无法访问」** — iframe 加载失败被当成主文档失败
+- **mac 上预览浏览器自动化必崩** — wry 读 WKWebView.URL 为 nil 时 unwrap panic
+
+**🎨 界面与诊断**
+
+- **mac 诊断报告恒显示「内存 100%」** — sysinfo 的 available 被内存压缩减成 0
+- **拖主题遮罩浓度整屏报错** — mousemove 预览每帧重渲染整棵树撞 React 更新上限
+- **主题菜单 hover 预览撤销** — 扫过菜单就整屏变色，干扰太大
 
 ### v5.1.0 (2026-08-14)
 
@@ -854,7 +878,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
