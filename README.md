@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.1
+### 最新版本: v5.1.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,11 +74,11 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.1.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.1.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.1/AICoder_5.1.1_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.1.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.1.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -222,6 +222,39 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.2 (2026-08-18)
+
+终端稳定性、工作区体验与档案切换三块打磨：
+
+**🐛 终端修复**
+
+- **多屏/合盖唤醒后输入框错位消失** — 快照源 pty-host 虚拟屏幕被写坏，resize 没编进 reader 字节流顺序
+- **键盘全丢而鼠标正常** — OS 焦点卡在顶层窗，没下沉到 WebView2
+- **后台标签重启后画面错位** — 隐藏容器尺寸是对的但网格陈旧，spawn 前补对齐
+- **点应用内 UI 后终端输不进字** — refocus 只挂了窗口级焦点事件
+
+**🚀 工作区增强**
+
+- **推送弹窗支持选分支推送** — 目标分支可选、可输、可新建
+- **超大文件预览一片纯白** — 超 5000 行的降级路径没挂语法高亮
+- **diff 大文件提示条与代码叠字** — 还盖住了文件首行
+- **提交面板目录名截断无提示** — 目录行补 title
+
+**⚙️ 档案切换**
+
+- **改完 API 档案只在真需要时才提示重启** — 本地 Claude 换端点/密钥立即生效，只有模型真变了才提示
+- **Codex 切档案后旧 model_providers 段残留** — 按顶层 model_provider 选段，界面暴露配置漂移
+
+**🌐 内置浏览器**
+
+- **移动端 H5 设备画幅模拟** — 自动识别移动站点，按真机画幅居中显示
+- **AI 调起浏览器毫无察觉** — 加闪烁 / 呼吸 / 未读三层提醒
+
+**🎨 界面**
+
+- **历史抽屉与弹窗透出背后终端文字** — 按「有没有遮罩纱」重新分类
+- **顶部标签激活态与非激活几乎同色** — 纯色底下只差 7 个灰阶
 
 ### v5.1.1 (2026-08-16)
 
@@ -878,7 +911,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.1）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
