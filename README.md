@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.2
+### 最新版本: v5.1.3
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,11 +74,11 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.1.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.1.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.2/AICoder_5.1.2_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.1.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.1.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -222,6 +222,33 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.3 (2026-08-19)
+
+终端重绘、切档案生效链路与账号面板三块修复：
+
+**🐛 终端重绘**
+
+- **Pi 长对话回复时整屏反复滚动刷屏** — 整段重绘（清屏 + 重打历史）字节量超过单帧闸门，被按帧回放导致中间状态可见；改为见清屏就开直写豁免
+- **豁免窗口改滑动式** — 固定 250ms 会在大批量传输中途到期，后半段掉回分帧、刷屏照旧
+
+**⚙️ 切档案生效链路**
+
+- **切档案后发消息 403 Request not allowed** — OAuth 档案把全局代理顶掉，改为复用既有回落名单，存量档案立即生效
+- **代理改了不提示重启会话** — 代理是启动时注入的环境变量，进程起来就冻结；改为比对模型与代理指纹，任一变了才提示
+- **`/status` 显示成两个账号的拼接体** — 换账号只改了邮箱，机构名/档位等十几个字段还留着上一个账号的
+- **新账号登录成功后没设为激活** — 界面显示 A、实际跑 B，后续操作还会用旧凭据覆盖刚登录好的
+- **切到凭据已过期的档案会把死凭据写上去** — 改为写盘前检查，过期则拦下并说明处理方式
+
+**👤 账号面板**
+
+- **pro 升级到 max 后一直显示 pro** — 档位读的是建档那刻的冻结快照，改为按字段取权威源
+- **档案标「使用中」但实际跑另一个账号** — 新增漂移告警
+- **OAuth 档案在界面上开不了代理** — 开关被包在非 OAuth 分支里，而 OAuth 连的正是最需要代理的官方端点
+
+**⚡ 指令面板**
+
+- **点项目命令只填进输入框不发送** — 改为按命令是否需要参数决定自动回车
 
 ### v5.1.2 (2026-08-18)
 
@@ -911,7 +938,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.2）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.3）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
