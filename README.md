@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.3
+### 最新版本: v5.1.4
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,11 +74,11 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.1.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.1.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.3/AICoder_5.1.3_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64.dmg) |
+| Linux Debian/Ubuntu | [AICoder_5.1.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.deb) |
+| Linux 通用 (AppImage) | [AICoder_5.1.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.AppImage) |
 
 ### 移动端伴侣 · v0.5.0
 
@@ -222,6 +222,40 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.4 (2026-08-22)
+
+远程工作区打通，终端稳定性修复：
+
+**🌐 远程会话管理**
+
+- **补齐 CodeBuddy / Pi / Gemini 的远程会话读取** — 加上此前已接的 Grok / Kimi / Codex / OpenCode，除本身没有会话历史的 Antigravity 外全部覆盖；标题自动更新、重开标签页能还原历史
+- **OpenCode 标题不更新且重开不还原** — 它把 cwd 按正斜杠存库，SQL 精确匹配 0 命中，cli_session_id 始终绑不上
+
+**🔑 远程 API 配置**
+
+- **配置档案「看到的」与「用的」不是同一份** — 列表接口把 workspace 写死成本机，于是远程主机下显示的其实是本机档案，而真正注入远端的是另一份；结果是明明配好了、启动会话却报「未启用 API Key 类型的配置档案」。九家 Provider 里只有 Claude 幸免，其余全部修正
+- **新增「从本地导入」** — 把本机配好的端点搬到远程主机，逐条挑选、对 `127.0.0.1` 这类搬过去指向远端自己的地址显眼标红、可导入时就地改
+- **空态与新建会话时都说清这台主机是否已配置** — 不再只在会话起来后于终端里刷一行黄字
+
+**🔌 远程连接**
+
+- **SSH 连接支持取消** — 连不上不用再干等几十秒；等锁、握手、重试退避、认证四段都可中断
+- **打开已有会话时也会自动重连** — 此前只有新建会话才有预检，切过去直接开会话必报「远程主机未连接」
+- **远端装了 opencode / npm 却显示未安装** — 探测、安装、启动三处各猜各的 PATH
+
+**🖥️ 终端**
+
+- **远程桌面断开或锁屏后画面定格、重连才一股脑补渲染** — 窗口被判 occluded 时 rAF 完全暂停，积压只进不出；改为三重保障，兜底路径挂在不受节流影响的 PTY 数据到达处
+- **Bun 运行时崩溃后自动重启并 `--resume` 续上原对话**
+- **图片占位符悬停预览兼容 OpenCode / Grok / Codex 三种形式**
+- **跨屏拖动后 Codex 输入框消失**
+
+**✨ 其它**
+
+- **接入 Grok 4.6**（Grok / Pi / OpenCode 三处模型清单与默认模型同步）
+- **剪贴板写入改走原生 arboard** — 修复复制静默失败却提示「已复制」
+- **自动关闭的会话重启后仍可找回**
 
 ### v5.1.3 (2026-08-19)
 
@@ -938,7 +972,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.3）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.4）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
