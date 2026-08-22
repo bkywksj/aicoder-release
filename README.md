@@ -77,8 +77,12 @@
 | Windows x64 | [AICoder_5.1.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64-setup.exe) |
 | macOS Apple Silicon | [AICoder_5.1.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_aarch64.dmg) |
 | macOS Intel | [AICoder_5.1.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64.dmg) |
-| Linux Debian/Ubuntu | [AICoder_5.1.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.deb) |
-| Linux 通用 (AppImage) | [AICoder_5.1.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.AppImage) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.AppImage) |
+
+> 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
+> 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
+> `.deb` 直接用系统库，`sudo apt install ./AICoder_5.1.4_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
