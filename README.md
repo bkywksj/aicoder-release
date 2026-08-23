@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.4
+### 最新版本: v5.1.5
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,15 +74,15 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.4/AICoder_5.1.4_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.5_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.5_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.5_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.5_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.5_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
-> `.deb` 直接用系统库，`sudo apt install ./AICoder_5.1.4_amd64.deb` 自动解依赖。
+> `.deb` 直接用系统库，`sudo apt install ./AICoder_5.1.5_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
@@ -226,6 +226,52 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.5 (2026-08-23)
+
+远程工作区九家全部接线，提示词库重构，终端性能与会话恢复修复：
+
+**🌐 远程工作区**
+
+- **MCP 配置八家全部接线** — 补齐 CodeBuddy / Pi / Grok / Kimi / Antigravity，远程主机上也能可视化增删改 MCP 服务器；Pi 本身不带 MCP，随配置一并写入自研桥接扩展
+- **Antigravity 远程会话读取上线，九家 Provider 全部覆盖** — 远程会话标题自动更新、重开标签页能还原历史
+- **支持远程安装 agy / grok** — 修「切到远程主机点安装，却装到了本机」
+- **原生配置编辑器改为真正读写远端** — 此前在远程工作区下编辑会静默改到本机，现已接入 workspace；未接通的入口一律停用而非放行
+- **远程 Linux 收到 PowerShell 启动命令导致会话起不来**
+- **远端路径含 `${VAR:-…}` 被单引号字面化，会写出「幽灵文件」**
+- **远程脚本安装日志整段重复、代理反馈丢端口**
+
+**📝 提示词库**
+
+- **统一数据源 + MCP 能力感知** — 新增 19 条自动化 / 运维提示词，未装对应 MCP 的条目显示缺失角标而非静默失败
+- **片段卡片预览溢出、内置与用户片段重复出现**
+
+**🖥️ 终端**
+
+- **长输出卡顿** — 生产端 PTY 读取补批量 drain（此前每 4KB 一次 IPC）；连字默认关闭；IME 拆字节改 writeChain
+- **Codex 长对话每次出结果前疯狂滚动** — 重打的历史被当成净追加
+
+**🔄 会话恢复**
+
+- **点会话永远打开空白新会话** — resume 崩溃误判毁掉会话指针，且空壳记录会劫持 hook 日志，此前不可自愈
+- **崩溃回退不再全局拉黑版本** — 已知安全版本干脆不挂监听
+- **恢复提示永远列陈旧会话** — 快照改为只记本次实际打开的 tab
+- **启动「恢复上次会话」提示加「不再提示」按钮与设置开关**
+
+**🚀 Antigravity**
+
+- **会话标题自动更新与精确恢复**
+- **补齐 7 个缺失模型**，修「选了模型不生效」与 `--model` 重复下发
+- **中文提问被英文标题盖掉** — 补 CJK 回退
+- **一键安装漏读「走代理」开关** — 国内必然装不上
+
+**✨ 其它**
+
+- **Codex 用量限额改走 app-server 实时读取**
+- **新建会话的模板可就地编辑**，并补编排配方
+- **多 Agent 协同编排改为事件唤醒**，替代轮询
+- **后台新建的会话卡死不执行任何命令**
+- **Linux 桌宠鼠标穿透致主进程 panic 无限重启**
 
 ### v5.1.4 (2026-08-22)
 
@@ -976,7 +1022,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.4）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.5）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
