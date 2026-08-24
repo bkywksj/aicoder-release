@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.5
+### 最新版本: v5.1.6
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,15 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.5_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.5_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.5_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.5_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.5_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.5/AICoder_5.1.5_amd64.AppImage) |
+| Windows x64 | [AICoder_5.1.6_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.1.6_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_aarch64.dmg) |
+| macOS Intel | [AICoder_5.1.6_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.6_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.6_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
-> `.deb` 直接用系统库，`sudo apt install ./AICoder_5.1.5_amd64.deb` 自动解依赖。
+> 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.1.6_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
@@ -226,6 +227,33 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.1.6 (2026-08-24)
+
+远程 SSH 稳定性与多 Agent 编排唤醒修复：
+
+**🔌 远程 SSH**
+
+- **用着用着就断，且只能重启客户端才好** — 报错 `channel_open_session 失败 (ConnectFailed)` 不是断网，是服务端 sshd 的会话槽位（MaxSessions，默认 10）被耗尽。两个根因：看门狗探测开完通道直接丢弃、不发关闭帧，sshd 对这种「开了没执行」的通道永不回收，约 7 分钟漏光；连接复用时一次都不验活，废连接被无限复用 —— 于是「点连接提示成功、紧接着的探测就报错，怎么点都好不了」
+- **同一主机的多条命令不再互相阻塞** — 开通道不再把连接锁一路持到命令跑完，单条卡死也不会拖垮整台主机
+- **远程终端跟随你的真实登录 shell** — 不再写死 bash；zsh 用户的提示符识别一并修好
+- **远程会话起不来时也会归还槽位** — 此前失败路径漏还，反复重试会加速耗尽
+
+**🤖 多 Agent 编排**
+
+- **子会话跑完没叫醒总控** — 总控只能干等到超时；子会话起不来时同样收不到事件
+- **派活时子会话默认起错 CLI**
+
+**🖥️ 界面与终端**
+
+- **工具栏选中的 CLI 图标加右上角绿点** — 九个图标排在一起时，原来那层淡背景块几乎看不出在用哪个
+- **粘贴的长文本被折叠后，悬停占位符可看全文**
+- **片段变量弹窗补正文编辑与自动填充** — 并修复带 `{{占位符}}` 的片段点击无反应（弹窗被指令面板盖住）
+
+**📁 工作区**
+
+- **远程仓库的中文文件名显示成一串假目录**，点开还报找不到文件
+- **工作区 diff 能看已删除的文件了**
 
 ### v5.1.5 (2026-08-23)
 
@@ -1022,7 +1050,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.5）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.6）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
