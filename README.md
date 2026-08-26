@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.1.6
+### 最新版本: v5.2.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.1.6_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.1.6_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_aarch64.dmg) |
-| macOS Intel | [AICoder_5.1.6_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.1.6_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.1.6_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.1.6/AICoder_5.1.6_amd64.AppImage) |
+| Windows x64 | [AICoder_5.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.1.6_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.2.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
@@ -227,6 +227,39 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.2.0 (2026-08-26)
+
+额度用尽自动轮换 —— 无人值守也能接着跑：
+
+**🔄 额度轮换（本版主体）**
+
+- **额度打满后自动换下一个档案接着跑** — 一个 token 的额度打满，此前要手动去设置里切档案、再回终端点「继续」；跑长任务时这一步经常发生在人不在场的时候，任务就一直卡着。现在自动完成：冷却当前档案 → 选下一个 → 探活 → 静默切换 → 重启会话 → 续发原提示词
+- **覆盖六个面板** — Claude / Codex / Gemini / OpenCode / Kimi / Grok
+- **设置界面** — 轮换顺序可拖拽、一键全选参与、冷却倒计时可视；带每小时切换次数护栏，避免异常情况下反复横跳
+- **预防式提前切换真正接上用量数据** — 此前只有开关和阈值、触发逻辑没写（界面上有、实际不工作）。现在读 Codex 的 rate_limits 与 Grok 的配额，在额度接近上限时切换；且**只在一轮回答刚结束、会话回到空闲的那一刻动手**，不打断正在跑的任务
+- **冷却状态落库** — 限额窗口常达 5 小时甚至一周，只存内存的话重启应用就忘了，一上来又撞回同一个已耗尽的档案
+- **轮换历史列表** — 无人值守时到底发生过什么（何时因为什么从哪个档案换到哪个），现在看得见
+- **限额报错识别修复** — Kimi K3 的周限额既认不出又被自己的否定规则否掉；弯引号撇号从没被字符类覆盖，导致通知与桌宠都认不出限额报错；报错里给了精确重置时刻却没用上，档案被多闲置一个多小时
+
+**🖥️ 界面**
+
+- **标签栏改「滚轮横滚 + 两端浮出箭头」** — 藏起那条占地方的横滚动条；主窗、内置浏览器、工作区三处一致，右键菜单目标补高亮
+- **工作区复制文件名的「已复制」提示暗底黑字**，几乎看不清
+
+**📝 工作区**
+
+- **`.vue` 文件敲标签能补出项目组件和它的 props**
+
+**🐧 Linux 与终端**
+
+- **Linux 重启后协议要重签、项目和会话全不见**
+- **图片粘贴失败后再输文本，终端整块布局就乱了**
+
+**🤖 多 Agent 编排**
+
+- **驳回意见发出去就没了，总控还以为送到了**
+- 文档说清了什么时候能并行派活、什么时候必须一个一个来
 
 ### v5.1.6 (2026-08-24)
 
@@ -1050,7 +1083,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.1.6）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.2.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
