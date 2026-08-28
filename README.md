@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.2.0
+### 最新版本: v5.3.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.2.0/AICoder_5.2.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.2.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.3.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
@@ -227,6 +227,36 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.3.0 (2026-08-28)
+
+工作区内嵌、远程 SFTP 与 Maven 面板：
+
+**🖥️ 工作区（本版主体）**
+
+- **工作区可内嵌到主窗口右侧** — 此前工作区只能弹成独立窗口，看代码和聊会话要来回切窗。现在主窗右侧多了一条常驻 rail，点开即用、边缘可拖宽，项目 / 提交 / 分支 / 终端 / AI 五个视图都在里面
+- **工作区栏加 Maven 构建面板** — 对标 IDEA 的 Maven 工具窗，生命周期、插件目标、Profiles 一览，不用切到终端敲 `mvn`
+- **工作区终端开了个写入口** — 同窗口内其它面板可以往这个终端发命令，不再各自为政
+- **`.vue` 补全延续上版能力**，配合内嵌 dock 在同一屏内完成编辑与提交
+
+**🌐 远程**
+
+- **远程主机 SFTP 传输** — 列目录、上传、下载、改权限、增删改名，直接在应用里管远端文件
+
+**🗂️ 会话与模型**
+
+- **项目快捷 Tab** — 点侧边栏目录直接开一个可搜索的会话列表，顶栏 / 状态栏 / 工作区栏三处同源，不会各显示各的
+- **GLM 1M 上下文补齐自动压缩窗口** — 此前模型名加了 `[1m]` 后缀但压缩窗口没跟上，等于白加
+- **各 CLI 档案的模型下拉加「还原内置清单」** — 手工改乱之后能一键还原，并与状态栏显示对齐
+- **提示词编排的实现方 / 验收方改成下拉选** — 不用再手打模型名，打错就静默不生效
+
+**🐛 修复**
+
+- **mac 多实例 OAuth 三连** — 加新账号会顶替旧号（凭证读写全链漏了 Keychain）、切 OAuth 档案对 CLI 静默失效、跨实例导入读不到源凭证；并在多实例下明确提示官方账号是跨实例共用的
+- **双击标题栏最大化被 toggle 两遍相互抵消** — 非 Windows 平台还会卡在最大化回不去
+- **npm 装 CLI 崩了会把用户原有版本一起带走** — 现在装前探前缀、装后自检、失败自动回滚
+- **Linux 上看不见 linuxbrew 里的 CLI** — `apply_full_path` 在 Linux 分支是个空操作，桌面启动的进程拿不到完整 PATH
+- **中文界面残留英文** — 推送弹窗主按钮、暂存 / 取消暂存标签、Git 面板分组标题
 
 ### v5.2.0 (2026-08-26)
 
@@ -1083,7 +1113,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.2.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.3.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
