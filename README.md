@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.3.0
+### 最新版本: v5.3.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.0/AICoder_5.3.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.3.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.3.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_aarch64.dmg) |
+| macOS Intel | [AICoder_5.3.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.3.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.3.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.3.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.3.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.5.0
 
@@ -227,6 +227,23 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.3.1 (2026-08-29)
+
+自动更新的下载链路重做：
+
+**⬇️ 下载（本版主体）**
+
+- **修好「进度百分比来回跳、最后下载不成功」** — Linux 上最明显。此前多个下载任务会同时开跑、各写各的进度（41 → 49 → 42 → 49），末了安装还会因为拿错更新包而失败。现在下载由后端单任务承担，进度不可能倒退
+- **断点续传** — 网络中断不必从头再来，可以暂停 / 继续
+- **点标题栏版本号展开下载面板** — 实时进度、速度、当前下载源一目了然，可一键重新下载或切换下载源
+- **主源失败自动换源** — 已经下好的部分不浪费，换到备源接着续传
+- **更新包不再整包占内存** — Linux 安装包近 100MB，此前重复下载会占双份
+
+**🐛 修复**
+
+- **用 `.deb` 安装的 Linux 用户「下载完却更新不成功」** — 更新清单缺 deb 目标，导致下到的是 AppImage 却按 deb 安装，校验必然失败
+- **Codex 0.149 认证兼容** — 托管配置段的字段白名单漏了新增键，导致切换多个 API 档案后残留一堆失效配置段
 
 ### v5.3.0 (2026-08-28)
 
