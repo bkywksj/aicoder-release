@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.3.1
+### 最新版本: v5.4.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,28 +74,28 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.3.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.3.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_aarch64.dmg) |
-| macOS Intel | [AICoder_5.3.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.3.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.3.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.3.1/AICoder_5.3.1_amd64.AppImage) |
+| Windows x64 | [AICoder_5.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.3.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.4.0_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.5.0
+### 移动端伴侣 · v0.6.0
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.5.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.6.0。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.5.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.5.0/AICoder-mobile-v0.5.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.5.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.5.0/AICoder-mobile-v0.5.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.6.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.6.0/AICoder-mobile-v0.6.0.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.6.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.6.0/AICoder-mobile-v0.6.0.aab) | Google Play 上架用（暂存档） |
 
-**🆕 v0.5.0 — 手机端可用性修复**：新建会话补 claude_session_id 根治「收不到消息/暂无历史」、默认带 --dangerously-skip-permissions、项目目录必填、永久授权(-1)显示「永久」、接收指示器回复完自动归位，详见 [移动端版本历史](#移动端版本历史)。
+**🆕 v0.6.0 — 手机端能驱动远程 SSH 会话了**：PTY 桥接 + 远端历史读取、本机/远程统一目录选择器（支持新建文件夹）、点设备直接进会话列表、语音改点按 toggle、会话列表加工具筛选，详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,31 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.6.0 (2026-09-02)
+
+手机端能驱动远程 SSH 会话了：
+
+**🚀 新功能**
+
+- **手机端驱动远程 SSH 会话** — PTY 桥接 + 远端历史读取，手机上开的会话可以直接跑在远程主机
+- **统一目录选择器** — 新建会话能点着选目录了，本机 / 远程 SSH 一套界面，支持新建文件夹
+- **点设备直接进它的会话列表** — 不必再回到全局列表里翻
+- **语音改点按 toggle** — 点一下开始、再点一下结束，长口述不用一直举着手机
+- **会话列表加工具筛选** — 远程主机认不出时不再显示一串 UUID 片段
+- **输入框改多行自动增高** — 写长 prompt 不用隔着一条缝
+
+**🐛 修复**
+
+- **点一下麦克风什么都不发生** — 语音输入长期被当成坏功能的真正原因
+- **录音 / 识别不再有任何浮层** — 状态收进麦克风按钮；按住说话补上全程提示
+- **终端流展开停在开头**、录音全屏遮罩盖住对话
+- **会话里 AI 头像显示成一个大写 A**
+- **选了远程主机目录却把会话归到本机**
+- **选中的 Claude 图标隐形**、返回列表时筛选全丢
+- **推荐应用的 logo 垫了层白底**，跟自带底色的图标不服帖
+
+> 签名与 mobile-v0.5.0 一致（指纹 `a5b64af5…02ba`），v0.3.6 及之后的用户可直接覆盖升级。
 
 ### mobile-v0.5.0 (2026-06-05)
 
@@ -227,6 +252,27 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.4.0 (2026-09-02)
+
+浏览器设计模式、桌宠思考态，以及额度轮换的关键修复：
+
+**🚀 新功能**
+
+- **浏览器「设计模式」** — 在页面上直接点选元素，把它的 HTML / CSS / 截图一并喂给 AI，改样式不用再手动描述"第三个卡片的圆角"
+- **mac / Linux 的浏览器自动化恢复可用** — 改由注入式驱动接管 JS 求值通道；此前这两个平台上浏览器工具静默返回空数组，失败还会被当成"页面没报错"反复重试
+- **桌宠思考态由角色自己演** — 思绪气泡 + 眼神扫视，取代原来的三点药丸；状态改走局部点缀 + 头顶指示物，不再用状态色盖掉角色身份色
+
+**🐛 修复**
+
+- **撞 Claude 的 session limit 时额度完全不轮换** — 判据只认 `usage limit`，而 Claude 的 5 小时窗口说的是 `session limit`，名词一漂移自动轮换就从不触发
+- **三个 CLI 图标是自绘臆造的** — 换成官方标识；未安装的 CLI 也不再涂成比已安装还抢眼的警告黄
+- **Linux 下 opencode / agy 输入中文一个字变两个** — WebKitGTK 上 input / keyup 竞速，两道去重门控互斥各看一半
+- **编排派活时提示词停在输入框没发出去**
+- **开关工作区栏后切回其它会话，正文里多出重复的一段** — 陈旧的 pending resize 被当成目标下发
+- **右上角会话列表点选后没在侧边栏定位**，看不出会话在哪
+- **远程工具版本栏混入 CLI 日志与 unknown**；Antigravity 补上轮换卡片
+- **远程 PTY 广播容量收回 4 倍**，去掉每帧的多余拷贝
 
 ### v5.3.1 (2026-08-29)
 
@@ -1130,7 +1176,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.3.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.4.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
