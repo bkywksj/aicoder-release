@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.4.0
+### 最新版本: v5.5.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.4.0/AICoder_5.4.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.5.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.5.0/AICoder_5.5.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.5.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.5.0/AICoder_5.5.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.5.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.5.0/AICoder_5.5.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.5.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.5.0/AICoder_5.5.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.5.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.5.0/AICoder_5.5.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.4.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.5.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.6.0
 
@@ -252,6 +252,34 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.5.0 (2026-09-03)
+
+远程主机全面打通 —— MCP、浏览器出网、账号登录三条链路都接到了远端：
+
+**🚀 新功能**
+
+- **远程会话接入本机 MCP** — 跑在远端主机上的 AI 终于有工具可用：反向隧道改成按端口路由，腾出第二条隧道让远端回连本机的 MCP 服务
+- **内置浏览器的网络出口可经 SSH 落到远程主机** — localhost 按钮多了「经远程主机出网」选项，隧道标签页在 UI 上可辨认；网页从远端 IP 出网，调试地域相关问题不用再折腾代理
+- **远程主机的 Codex 账号可登录·可入库·可切换** — 添加账号改走内置终端 device-auth（headless 环境的正解，不用端口转发）；Grok / Kimi / Pi 远程切档案也真正写到了远端而不是本机
+- **macOS / Linux 内置浏览器补齐** — 截图、点击、输入、监控、cookie 全部可用，Linux 原生截图接上 WebKitGTK；此前这两个平台上的浏览器工具静默返回空值
+- **接入 Claude Fable 5.1** — 同时修正 Sonnet 5 / Mythos 的定价表
+- **状态栏三段配色重做** — 厂商 / 模型 / 思考深度各用家族色点 + 真实设计令牌，不再是一片同色
+- **「打开剪贴板里的路径」** — 终端链接够不着的路径（跨行截断、被 TUI 重绘吃掉）复制后一键打开
+- **诊断包补内置浏览器自检** — 取值往返实测 + 工具失败留痕，浏览器出问题时诊断包能直接看出是哪一步
+
+**🐛 修复**
+
+- **WebView 崩溃重启后，会话的「回答完毕」标记全部丢失** — 标记原本只活在内存里，渲染进程一崩就归零；而崩溃恢复只管重连 PTY、不管「哪几个会话有你还没看的回复」。现已持久化并在会话恢复时回填
+- **浏览器界面按 F6 整个应用崩退**
+- **Pi 添加新账号会静默删掉旧账号** — 补上另外五家都有的静默入档
+- **远程主机装了 npm 却报「没探测到 npm」** — 检测 / 安装 / 启动三层各自猜 PATH，现已归一
+- **终端路径链接两处断链** — 路径尾部紧贴全角冒号 / 感叹号 / 问号时成不了链；点开头的隐藏目录识别不成相对路径
+- **切档案的两道死闸改成可强制越过的确认框**
+- **内存紧张的自动关闭提示挡住右侧工具栏**
+- **设计模式选中元素后确认面板被浏览器窗挡住**；主动点标题栏浏览器按钮时窗口开在主窗背后
+- **清空全部幽灵设计令牌**，KNOWN_GHOSTS 归零并加守卫防复发
+- **配置档案工具栏低频操作收进「更多」** — 7 个按钮减到 3-4 个
 
 ### v5.4.0 (2026-09-02)
 
@@ -1176,7 +1204,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.4.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.5.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
