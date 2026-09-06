@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.6.1
+### 最新版本: v5.6.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.6.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.1/AICoder_5.6.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.6.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.1/AICoder_5.6.1_aarch64.dmg) |
-| macOS Intel | [AICoder_5.6.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.1/AICoder_5.6.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.6.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.1/AICoder_5.6.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.6.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.1/AICoder_5.6.1_amd64.AppImage) |
+| Windows x64 | [AICoder_5.6.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.2/AICoder_5.6.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.6.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.2/AICoder_5.6.2_aarch64.dmg) |
+| macOS Intel | [AICoder_5.6.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.2/AICoder_5.6.2_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.6.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.2/AICoder_5.6.2_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.6.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.6.2/AICoder_5.6.2_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.6.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.6.2_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.6.0
 
@@ -252,6 +252,18 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.6.2 (2026-09-07)
+
+接管外部会话 —— 在外面终端里跑出来的会话，也能收进来继续管：
+
+**🚀 新功能**
+
+- **接管外部会话** — 侧边栏顶部新增入口，把不是在智码里创建、而是在外部终端直接跑出来的 CLI 会话发现出来，勾选后纳入会话列表，点开即可接着聊。之前这些会话只能在原终端里 resume，切回智码就"看不见"了
+- **支持 9 家 CLI** — Claude / Codex / OpenCode / Grok / Kimi / CodeBuddy / Pi / Gemini / Antigravity 全量扫描。为此各家都补了不截断的发现路径：侧边栏为了响应速度只取最近 30 条，接管弹窗要的是全部历史
+- **状态一目了然** — 每条候选标出「可导入 / 已在列表中 / 在回收站 / 无法恢复」。已存在的可点击跳去定位，在回收站的可就地一键恢复，不用先跑一趟回收站面板
+- **目录级接管** — 侧边栏目录右键可只接管该目录下的会话；弹窗默认只看当前正在用的那家 CLI，也可切「全部工具」
+- **导入不扰乱顺序** — 按会话文件的实际时间落回原位置，不会一次导入几十条全堆到列表顶部；可选给导入的会话统一标记颜色便于区分
 
 ### v5.6.1 (2026-09-05)
 
@@ -1233,7 +1245,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.6.1）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.6.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
