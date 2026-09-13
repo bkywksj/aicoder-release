@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.7.0
+### 最新版本: v5.8.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.7.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.7.0/AICoder_5.7.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.7.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.7.0/AICoder_5.7.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.7.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.7.0/AICoder_5.7.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.7.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.7.0/AICoder_5.7.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.7.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.7.0/AICoder_5.7.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.8.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.8.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.8.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.7.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.6.0
 
@@ -252,6 +252,38 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.8.0 (2026-09-14)
+
+两家 CLI 都有了聊天模式 —— 终端之外的另一种用法，同一条会话来回切：
+
+**🚀 新功能**
+
+- **Claude Code 聊天模式上线** — 消息卡片 / 工具调用卡片 / 思考折叠 / 右缘轮次时间线 / 悬停操作条与右键菜单；输入框能拖图粘图、按正文占位混排、@ 提及与斜杠命令浮层；对话历史浮层把终端与聊天两份记录合成一条时间轴。**终端 ↔ 聊天来回切换接续同一条会话**，不会各起一条
+- **Codex 聊天模式全面补齐** — 内联审批与跨会话「总是允许」、消息队列与轮次时间线、跑一半插话纠偏、图片按正文占位有序混排、命令执行卡片与内联 diff、内置斜杠命令（`/model` `/compact` `/undo` `/review`）、模型与沙箱审批策略在头部直接切换
+- **MCP 面板看得见运行态，也能真重连** — Claude Code 一键接入默认改走 http 通道、断线自己重连；每家客户端加「接入体检」，配置在但连不上的不再显示绿色已接入；「测试连接」改成真回环自检，不再进程内 ping 报假通
+- **额度从一枚 Tag 变两枚** — 5h 与 7d 各带重置倒计时；撞限额后在额度恢复那一刻主动发通知（邮件 / 桌面弹窗）；额度详情顶部直说「已用完 · 几点恢复」，Claude / Codex / Grok 共用一份口径
+- **跨实例共享 OAuth 凭据库** — 同一账号全机只留一份，多开不再因 refresh token 轮转互相作废；跨实例导入按账号去重，换了凭据后额度红标自愈
+- **内存一键优化面板** — 状态栏内存指示器点开即用，按进程组强制结束（含 Everything 这类提权进程），每组标出窗口标题，认得出关掉的是谁
+- **内置五张预设背景图** — 设置页一键套用，聊天条目从底图上透出来而不像贴纸
+- **状态栏额度按厂商识别** — 宽度自适应不换行，并且不再覆盖用户自己改过的 statusline 脚本
+
+**🐛 问题修复**
+
+- **内置浏览器最大化可能整个应用崩掉** — 重排改异步，最大化时不再下沉
+- **WebView2 换版横幅盖住标题栏** — 关闭 / 最小化按钮点不到
+- **隔离标签页拿不到真实画面** — `pty_snapshot` 改用 vt100 虚拟屏幕取代差分流
+- **编排丢回调的四条断点** — 唤醒事件不再一律说「不是正常跑完」，并给「复用还是另开」一个客观判据
+- **重开会话后用户发的图回得来** — Claude 把 JSONL 里的 base64 落成缓存文件，Codex 按占位把图放回原位
+- **亮色主题 + 背景图下气泡与提示看不清** — 用户气泡不再与页面同色
+
+**✨ 体验优化**
+
+- 新建会话时输入框自动聚焦；拖入文件后焦点真的落回输入框，可以直接接着打字
+- 会话锁定改成幂等 set，编排自动上锁不再来回翻
+- 托盘 tooltip 精简为「实例标识 · Provider」，多开时认得出是哪个
+- 全厂商模型清单刷新，接入 DeepSeek V4.1 Flash / Gemini 3.8，清掉 8 条已失效模型名
+- 终端复制提示带上内容预览，分得清是哪一条生效了
 
 ### v5.7.0 (2026-09-07)
 
@@ -1269,7 +1301,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.7.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.8.0）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
