@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.8.0
+### 最新版本: v5.8.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,28 +74,28 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.8.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.8.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.8.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.0/AICoder_5.8.0_amd64.AppImage) |
+| Windows x64 | [AICoder_5.8.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.8.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_aarch64.dmg) |
+| macOS Intel | [AICoder_5.8.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.1_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.6.0
+### 移动端伴侣 · v0.7.0
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.6.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.7.0。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.6.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.6.0/AICoder-mobile-v0.6.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.6.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.6.0/AICoder-mobile-v0.6.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.7.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.0/AICoder-mobile-v0.7.0.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.7.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.0/AICoder-mobile-v0.7.0.aab) | Google Play 上架用（暂存档） |
 
-**🆕 v0.6.0 — 手机端能驱动远程 SSH 会话了**：PTY 桥接 + 远端历史读取、本机/远程统一目录选择器（支持新建文件夹）、点设备直接进会话列表、语音改点按 toggle、会话列表加工具筛选，详见 [移动端版本历史](#移动端版本历史)。
+**🆕 v0.7.0 — 手机上也能应答 AI 的选择询问**：AI 抛出的选择菜单变成可点按钮，另加一条裸按键条（方向键 / 回车 / ESC / Tab）；「中断」改发 ESC，连点两下不再把 CLI 连同上下文一起退掉，详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,19 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.7.0 (2026-09-14)
+
+手机上也能应答 AI 的选择询问：
+
+**🚀 新功能**
+
+- **选择菜单变成可点按钮** — AI 在终端里抛出的那种「选一项」菜单，手机上直接渲染成按钮，不用再对着一屏文字猜该按哪个键
+- **补一条裸按键条** — 方向键 / 回车 / ESC / Tab 等常用键直接点，菜单之外的按键交互也能应付
+
+**🐛 问题修复**
+
+- **「中断」改发 ESC** — 连点两下不再把 CLI 连同上下文一起退掉，只打断当前这一轮
 
 ### mobile-v0.6.0 (2026-09-02)
 
@@ -252,6 +265,36 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.8.1 (2026-09-14)
+
+聊天模式打磨一轮，手机端能应答 AI 的选择询问：
+
+**🚀 新功能**
+
+- **一次回复统一成一张卡片** — 头钉在最前面，Claude 与 Codex 同步；重开会话铺出来的历史改用结构化消息块，与实时问答看到的完全一致
+- **正文与代码块里的路径都能点** — 悬停出预览、点击直接打开，连"没有分隔符的纯文件名"也认得出来
+- **工具卡片补摘要** — 类别归左、收起状态也露出开头几行；命令输出按终端主题上色，转义序列不再显示成乱码；命令卡片补 shell 标记，长命令标题折中间、展开可复制原文
+- **斜杠命令候选可直接执行** — 回车即发，只有真缺参数的那几条才填进正文；`/model` 补一层从列表里选的参数候选浮层
+- **手机端能应答 AI 的选择询问** — 菜单变成可点按钮 + 裸按键条，不用再对着终端猜该按哪个键
+
+**🐛 问题修复**
+
+- **聊天模式的 MCP 服务器不再比终端少一大截** — 不该给正式版主实例硬塞配置目录，注入按环境变量闸门走
+- **上下文占用两处对不上** — 分母改用 CLI 下发的权威窗口，不再靠档位爬梯猜
+- **mac 上 Codex 聊天模式起不来** — 增强 PATH 不加载 `.zshrc`，挑到了错架构的 node
+- **「中断」改发 ESC** — 手机端连点两下不再把 CLI 连同上下文一起退掉
+- **没有 id 的历史 item 不再整条消失**（Codex）
+- **一次回复不再被劈成多个头** — 技能注入静默吃掉，旁注不再当结构分隔
+- **右键复制只复制选中那段**；恢复会话的通知不再压住聊天头部条
+
+**✨ 体验优化**
+
+- 标签页看得出哪个是激活的 —— 激活占明度、悬停占色相，两条通道分开
+- 弹窗周围那圈灰边去掉，Modal 退出毛玻璃回到实底
+- 状态栏整行压掉 20% 并补 `COLUMNS` 兜底预算；三处窗口默认宽 +20px
+- 切模型的提示改成按"当前在不在回答"分两档，不再一律说"进程没有重启"
+- 去掉输入框的「放大 / 收起」按钮（Claude + Codex）
 
 ### v5.8.0 (2026-09-14)
 
@@ -1301,7 +1344,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.8.0）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.8.1）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
