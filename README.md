@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.8.1
+### 最新版本: v5.8.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.8.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.8.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_aarch64.dmg) |
-| macOS Intel | [AICoder_5.8.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.1/AICoder_5.8.1_amd64.AppImage) |
+| Windows x64 | [AICoder_5.8.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.2/AICoder_5.8.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.8.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.2/AICoder_5.8.2_aarch64.dmg) |
+| macOS Intel | [AICoder_5.8.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.2/AICoder_5.8.2_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.2/AICoder_5.8.2_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.2/AICoder_5.8.2_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.2_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.0
 
@@ -265,6 +265,41 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.8.2 (2026-09-15)
+
+额度监控扩容一轮，聊天模式补齐权限档位与「照着再发」：
+
+**🚀 新功能**
+
+- **额度监控改成动态 meter 列表** — 四个固定槽位拆掉，表格按 meters 渲染；新接入 Antigravity、Kimi Code、MiniMax、OpenCode Go 四家，解析口径抄自家状态栏脚本而非第三方描述
+- **Claude 聊天模式的权限档位** — 界面上第一次能看见、也能切，回执报的是当前档位
+- **两边聊天模式都能「照着再发」** — 原文回输入框改，且明说旧消息还在（Claude 与 Codex 同步）
+- **Codex 聊天模式的 `/fork` 真能用了** — 分叉出的对话有了落脚的标签页
+- **工具卡片显示真实已耗时** — `tool_progress` 心跳不再当成不认识的事件
+- **编排补上中途纠偏** — `send_to_session` 加 `interrupt_first`，「停，方向错了」不必再排队等它把错的方向跑完
+- **项目归档** — 不用的收起来，要用时自己冒出来
+- **「用 IDEA 打开」进右侧工作区栏** — 图标读用户本机那个 exe
+- **弹窗开着时单按回车 = 点主按钮** — 全局一份，不必每个弹窗各写一遍
+
+**🐛 问题修复**
+
+- **会话绑定不再被陈旧 hook 日志顶掉** — hook 日志只是证据不是权威；聊天绑定的 rollout 自己往日志补一条归属，纠正改由「换代事实」驱动，终端不能靠自己写的启动回音把自己顶上去
+- **分叉会话的 rollout 指针不再永久陈旧** — 落点也不会再「一半成功」
+- **开合右侧工作区栏后正文多出半份重复段落** — gate 要开在 SIGWINCH 之前
+- **「照着再发」会把图换位** — 判据从「占位序号」换成「片段结构」
+- **上下文占用的分子也从 CLI 回传取** — 不再自己算，与分母同源
+- **codex 版本漂移不再一律标红** — 实测 0.150.1 → 0.154.0 只增不删，这条红字纯属误伤
+- **收藏区的目录行补回右键菜单** — 那块原本只能看不能操作
+- **底部橡皮擦在聊天模式下清不掉输入框**（Claude + Codex 都修）
+- **聊天模式下派不出去的任务** — 首次提示词注入不认聊天视图
+- **历史去重键里的裸 NUL 字节改成转义序列** — grep 不再把整个文件当二进制
+
+**✨ 体验优化**
+
+- **状态栏提到 `.app` 层** — 横跨整个窗口底部，右区不再被侧边栏宽度截掉
+- **四个右键菜单 75 项全加首位图标** — 20+ 项的长条得有锚点才扫得动
+- **首次提示词改由聊天视图主动来取** — 省掉一整个轮询周期
 
 ### v5.8.1 (2026-09-14)
 
@@ -1344,7 +1379,7 @@ aicoder-release/
 ├── README.md           # 本文件
 ├── update.json         # 桌面端自动更新清单（Tauri Updater 读取）
 ├── .gitignore          # Git 忽略规则
-├── releases/           # 桌面端版本（全量历史归档，最新 v5.8.1）
+├── releases/           # 桌面端版本（全量历史归档，最新 v5.8.2）
 │   └── vX.Y.Z/         # 每版含 Win exe + macOS dmg/app.tar.gz + Linux deb/AppImage + 各自 .sig 签名
 └── releases-mobile/    # 移动端伴侣 Android APK + AAB（独立版本号，仅保留最近版本）
     └── mobile-vX.Y.Z/  # 每版含 universal-release APK + AAB
