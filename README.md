@@ -85,15 +85,15 @@
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
 > 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.9.0_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.7.0
+### 移动端伴侣 · v0.7.1
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.7.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.7.1。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.7.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.0/AICoder-mobile-v0.7.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.7.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.0/AICoder-mobile-v0.7.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.7.1.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.1/AICoder-mobile-v0.7.1.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.7.1.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.1/AICoder-mobile-v0.7.1.aab) | Google Play 上架用（暂存档） |
 
 **🆕 v0.7.0 — 手机上也能应答 AI 的选择询问**：AI 抛出的选择菜单变成可点按钮，另加一条裸按键条（方向键 / 回车 / ESC / Tab）；「中断」改发 ESC，连点两下不再把 CLI 连同上下文一起退掉，详见 [移动端版本历史](#移动端版本历史)。
 
@@ -132,6 +132,14 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.7.1 (2026-09-17)
+
+手机能给聊天模式会话发消息了：
+
+- **聊天模式会话此前在手机上只能转圈到超时** — 它们永远没有 PTY，而手机端原来只认 PTY 那条路
+- **现已走独立通道** — 手机发出的消息直达聊天会话，回答同样回流到手机
+- **需配套桌面端 v5.9.0** — 改动落在 H5 与远程服务端各一半，两边须同版本
 
 ### mobile-v0.7.0 (2026-09-14)
 
