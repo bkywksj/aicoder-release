@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.8.3
+### 最新版本: v5.9.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.8.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.3/AICoder_5.8.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.8.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.3/AICoder_5.8.3_aarch64.dmg) |
-| macOS Intel | [AICoder_5.8.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.3/AICoder_5.8.3_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.8.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.3/AICoder_5.8.3_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.8.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.8.3/AICoder_5.8.3_amd64.AppImage) |
+| Windows x64 | [AICoder_5.9.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_5.9.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_aarch64.dmg) |
+| macOS Intel | [AICoder_5.9.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.9.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.9.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.8.3_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.9.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.0
 
@@ -265,6 +265,36 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v5.9.0 (2026-09-17)
+
+聊天模式成型、额度铺开，外加 rewind 与远程两处硬伤：
+
+**🚀 新功能**
+
+- **手机能给聊天模式会话发消息了** — 聊天模式会话永远没有 PTY，原来手机端只能转圈到超时
+- **两家聊天卡片统一成一套语言** — 折叠给结论、运行时跟随、类别着色；一次回答不再被切成三段
+- **额度标签铺到另外五家面板** — 原来只有 Claude 接了，别家档案行一个数字都没有；表格改用状态栏那枚胶囊
+- **终端也有「跳到上一个提问」** — 判据层补齐整条提问判定、同文本序号、行尾锚；三处「回到顶部 / 回到底部」浮标成对补齐、位置改成稳定槽位
+- **「已自动关闭」分组加「全部打开」** — 一次拿回整批会话
+- **浏览器截图回带真实视口** — 连「画面外还藏了多少」一起报，新增桌面固定视口档位与整页截图
+- **Codex 新会话默认落终端模式**，不再直接进聊天
+- **构建面板「可启动」项补停止按钮**
+
+**🐛 问题修复**
+
+- **rewind 之后重开还是 rewind 之前的内容** — CLI 认的是 `last-prompt` 指针，而终端模式从不更新它
+- **历史 / 提问记录 / 导出把 rewind 掉的旧分支混着显示** — 读 JSONL 改按 `parentUuid` 选活跃链，归档表也不再把旧分支永久留在库里
+- **远程连上就断、重启无效** — 98KB 的配置回写被拼成 266KB 的 SSH 命令行，超出上限后服务端判连接损坏直接拍断
+- **危险命令门被聊天通道整个绕过** — 现补在漏斗上，与终端那道同构
+- **读会话历史的两个 command 会占死 tokio 工作线程**
+- **额度监控整条读路径失效** — 拆旧槽位时漏改了 SELECT 列清单；额度栏也不再时有时无（四种失败态曾被静默隐藏、401 一律判成要重登）
+- **编排两条** — 跑长命令被判成「跑完了」（新版输入框永远在底部，「静默=停了」这个前提本就不成立）；撞额度不再唤醒总控白耗一次性 watcher
+- **点提问记录定位的毛病** — 赖着不走的选区、永远落最近一条、被同前缀提问截胡，以及点「继续」跳到回答里
+- **聊天输入框三处尺寸问题** — 还原后回闪两行、最小化还原后抖动并撑到半屏、守卫判据取了含 padding 的 clientWidth
+- **Codex 三条** — 拖进项目外的文件只剩 `@文件名`（模型按 cwd 找必然扑空）；「测试」把能用的账号报成凭证已失效；写锁接管不分类错误 / resume 共吃通用超时 / WebView 重载后自锁
+- **构建面板认不出已配好的 JDK** — 环境快照冻结 + GA 版 JDK 被正则判死
+- **中文通知末尾平白挂一句英文** — 收走了 Claude 的耗时收尾行
 
 ### v5.8.3 (2026-09-16)
 
