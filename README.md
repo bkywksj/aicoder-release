@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v5.9.0
+### 最新版本: v6.0.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_5.9.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_5.9.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_aarch64.dmg) |
-| macOS Intel | [AICoder_5.9.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_5.9.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_5.9.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v5.9.0/AICoder_5.9.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.0.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.0.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.0.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_5.9.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.1
 
@@ -273,6 +273,50 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v6.0.0 (2026-09-22)
+
+凭据落库加密、产出物外流管控、内存诊断三块新地基，外加终端网格与额度链路的一轮深修：
+
+**🚀 新功能**
+
+- **API Key 在数据库里不再是明文** — api_profiles 与 ASR / 润色 / 建议的 key 全部走 DB 层透明加解密，每次启动按 `enc:v1:` 前缀幂等对账；跨实例导入按源实例密钥解密；schema 升到 54 拦住降级到不认密文的旧版本
+- **可以禁止 Claude 把产出物发布到云端** — Artifact 与 Claude Docs 两条外流通道各有开关，并补上生效时机说明；顺带修掉改 settings.json 会清空用户配置的老问题
+- **内存面板讲清「提交上限是怎么来的」** — 重编译前预检余量；「调整页面文件」入口常驻，并认得出「改了还没重启」这个中间态
+- **macOS「想访问其他 App 的数据」弹窗有了出路** — 源头在系统 TCC 归因、改不掉，改成一键引导开完全磁盘访问
+- **内置浏览器的下载终于有了回执** — 子 webview 没有 Chrome 外壳所以看不见下载 UI，现在落盘路径直接报出来；MCP 侧新增 `browser_close`
+- **概览页加用量限额卡片**
+- **会话停下来之后按「怎么停的」分档上色** — 不再一律染成「已完成」黄
+- **升级后主动提示规则过期**，徽标挂在设置页；**启动后提示一次「有这三个 Claude Code 行为开关」**
+
+**🐛 问题修复**
+
+- **合盖开盖后输入框消失（第五轮）** — 真因是时序不是逻辑：冻结要等 IPC 418ms 而破坏只等 280ms，永远抢跑，前四轮都在修冻结的逻辑
+- **终端网格改成幂等对账** — 冻结打破了「网格永远跟着容器」这条没人写下来的前提，二十多处删 pending 从可恢复变成永久搁死；现改为从 DOM 实测、只登记不改网格、排在 flush 之前
+- **开合右侧工作区栏搞乱 codex 网格而 claude 免疫** — 一个集合兼任了「要不要冻结」与「停手后怎么对齐」两件事，判据拆开
+- **老 Windows 多行粘贴被逐行当回车发出去** — Win10 的 conhost 吞掉 bracketed paste 标记，改用 Ctrl+J 传内部换行，不赌 markers 还活着
+- **MCP instructions 有 77% 从未进过模型** — 9030 字符被客户端硬截到 2048；另有 7 个错误类别里 2 个从没教过 AI，其中一类占全部错误的 57%
+- **rmcp 1.7 → 3.4** — 修掉「客户端把本 MCP 显示成 rmcp」，以及请求体上限被 SDK 默认值偷偷改小、dev 实例在 HTTP 通道自称 prod
+- **状态栏与插件的额度对不上** — 共享缓存只单向写、锁文件名早已失配成死文件、两边角色不同 TTL 却相同
+- **自动轮换「从不触发」** — 额度判据的否定规则拿整段扫，一行 `---` 就把真报错吃掉；改行级作用域，并给写盘被拒的档案标记后换下一个 + 切换前加一道零请求的额度预检
+- **额度通知三处** — 别的窗口还卡着就不报「恢复了」、撞过限额不再补报「快满了」、已发出邮件的事件不再重复弹桌面窗
+- **Codex 切档案会删掉用户手写的 model_provider 段** — 老会话 resume 报「Model provider not found」；另补 resume 前预检 provider 还在不在，缺了给一键补回 / 克隆改绑
+- **登录过期被判成「后台还在跑」** — 队列每 10 分钟往过期会话重发一次「继续」；终局错误现在排在一切「还在跑」判据之前
+- **编排默认跟当前这家 CLI 走**，不再把活悄悄派回 Claude
+- **远程 SSH 下 OAuth 档案真正能切了** — 此前整条路径就没实现；refresh_token 两个方向不再互相踢掉，顶层 apiKey 残留也清干净
+- **构建面板送进终端的命令凭空消失** — 改成入队 + 拉取，失败有可见反馈；「可启动」项改走任务系统；纯库项目补「其他任务」分组
+- **用户 profile 设了 `ErrorActionPreference=Stop` 时 JDK 检测恒判 0**
+- **「调整页面文件」点下去报 os error 740** — CreateProcess 不读 manifest，换 ShellExecuteW
+- **聊天模式恢复会话后一片空白** — 晚到的会话 id 等不到重读；另修只有一条会话却开出两个同名标签
+- **明文推送会静默覆盖云端的加密数据**
+- **点「去设置看看」开出一个空面板** — 传的是折叠面板的 key，不是顶层 Tab id；跳过去还只滚一半
+
+**✨ 体验优化**
+
+- **聊天模式的代码上色** — 命令输出里的无色 diff 补上 git 本该吐的那套色；文件变更卡上色、Write 卡补真行号
+- **Codex 模型下拉用上分档措辞**，「即将退役」摆到选之前
+- **桌面通知的抬头和正文不再把同一份信息说两遍**
+- **JDK 诊断脚本双击就能跑**，客户不用再手敲命令
 
 ### v5.9.0 (2026-09-17)
 
