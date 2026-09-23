@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.0.0
+### 最新版本: v6.0.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.0.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.0.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.0.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.0/AICoder_6.0.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.0.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.0.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.0.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.1
 
@@ -273,6 +273,26 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v6.0.1 (2026-09-23)
+
+接入 Claude Opus 5.5 与 GPT-6 Sol / Luna，外加额度限流、思考档位、用量金额的一轮修正：
+
+**新功能**
+
+- **支持 Claude Opus 5.5** — 模型下拉、独立定价与显示名一并补齐
+- **支持 OpenAI GPT-6 Sol / Luna** — Codex 模型下拉与用量定价接入；编排候选以 GPT-6 Sol 顶替跑不起来的 GPT-5.4
+- **OAuth 账号档案也能「获取模型列表」** — Claude 用账号自己的凭据拉 `/v1/models`，Codex 读本机模型目录；添加账号弹窗与编辑表单都有
+- **Claude 默认模型改为 Auto** — 不再用 `--model` 把用户钉在旧机型上，跟随 Claude Code 自己的默认
+
+**问题修复**
+
+- **状态栏切换 Codex 思考档位落错档** — 改按模型真实支持的档位步进，起点从会话实际配置读，不再靠猜
+- **Claude 额度查询偶发限流** — 撞 429 后应用、后台监控与状态行插件全体冷却（5 → 10 → 20 → 30 分钟），限流期间显示上一份数据而不是「额度 --」；状态行插件升至 2.5.0，设置里提示更新后生效
+- **官方端点上 1M 上下文占用虚高** — Opus 5.5 等原生 1M 的机型不带 `[1m]` 后缀也按 1M 计算，Auto 会话不再虚报占满
+- **Codex 用量金额偏低** — 按 OpenAI 官方现价折算（含 272K 以上的长上下文档），新模型不再掉进 GPT-5 兜底价
+- **Opus 4.7 / Sonnet 5 看不到 ultracode 选项** — 门控对齐 Claude Code CLI；默认思考档说明改为按机型给出
+- **编排任务干完了却等不到唤醒** — 一个没收的后台 shell 把整轮判成「还在跑」
 
 ### v6.0.0 (2026-09-22)
 
