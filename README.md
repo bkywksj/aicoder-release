@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.0.1
+### 最新版本: v6.0.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.0.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.0.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_aarch64.dmg) |
-| macOS Intel | [AICoder_6.0.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.1/AICoder_6.0.1_amd64.AppImage) |
+| Windows x64 | [AICoder_6.0.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.2/AICoder_6.0.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.0.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.2/AICoder_6.0.2_aarch64.dmg) |
+| macOS Intel | [AICoder_6.0.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.2/AICoder_6.0.2_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.2/AICoder_6.0.2_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.2/AICoder_6.0.2_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.2_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.1
 
@@ -273,6 +273,30 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v6.0.2 (2026-09-24)
+
+Claude 回复语言设置、「回答完成」通知重修，外加桌宠与设置页的英文界面补齐：
+
+**新功能**
+
+- **Claude 回复语言设置** — 设置 → Claude Code 行为开关新增「Claude 回复语言」（简体中文 / English / 跟随对话 / 自定义）；写进 Claude Code 自带的 `language` 配置，每次请求都带、压缩也不丢，长会话不再在上百次工具调用之后漂成英文。简体中文界面默认补设一次「简体中文」，已有配置不覆盖；改完对运行中的会话立即生效
+- **聊天模式的「回答完成」通知也带正文** — 直接从协议事件里取这一轮最后一段回答；没有正文、只有报错的一轮改发「错误退出」
+- **目录标签、任务标签上也能用快捷键提交、推送** — 此前只认会话标签，在目录标签上按 Git 快捷键会提示「没有项目路径」；「打开工作区」快捷键一并修好
+- **桌宠等 AI 生成的内容跟随界面语言** — 桌宠对话、空闲搭话、报错解释、会话摘要不再固定输出中文；桌宠与大招窗口在主窗口切换语言后实时跟随，不必重开
+
+**问题修复**
+
+- **「回答完成」通知杂字、重复** — 杂字几乎都出自不该发的通知：没有回答的一轮（`/model`、斜杠命令、刚启动）和还没答完就被强制归位的一轮不再发；两条通道合一，同一轮只弹一次且带正文；其他工作区和隐藏标签改读后台当前屏，不再取到上一轮的回答
+- **人在软件里还弹右下角通知** — 窗口可见、未最小化且前台窗口属于本应用时不弹；切去别的应用、最小化或藏到托盘才弹。Webhook / 邮件渠道不受影响
+- **英文界面下多处仍显示中文** — 设置页「AI 辅助」「MCP 接入」两页、桌宠窗口 / 气泡 / 右键菜单、16 个内置角色名、大招招式名、MCP 服务器页的「接入自家工具」弹窗全部接入翻译
+- **发起协同编排点了「发起」没发送** — 编排正文只被填进输入框、没有提交；现在直接发送，从底部看板进入时发送成功后顺手关掉看板；投递失败时保留弹窗，填好的变量不丢
+- **会话标题显示成 `<local-command-caveat>…`** — 先跑过 `/model` 这类本地命令的会话会把元信息行当成标题；四处取首句的逻辑收成一个判定器，已写坏的旧标题自动重算，用户改过的名字不动
+- **移除目录删不干净** — 目录下的任务一并删除（运行中的先停），关掉任务标签和目录标签；`E:\x` 与 `e:/x/` 这类写法不同的同目录会话也一起删掉，右键菜单各项计数口径统一
+- **微信语音输入在终端里前半段重复** — 微信松开快捷键时注入的屏蔽键让终端提前结束了输入法组合，现在组合进行中的这类按键不再交给终端
+- **快捷短语发到终端后看不到回答** — 翻着历史点状态栏快捷短语时，视口自动拉回底部
+- **编排：子会话上下文占比虚报** — 探针与状态栏改用同一个权威分母（Claude 取 statusLine 回传，Codex 取 CLI 自报的上下文窗口），总控判断复用还是另开不再失准
+- **编排：Codex 底栏「100% context left」被判成上下文吃紧** — 只认 Claude Code 界面上的原句，Codex 子会话正常答完不再被报成上下文已满
 
 ### v6.0.1 (2026-09-23)
 
