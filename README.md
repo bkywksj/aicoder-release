@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.0.3
+### 最新版本: v6.1.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.0.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.3/AICoder_6.0.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.0.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.3/AICoder_6.0.3_aarch64.dmg) |
-| macOS Intel | [AICoder_6.0.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.3/AICoder_6.0.3_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.0.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.3/AICoder_6.0.3_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.0.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.0.3/AICoder_6.0.3_amd64.AppImage) |
+| Windows x64 | [AICoder_6.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.0.3_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.7.1
 
@@ -273,6 +273,42 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 ---
 
 ## 版本历史
+
+### v6.1.0 (2026-09-29)
+
+协同编排看得清「提示词收没收到、这一轮跑没跑完」，内置浏览器一轮大修，多个实例共用同一个 Claude 账号不再互相顶掉登录：
+
+**新功能**
+
+- **编排回合账本** — 「提示词被受理了没有」「这一轮结束没有」改以 CLI 自己的会话记录为准，Claude 与 Codex 终端会话都已接入；不再把启动期的重绘当成回答、派出去几秒就报跑完，编排方也就不会把以为丢了的任务再发一遍。子会话起了后台任务先停下时，等任务回来那一轮跑完才叫醒编排方
+- **编排子会话有了「归属」** — 你接手了编排派出去的会话，它跑完不再把回执发回编排方；右键菜单可「我来接手 / 交还给总控」，编排看板上同样能看到和切换
+- **编排可选验收方式与默认模型** — 发起协同编排时可选验收方式（默认按风险分级，记住上次的选择）；实现方 / 验收方可选「默认模型」，跟随设置或档案里的模型，并标出当前档案跑不了的机型；接中转站时可选 Claude 的 1M 变体，各项写明按多大窗口跑
+- **MCP 能重启项目任务并等它真正起好** — 新增 `restart_project_task`，编排里改完后端代码可以接着测，不再自己在命令行另起一份服务、撞了端口再改端口。子会话为验收起的服务算「临时任务」，收在侧边栏「临时」组，停止或重启后自动移除；过时的任务可原地换成新命令，引用的文件已不存在的坏任务也认得出来
+- **多个实例共用的 Claude 账号统一续期** — 主实例、多开实例、开发版用同一个账号时，由应用在过期前 15 分钟统一续期并写回每一份，不再出现「后续期的那个 Login expired」；跨实例导入本机正在用的账号可直接恢复，不用先删档案
+- **接入 Claude Sonnet 5.5** — 定价与 Sonnet 5 相同，仪表盘与 Sonnet 5 分开显示；接中转站时可选 Sonnet 5.5 (1M)
+- **内置浏览器标签页显示网页标题** — 此前标题从没写进去过，同一站点开几个页就是几个一模一样的域名；标签栏、窗口标题、最近访问、复制 Markdown 链接都用上了真标题
+- **回复语言防漂移** — 回复语言设为中文时加装结束 hook，最终回复变成英文就自动要求用中文重写（没压缩过的长会话也会漂，上一版的压缩前 hook 管不到）
+
+**问题修复**
+
+- **Codex 在 Windows 上每次请求都闪黑窗、抢焦点** — Codex 0.157 起默认连后台服务，它起子进程时不隐藏窗口（上游问题）；本机启动 Codex 改带 `--no-daemon`
+- **整个应用失去响应** — 托盘的远程状态心跳与重建托盘菜单互相等待，前端刷新时恰好撞上就卡死
+- **WebView2 运行中自动升级后禁止开新窗口** — 此前一发现换版就挡住所有新窗口（浏览器新标签、预览窗、工作区窗口）并要求重启；现在钉回启动时的版本继续用，下次启动再换新版
+- **本地服务还没起来就开页，弹「无法访问，请检查网络」** — 本机地址打不开时每秒探一次端口，起来了自动刷新（最长 90 秒），说明贴在出错的标签页上；`127.0.0.1` 与 `::1` 写反了自动改走 localhost；端口在听但页面本身出错时不再每秒刷新停不下来
+- **隧道 / 代理标签页出网口径不一** — 隧道标签页复制、重开、外部打开、下载文件时不再悄悄变成本机出网（打开的是本机的同名服务）；代理标签页的下载走代理；需要账号密码的代理不再整页 407；SSH 隧道打不开远端服务不再踢掉整条连接
+- **AI 驱动内置浏览器「报成功其实没做到」** — 对话框策略跳页后失效、文字打进上一个输入框、点击与取值等几处，现在做不到就如实报错
+- **AI 在后台开页打扰你** — 浏览器正在用或已最小化时，不再被压到主窗背后或被还原；在地址栏打字时 AI 开了新页，回车不再导航到 AI 那一页，回车后地址栏跟上最终网址
+- **悬停一个下载链接就真的把文件下载下来** — 悬停预览只对网页出卡片；也不再截到空白页、不再被页面弹框卡住
+- **内存吃紧自动关会话误伤** — 不再关掉正在回复的会话；先关占得多的、已交完差的编排子会话，一波最多关 3 个，关了内存没回升就停手并点名应用外的内存大户。会话 Tab 数量上限默认改回 0（不限制），与设置页说明一致
+- **派给 Codex 的消息被菜单吃掉、回车被吞** — 信任目录的菜单、`/new` 的菜单、长提示词折成 `[Pasted Content N chars]` 都能认出并补救；CLI 启动即退出时，提示词不再被当成 PowerShell 命令执行
+- **撞额度后队列一直扣着** — 到额度重置时刻重读屏幕改判；回答正文里提到那句额度报错也不再被当成撞了额度
+- **确认框冒出英文 Cancel / OK** — AntD 自带文案跟随界面语言
+- **侧边栏任务「发给 AI 排查」点了像没反应** — 现在直接发送，不再只填进输入框
+- **跨实例导入 Codex 账号后无法使用** — 搬过来的是早已作废的档案快照
+
+**安全**
+
+- **内置浏览器堵住读写本机文件的几条路** — 远程主机上的会话调浏览器工具时一律不能碰本机磁盘；本地网页不能再用 fetch 读任意本机文件；录制不再明文记下密码与验证码字段；CDP 调试端口恢复 Origin 校验，网页拿到调试地址也驱动不了浏览器
 
 ### v6.0.3 (2026-09-24)
 
