@@ -85,17 +85,17 @@
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
 > 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.0_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.7.1
+### 移动端伴侣 · v0.8.0
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.7.1。
+> 移动端版本号与桌面端独立维护：移动端 v0.8.0。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.7.1.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.1/AICoder-mobile-v0.7.1.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.7.1.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.7.1/AICoder-mobile-v0.7.1.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.8.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.8.0/AICoder-mobile-v0.8.0.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.8.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.8.0/AICoder-mobile-v0.8.0.aab) | Google Play 上架用（暂存档） |
 
-**🆕 v0.7.0 — 手机上也能应答 AI 的选择询问**：AI 抛出的选择菜单变成可点按钮，另加一条裸按键条（方向键 / 回车 / ESC / Tab）；「中断」改发 ESC，连点两下不再把 CLI 连同上下文一起退掉，详见 [移动端版本历史](#移动端版本历史)。
+**v0.8.0 — AI 回复完成可以响提示音了**：「我的 → 通知」里打开，音色与电脑端相同、可调音量；聊天模式的会话也不再显示「未连上终端」，详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,24 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.8.0 (2026-09-30)
+
+AI 回复完成时可以响一声提示音了：
+
+**新功能**
+
+- **回复完成提示音** — 「我的 → 通知」新增开关、音色、音量和试听；8 种音色与电脑端是同一套合成音（叮咚 / 钟声 / 成功音 / 闹铃 / 气泡 / 水晶 / 梦幻 / 水滴）。默认关闭：走手机媒体音量，静音 / 勿扰模式下同样会响
+- **在对话页也响** — 最常见的用法就是开着对话页、手机放一边等它答完；顶部横幅则只在你正看着那个会话时不弹，看着别的会话照弹（原来在任何对话页都不弹）
+
+**问题修复**
+
+- **聊天模式会话一直显示「未连上终端」** — 聊天模式在桌面上不开终端，状态条原来只看终端；现在读桌面上报的运行态，显示「聊天模式 · 已连上桌面 / 正在回复…」，回复结束立刻刷新历史。需桌面端 v6.1.0 及以上
+
+**说明**
+
+- 桌面端下一版起，手机的「回复完成」改用桌面的判定（与电脑端提示音同一个）：报错的一轮、没有回答的一轮不算，聊天模式的会话也会提醒。连 v6.1.0 及更早的桌面端时，仍按终端输出停够几秒来判断
+- 提示音与横幅都只保证 App 在前台时生效
 
 ### mobile-v0.7.1 (2026-09-17)
 
