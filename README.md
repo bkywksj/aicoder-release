@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.1.0
+### 最新版本: v6.1.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.1.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.1.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.1.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.0/AICoder_6.1.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.1.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.1.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.1.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.8.0
 
@@ -292,6 +292,22 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.1.1 (2026-10-02)
+
+手机端回复完成提示音配套、终端链接可用内置浏览器打开、编排体验打磨：
+
+**新功能**
+
+- **手机端回复完成提示音配套** — 桌面把每一轮「回答完成」记成事件流，手机端（mobile-v0.8.0 及以上）据此提醒，与电脑端提示音同一个判定：报错的一轮、没有回答的一轮（切模型 / 斜杠命令）不算，聊天模式的会话也会提醒。此前手机按终端输出停够几秒来猜，聊天模式的会话永远不提醒、工具调用中途的停顿还会被当成答完。老版手机端不受影响，行为不变
+- **终端链接确认弹窗加「通过内置浏览器打开」** — 仅 http(s) 链接，在会话浏览器里新开标签页并前台显示，与「在浏览器打开」并列，外置 / 内置浏览器均可选
+- **编排总控会话标题前加小图标** — 标签栏与侧边栏都有，只标总控自己、子会话不画；正在等子会话时常亮，派过活但当前没在等时变淡，悬停提示带数量
+- **接入 GPT-6.1 Sol** — Codex 与 OpenCode 的模型清单加入 gpt-6.1-sol（列表首位），按上游定价单列计价（此前会静默落兜底价）；编排的「异构验收首选」换成它，GPT-6 Sol 改标「上一代」。应用自己的默认模型仍是 Auto，不受影响
+
+**体验改进**
+
+- **你正在打字时，编排派的新会话等你停手再建** — 新会话会切到前台、新终端初始化会抢焦点，你此刻若正在别处打字，后半截字会全落进新终端（按键进了 PTY 就拦不回来）；现在检测到你最近 2 秒在打字就推迟，停手后再建，最多等 10 秒，到点照常创建，不会无限拖住编排方
+- **终端链接弹窗的复制与悬停反馈** — 点击复制立即给反馈，不再等剪贴板写完（被远程控制软件或输入法占用时最坏要几秒）；复制后弹窗保持打开，顶部提示复制了什么；按钮悬停、按下、键盘聚焦都有反馈；英文界面补齐了「复制 / 已复制」文案
 
 ### v6.1.0 (2026-09-29)
 
