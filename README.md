@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.1.1
+### 最新版本: v6.1.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,28 +74,28 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.1.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.1.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_aarch64.dmg) |
-| macOS Intel | [AICoder_6.1.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.1/AICoder_6.1.1_amd64.AppImage) |
+| Windows x64 | [AICoder_6.1.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.1.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_aarch64.dmg) |
+| macOS Intel | [AICoder_6.1.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.2_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.8.0
+### 移动端伴侣 · v0.9.0
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.8.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.9.0。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.8.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.8.0/AICoder-mobile-v0.8.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.8.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.8.0/AICoder-mobile-v0.8.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.9.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.0/AICoder-mobile-v0.9.0.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.9.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.0/AICoder-mobile-v0.9.0.aab) | Google Play 上架用（暂存档） |
 
-**v0.8.0 — AI 回复完成可以响提示音了**：「我的 → 通知」里打开，音色与电脑端相同、可调音量；聊天模式的会话也不再显示「未连上终端」，详见 [移动端版本历史](#移动端版本历史)。
+**v0.9.0 — 手机上看得到 Codex 的历史与工具调用过程**：一次回复一张卡并显示 Codex 的工具调用；读得到 Codex 会话历史；认得出 CLI 停在登录页（需桌面端 v6.1.2），详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,27 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.9.0 (2026-10-04)
+
+手机上看得到 Codex 的历史与工具调用过程，认得出 CLI 停在登录页：
+
+**新功能**
+
+- **一次回复一张卡** — 原来一个回复按消息拆成好几张卡，每张一个头像；现在一轮回复一张卡，Codex 的工具调用过程（如 `Called codex.list_mcp_resources(...)`）也显示出来，回答中展开、答完自动折叠
+- **读得到 Codex 会话的历史** — 原来 Codex 会话在手机上永远「暂无历史消息」，只能看原始终端流；终端模式与聊天模式都已支持
+- **认得出 CLI 停在登录页** — 没登录的 CLI 停在浏览器授权页时手机上会提示（这一页没有输入框，发进去的字会被吞），发消息前先拦一下
+
+**问题修复**
+
+- **「中断」只在回答中出现** — 没东西可停时不再挂着，点了也不再报「桌面端处理出错」
+- **终端流平时收起来** — 有历史时回复卡已经带回答和工具过程，终端流收进快捷条「终端」按钮，只在读不到历史时兜底显示；往上翻历史不再被一直拽回底部
+- **页面重载后顶部钻到状态栏底下** — 记下系统注入的状态栏边距，重载后先补上
+
+**说明**
+
+- 前三项新功能需要桌面端 v6.1.2 及以上
+- 还在用 v0.7.0 的请先卸载再装（v0.7.0 误用了临时调试签名，覆盖安装会失败；卸载后需重新配对桌面）；其他版本可直接覆盖升级
 
 ### mobile-v0.8.0 (2026-09-30)
 
@@ -292,6 +313,28 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.1.2 (2026-10-04)
+
+终端模式 MCP 断线自动重连、粘贴不再自动发送、编排与远程会话一轮修正：
+
+**新功能**
+
+- **终端模式 MCP 断线自动发现并重连** — stdio 类 MCP 的子进程死了，Claude Code 既不提示也不自动重拉，工具会从 AI 的工具表里悄悄消失；现在应用会发现断线并自动重连。也可以在标签栏 / 侧边栏右键「重连 MCP」手动重连，AI 自己也能调 `reconnect_mcp`
+- **发起编排时可选「提交与推送」** — 记住上次的选择；验收报告里不阻断的建议项不再单开一轮加固，少等好几个小时
+- **额度通知顺带报同账号其他窗口** — 5 小时窗口「快满了 / 恢复了」时，一起告诉你 7 天窗口还剩多少、几时重置；邮件里每个窗口一行
+- **远程会话拖拽文件、粘贴图片先传到服务器** — 原来写进终端的是本机路径，CLI 在服务器上根本找不到；现在先上传到服务器，再把远端路径写给 CLI
+- **空闲会话清理面板认得编排** — 已交差的编排子会话排在最前、默认勾选；总控还在等的子会话、正在等子会话的总控置灰不让勾，免得编排静默断掉
+- **手机端配套** — 手机读得到 Codex 会话（终端与聊天模式）的历史、显示 Codex 的工具调用过程、认得出 CLI 停在登录页。需手机端 mobile-v0.9.0
+
+**问题修复**
+
+- **粘贴有时自己发出去** — 剪贴板末尾带换行时（编辑器不选中直接复制整行、浏览器三击选段落、Excel 单元格等）会被当成回车提交；现在粘贴一律只填进输入框
+- **远程终端输入中文变成下划线** — tmux 强制 UTF-8，并给默认不是 UTF-8 的服务器自动补上 locale
+- **终端打拼音偶尔跑到屏幕左上角的孤立组字框** — 键盘焦点卡在窗口外壳上时立即下沉到网页里，下沉目标改为实测能正常打字的那一层
+- **编排总控等不到子会话跑完** — 主程序重启后跑到一半的子会话不再被判「状态不明」；撞额度、额度恢复后 CLI 自己接着跑的那一轮也能认出来，跟进等待不再到点悄悄作废；主应用重启期间 MCP 会等它起来（最多 40 秒），不再叫 AI 停下来「重连 aicoder」
+- **内存吃紧时自动关会话来得太晚** — 按档位分开设触发线，已交差的编排子会话在剩余 15% 或 6GB 时就开始收（此前 3% 太晚，一次编译突发就把应用挤崩）；编排归属跟着标签走，标签开着就一直有效
+- **手机给 Codex 会话发消息后一直「暂无历史消息」** — 桌面认不出手机发起的那一轮，会话绑不上；启动时顺带清掉旧版手机端塞进去的假会话 id
 
 ### v6.1.1 (2026-10-02)
 
