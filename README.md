@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.1.2
+### 最新版本: v6.2.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.1.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.1.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_aarch64.dmg) |
-| macOS Intel | [AICoder_6.1.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.1.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.1.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.1.2/AICoder_6.1.2_amd64.AppImage) |
+| Windows x64 | [AICoder_6.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.1.2_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.0
 
@@ -313,6 +313,26 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.2.0 (2026-10-06)
+
+内置浏览器按站点分流代理、更像真 Chrome，AI 抓包增强，及一轮编排 / 终端修正：
+
+**新功能**
+
+- **内置浏览器按站点自动分流代理** — 页面改走本地分流代理，逐个连接判定直连还是走代理：国内站直连，连不上的站自动学成走代理（按站点记 12 小时）；不再开页前先探测好几秒、判错还要重建页面，直连 / 代理两边的登录状态不再割裂，带账号密码的代理也能用了
+- **工具栏一键切换本站走向** — 地址栏右侧显示当前站点走「代理 / 直连 / 自动」及判定依据，点开就能改；设置 → 网络 可查看、删除站点规则
+- **内置浏览器更像真 Chrome** — 上报 Chrome 身份（跨站 iframe 与 Service Worker 一并处理），保住网页原生通知，页面里不再留智码的全局对象；reCAPTCHA / Turnstile 验证框正常加载，常见检测站全部通过
+- **Chrome 式标签栏与新标签页** — 页签改成 Chrome 式形状、颜色跟随主题；新标签页改为居中布局：应用图标 + 最近访问磁贴，没有图标的站点显示首字母
+- **AI 抓包增强与被拦识别** — 一个请求一条记录，带请求体与响应体，凭据自动打码，可导出 HAR；页面碰到 Cloudflare 检查、人机验证、登录墙、限流时 AI 能认出来并交给你处理
+
+**问题修复**
+
+- **TaskGo 等站点在内置浏览器里整页空白** — 藏起 WebView2 宿主对象，站点不再误判成自家客户端
+- **MCP 自动重连把一批后台会话染成「已完成」** — 重连用的 `/mcp` 命令不再被当成一轮回答，也不再发完成通知
+- **AI 启动 / 重启项目任务时把你从当前标签拽走** — 改为在后台开任务标签
+- **停在远程 SSH 工作区时，编排子会话被建到远程主机上** — 子会话固定建在本机，必要时先切回本机（等你停手再切）
+- **mac 上远程 / tmux 开了鼠标上报时拖选即消失** — 按住 Option 拖选即可复制
 
 ### v6.1.2 (2026-10-04)
 
