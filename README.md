@@ -85,17 +85,17 @@
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
 > 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.0_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.9.0
+### 移动端伴侣 · v0.9.1
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.9.0。
+> 移动端版本号与桌面端独立维护：移动端 v0.9.1。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.9.0.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.0/AICoder-mobile-v0.9.0.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.9.0.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.0/AICoder-mobile-v0.9.0.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.9.1.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.1/AICoder-mobile-v0.9.1.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.9.1.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.1/AICoder-mobile-v0.9.1.aab) | Google Play 上架用（暂存档） |
 
-**v0.9.0 — 手机上看得到 Codex 的历史与工具调用过程**：一次回复一张卡并显示 Codex 的工具调用；读得到 Codex 会话历史；认得出 CLI 停在登录页（需桌面端 v6.1.2），详见 [移动端版本历史](#移动端版本历史)。
+**v0.9.1 — 历史记录显示更稳**：历史为空时说明原因，拉取失败不再清空已显示的历史，「关于」页显示真实版本号。上一版 v0.9.0 起手机上看得到 Codex 的历史与工具调用过程（需桌面端 v6.1.2），详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,17 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.9.1 (2026-10-06)
+
+历史记录显示更稳、「关于」页信息更正：
+
+**问题修复**
+
+- **会话历史为空时说明原因** — 桌面端版本过旧、还没关联上 CLI 的会话记录、CLI 还没写下记录、远程主机上的会话暂不支持、读取失败等各有提示，不再只显示「暂无历史消息」
+- **拉取历史失败不再清空** — 网络抖一下时保留已显示的历史，不再整页清成「暂无历史消息」
+- **实时终端只保留最近一段输出** — 跑得久的会话打开也不卡
+- **「关于」页信息更正** — 显示安装包的真实版本号（此前一直显示 v0.1），去掉了错误的「MIT License」字样
 
 ### mobile-v0.9.0 (2026-10-04)
 
