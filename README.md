@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.2.0
+### 最新版本: v6.2.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,28 +74,28 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.2.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.2.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.2.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.0/AICoder_6.2.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.2.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.2.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.2.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.1_amd64.deb` 自动解依赖。
 
-### 移动端伴侣 · v0.9.1
+### 移动端伴侣 · v0.9.2
 
 > Android 侧载分发，需要在系统设置中允许「未知来源安装」。iOS 暂未发布。
-> 移动端版本号与桌面端独立维护：移动端 v0.9.1。
+> 移动端版本号与桌面端独立维护：移动端 v0.9.2。
 
 | 平台 | 下载链接 | 用途 |
 |------|---------|------|
-| Android APK | [AICoder-mobile-v0.9.1.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.1/AICoder-mobile-v0.9.1.apk) | 用户直接安装 |
-| Android AAB | [AICoder-mobile-v0.9.1.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.1/AICoder-mobile-v0.9.1.aab) | Google Play 上架用（暂存档） |
+| Android APK | [AICoder-mobile-v0.9.2.apk](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.2/AICoder-mobile-v0.9.2.apk) | 用户直接安装 |
+| Android AAB | [AICoder-mobile-v0.9.2.aab](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder-mobile/releases/mobile-v0.9.2/AICoder-mobile-v0.9.2.aab) | Google Play 上架用（暂存档） |
 
-**v0.9.1 — 历史记录显示更稳**：历史为空时说明原因，拉取失败不再清空已显示的历史，「关于」页显示真实版本号。上一版 v0.9.0 起手机上看得到 Codex 的历史与工具调用过程（需桌面端 v6.1.2），详见 [移动端版本历史](#移动端版本历史)。
+**v0.9.2 — 额度快用完时先确认**：Claude 额度到守卫线时，新建会话、继续发消息前先问一句（需桌面端 v6.2.1）。v0.9.1 起历史为空时会说明原因，拉取失败不再清空已显示的历史；v0.9.0 起手机上看得到 Codex 的历史与工具调用过程，详见 [移动端版本历史](#移动端版本历史)。
 
 **🔐 签名提示**：v0.3.5 之前所有版本都是 CI 临时 debug 签名，与 v0.3.6+ 的稳定 release keystore 不一致——
 **仍在 v0.1.0 ~ v0.3.5 的用户首次升级到 v0.4.0 必须卸载旧版重装一次**（一次性）；v0.3.6 及之后的用户可直接 OTA 覆盖升级，不受影响。
@@ -132,6 +132,19 @@ sudo xattr -rd com.apple.quarantine "/Applications/智码 AICoder.app"
 更新清单文件: [update.json](update.json)
 
 ## 移动端版本历史
+
+### mobile-v0.9.2 (2026-10-08)
+
+手机端额度守卫：Claude 额度快用完时，新建会话和继续发消息前先确认：
+
+**新功能**
+
+- **新建会话前先确认额度** — Claude 账号额度到守卫线时，手机上新建会话会先弹出确认，文案由桌面按套餐和重置时刻给出，确认后才创建
+- **会话里继续发消息前先确认** — 额度到线时同样先问一句，取消则输入框里的内容原样保留；会话的第一句不问（新建时已经问过）
+
+**说明**
+
+- 需要桌面端 v6.2.1 及以上；桌面端是旧版时不弹确认，照常发送
 
 ### mobile-v0.9.1 (2026-10-06)
 
@@ -324,6 +337,23 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.2.1 (2026-10-08)
+
+额度守卫：Claude 额度快用完时先问你一声，可自动换号；内置浏览器代理补到 macOS / Linux：
+
+**新功能**
+
+- **额度守卫（Claude）** — 账号额度到守卫线时，新建会话、聊天模式发消息、终端里继续提问前先确认；开了自动轮换则先换到没到线的号，不重启会话（只在订阅账号之间换）。守卫线按套餐区分：Pro 85%、Max 5x 90%、Max 20x 与未识别套餐 95%，5 小时和 7 天窗口各算。设置页新增「额度守卫」卡片
+- **会话回答中额度到线** — 弹框让你选「跑完这一轮」（默认）或「立即暂停」；排队中的消息先扣住，额度恢复或换号后再发出去
+- **AI 与手机端新建会话也受管** — AI 通过 MCP 新建会话时到线会被拦下，并告诉 AI 别连续重试，同时桌面弹框让你决定；手机端新建会话、继续发消息前同样先确认（需手机端 v0.9.2，旧版手机端不受影响）。主窗口不在前台时发系统通知；设置页可关掉「拦截 AI 新建会话」
+- **内置浏览器代理补到 macOS / Linux** — macOS 14 及以上，页面真正走分流代理；Linux 的隧道标签页真正经远程主机出网。macOS 暂不提供隧道标签页（无法保证标签页里的 localhost 指向远程主机）；macOS 13 及以下地址栏的代理按钮会说明不支持。升级后 macOS 上内置浏览器里的网站登录会掉一次，需要重新登录
+
+**问题修复**
+
+- **永久授权用户仍看到「续费 / 升级」入口** — 已买断的用户不再被推购买入口
+- **/clear 之后新建的会话读到同项目别人的历史** — 聊天历史、导出、摘要不再张冠李戴
+- **远程会话编排投递后回车偶尔被吞** — 现在会兜底补上；后台标签读屏改用 tmux
 
 ### v6.2.0 (2026-10-06)
 
