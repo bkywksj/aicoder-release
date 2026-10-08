@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.2.1
+### 最新版本: v6.2.2
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.2.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.2.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_aarch64.dmg) |
-| macOS Intel | [AICoder_6.2.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.1/AICoder_6.2.1_amd64.AppImage) |
+| Windows x64 | [AICoder_6.2.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.2.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_aarch64.dmg) |
+| macOS Intel | [AICoder_6.2.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.1_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.2_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,21 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.2.2 (2026-10-09)
+
+额度守卫默认关闭，终端提问不再被吞；多会话同时撞限额时自动换号更稳：
+
+**调整**
+
+- **额度守卫总开关默认关闭** — 要用的人去 设置 > Claude > 额度守卫 里开。已装 v6.2.1 的用户升级后会回到关闭状态，需要的话重新打开
+- **7 天窗口默认守卫线调高** — Pro 90%、Max 5x 95%、Max 20x 97%（5 小时窗口不变）
+- **终端里继续提问默认不拦** — 原先到线就拦，拦下后输入框被清空，要按 ↑ 调回原话；部分会话不记提问历史，调不回来，「仍要继续」点了也没用。现在默认不拦（也不再往 Claude Code 注册提交钩子），到线仍有会话浮层提醒。设置里新增「终端继续提问拦截」可改成「用完才拦」或「到警戒线就拦」；开了自动轮换且有号可换时一律不拦
+
+**问题修复**
+
+- **多个会话同时撞限额，只有一个会换号** — 其余会话不再被丢在报错上，会跟着重启续跑；也不会再把刚切上去的新号当成已用完、连环切走。轮换历史里会显示「已跟随同组切换」
+- **安装 Claude Code 时镜像缺原生子包** — 不再装出一个占位 claude.exe，避免检测时弹「不支持的 16 位应用程序」
 
 ### v6.2.1 (2026-10-08)
 
