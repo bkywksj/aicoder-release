@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.2.2
+### 最新版本: v6.2.3
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.2.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.2.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_aarch64.dmg) |
-| macOS Intel | [AICoder_6.2.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.2/AICoder_6.2.2_amd64.AppImage) |
+| Windows x64 | [AICoder_6.2.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.2.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_aarch64.dmg) |
+| macOS Intel | [AICoder_6.2.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.2_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.3_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,21 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.2.3 (2026-10-10)
+
+修复 mac 上新建会话没反应、反复弹钥匙串授权框；内置浏览器显示页面实际走向：
+
+**问题修复**
+
+- **新建会话点了创建却什么都没发生** — 失败时现在直接提示原因（如授权状态未确认、会话数达上限）。之前新建弹窗先关掉、失败原因被吞掉，看起来就像没反应
+- **授权验证没成功后要重启才能新建** — 启动时授权验证失败（比如当时断网）会让之后的新建被拒；现在被拒时后台自动重新验证，网络恢复后再点一次即可，不用重启
+- **mac：反复弹「访问钥匙串中的密钥 gemini」** — 切换会话、打开设置时不再读取 Antigravity 的钥匙串条目；打开 Antigravity 设置面板时仍可能弹一次，但界面不再卡住
+- **mac：读取 Claude 登录凭据可能卡住** — 加了超时；新建会话前的额度判定最多等 8 秒，不会再把新建卡死
+
+**新功能**
+
+- **内置浏览器显示页面实际走向** — 地址栏代理按钮显示该站点实际是直连还是走代理，AI 指定的站点带 AI 标；新增「检测出口」，查看实际出口的国家 / 城市 / IP；你手动给站点设的走向优先于 AI 指定，AI 再次打开同站不会改回去
 
 ### v6.2.2 (2026-10-09)
 
