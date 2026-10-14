@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.2.3
+### 最新版本: v6.2.4
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.2.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.2.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_aarch64.dmg) |
-| macOS Intel | [AICoder_6.2.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.3/AICoder_6.2.3_amd64.AppImage) |
+| Windows x64 | [AICoder_6.2.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.2.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_aarch64.dmg) |
+| macOS Intel | [AICoder_6.2.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.3_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.4_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,24 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.2.4 (2026-10-14)
+
+Codex 切号更稳，编排子会话交差即收：
+
+**问题修复**
+
+- **Codex：切了账号却要重新登录 / 没切成** — 原来会话启动报错时会自动执行 `codex login`，而它一启动就先注销现有凭据，网络超时也会触发，刚切上去的账号随之失效（别的实例上同一账号也会掉线）。现在只弹提示：超时类提示重启会话，其余引导去设置页重新登录
+- **Codex：切档案后聊天还在用旧账号** — 从状态栏、设置页、额度守卫、自动轮换任一入口切 Codex 档案，聊天后台都会重开（有对话正在回答时等它答完）；选「稍后手动重启」时，旧进程撞上的旧号限额不再记到新号头上
+- **Codex：换号后续跑提示被扣住、状态栏档案名不跟新** — 换号重启后不再沿用旧账号的限额停因，续跑提示正常送出；状态栏档案名在任何入口切换后都会更新；还没开始过回合的聊天线程在后台重启后不再报 thread not found
+- **Codex：重启后恢复的聊天线程命令全部报错** — 恢复线程时按线程最后实际生效的沙箱 / 审批设置补上，不会再落回受限沙箱、所有命令报 `helper_unknown_error`；你手动收紧过的沙箱不会被放宽
+- **编排：Codex 总控收到的长回执卡在输入框** — 提交回车按正文长度等待，几千字的回执也能一次提交；认不出输入框时不再整段重发，避免草稿叠成两份
+- **编排：子会话「账号被限制」被当成正常跑完** — 现在识别为需要人处理，队列暂停，不会被交差即收悄悄关掉
+- **授权：永久授权用户看不到「续费 / 升级」** — 恢复显示，可以打开订阅页看套餐；不适用的套餐在下单时以蓝色提示说明，设备数更多的永久套餐仍可正常升级
+
+**新功能**
+
+- **编排子会话交差即自动关闭 Tab** — 默认开启，设置页可关。子会话交差、总控已收到结果 1 分钟后关掉 Tab；撞额度、等确认、登录失效、上下文已满或还有后台任务的会留着给你看，当前查看 / 分屏 / 锁定的不关。关的只是 Tab，总控再派活会自动重开并接上上下文
 
 ### v6.2.3 (2026-10-10)
 
