@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.3.0
+### 最新版本: v6.4.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.3.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,25 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.4.0 (2026-10-22)
+
+公网 AI 远程接入本机，内置浏览器与额度轮换打磨：
+
+**新功能**
+
+- **远程接入（公网 MCP）** — claude.ai 网页版等任意支持 MCP 的 AI 客户端，可经公网连到本机智码：读写项目（按行读、跨文件搜索、多处原子修改、版本号防覆盖，兼容 CRLF / BOM / GBK）、跑命令（长任务后台续等）、只读看 git、结构化编译检查、看图片、操作内置浏览器；全程不调用本机任何 AI CLI，不吃本地额度
+- **安全分档** — 独立远程密钥（与本机 MCP token 分开，可一键断开并换钥）+ 信任目录（可一键全选用过的项目）；日常操作直接放行，删除 / 强制重置 / 按 PID 结束进程等弹桌面审批，联网 git、读取凭据、按名杀进程直接拒绝并说明正确做法；远程命令环境清空凭据助手，脚本绕道也读不到已存凭据
+- **转接本机 MCP** — 勾选后网页 AI 也能调用本机的 sigil、reeve 等工具，推送、发版都能做，凭据由 sigil 在本机注入；对方的审批照常弹出，网页端能看到「正在等审批」
+- **远程 AI 守你的规矩** — 项目 CLAUDE.md 与用户全局规则的 🔴 章节会交给远程 AI，冲突以项目为准；首次写某项目时附规范标题提醒（30 分钟内不重复）；`<!-- remote:skip -->` 标记的段落不下发
+- **内置浏览器** — 快照只列看得见的元素并带坐标、可视区优先、去重，图标字体不再造成重复与空条目；console 报错带错误信息、出错位置和调用栈；网络列表长 URL 截短；远程打开的标签默认 1440×900 视口
+- **独立会话窗口** — 标题栏加「还原默认大小」按钮
+
+**问题修复**
+
+- **额度轮换** — 预防式轮换到阈值不切换；换过去的号也没额度时接着换下一个
+- **Kimi 额度** — CLI 直配的 key 与 key 档案的额度能显示；状态栏浮层也显示 key 档案额度；启用 Kimi 档案不再报「config.toml 含重复表头」
+- **其他** — 独立窗口缩放后拖不动；启动时没拿到加密主密钥不再整个报错；npm 升级 CLI 报 ENOTEMPTY 时自动清理残留再装；升级后拉起的默认实例不再继承发起实例的 CLI 配置目录；agy 查额度卡在谷歌登录时立刻结束、不再反复弹登录页；额度监控表不再被长账号名撑出卡片
 
 ### v6.3.0 (2026-10-22)
 
