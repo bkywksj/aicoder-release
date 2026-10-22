@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.4.0
+### 最新版本: v6.4.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.4.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.4.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.4.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.0/AICoder_6.4.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.4.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.1/AICoder_6.4.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.4.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.1/AICoder_6.4.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.4.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.1/AICoder_6.4.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.1/AICoder_6.4.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.1/AICoder_6.4.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,20 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.4.1 (2026-10-23)
+
+多开实例的远程访问各用各的端口：
+
+**问题修复**
+
+- **多开实例不再抢同一个端口** — 远程访问的端口、公网地址、自动启动改为每个实例各自独立，默认端口错开（主实例 7420，实例 N 用 7420+N-1）。此前多开时每个实例开机都去抢 7420，谁先起谁占，其余悄悄失败；在没占端口的实例里点「停止」也停不掉别人的网关
+- **网页端知道控制的是哪个实例** — 远程接入的连接器名（如 `aicoder-remote-instance-2`）和网页 AI 拿到的说明里写明「实例 N」；设置页也标出本实例
+- **端口占用说清是谁** — 启动时端口被占用，会提示是智码哪个实例还是其它程序
+- **停止网关不再卡住** — 手机、网页 AI 的长连接不会自己断开，原先点停止会一直挂着
+- **自动启动** — 开机自动启动带上所选的监听模式（原先「仅本机 / IPv6」重启后失效），失败时弹出提示；IPv6 模式在 Windows 上不再允许两个实例同时绑上同一端口
+- **MCP 接入页** — 没配公网地址时提示去配置（本机地址云端 AI 连不上），可一键跳到远程访问页
+- **更正** — 远程接入消耗的是网页端 AI 账号的额度，与本机 CLI 是同一订阅时额度共用；6.4.0 说明里「不吃本地额度」不准确
 
 ### v6.4.0 (2026-10-22)
 
