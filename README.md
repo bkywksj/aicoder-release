@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.2.4
+### 最新版本: v6.3.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.2.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.2.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_aarch64.dmg) |
-| macOS Intel | [AICoder_6.2.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.2.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.2.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.2.4/AICoder_6.2.4_amd64.AppImage) |
+| Windows x64 | [AICoder_6.3.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.3.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.3.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.3.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.3.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.3.0/AICoder_6.3.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.2.4_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.3.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,29 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.3.0 (2026-10-22)
+
+会话可弹出独立窗口，切档案不再动你自己的配置：
+
+**新功能**
+
+- **会话弹出到独立窗口** — Claude / Codex 对话页签、终端页签空闲时可弹出到独立窗口，关闭收回原位，CLI 全程不重启；独立窗口带状态栏、目录标题、CLI 图标和右侧工作区栏
+- **切档案可查看改动、一键撤销** — 切换档案后能看到改了哪些配置，并能一键切回之前的档案；Claude / Codex / Gemini / OpenCode 设置面板会提示配置漂移，可「重新应用档案」或「保留现状」
+- **模型价格目录** — 内置 models.dev 价格表并按需在后台更新；查不到单价时金额显示「≈$X+」并列出模型，不再套兜底价
+- **上下文构成** — 状态栏用量浮窗显示当前一轮 prompt 的七类构成及占比，可展开占用最大的几项
+- **压缩与缓存设置体检** — 仪表盘用近 N 天真实调用回放自动压缩窗口和缓存时长的花费，只出建议、不改配置
+- **CLI 按原安装方式更新** — 设置页与状态栏显示 CLI 的安装方式，更新后核对版本；远程（SSH）主机上的 CLI 也支持
+- **启动前代理提示** — 会直连官方地址而直连又不通时，先弹窗提示开代理（可一键开启 / 去设置 / 仍然直连 / 不再提示）
+- **升级后还原多开实例** — 升级完成后自动重开之前的多个实例并恢复会话
+- **其他** — 聊天模式也阻止休眠；工作区 Ctrl+P 快速打开文件；会话 / 文件夹右键与工作区栏可「通过 VSCode 打开」（能找到解压版 VS Code）；各 CLI 设置页顶部加「配置目录」入口；智码 MCP 新增 `app_*` 工具，可后台驱动 WebView2 / Electron 应用
+
+**问题修复**
+
+- **切档案不再覆盖你自己的配置** — 模型别名、代理键、自动压缩窗口、PreCompact / Stop hook、Codex 上下文窗口、Grok 自定义段、各家 MCP 条目等，切档案时都在原内容上合并，不再被改回或删除
+- **配置文件更安全** — 改写 Claude / Codex / Gemini 等配置保留注释、键顺序和格式；配置或凭据读坏时不再整份覆盖，会提示已从备份恢复或已暂停写入；修复启动时可能清空 settings.json
+- **额度轮换** — Claude / Codex 聊天模式撞额度也自动换号续跑；修复撞模型专属限额不触发轮换、切到同一账号另一条档案、「/limit-reset」确认框没人点就永不轮换、预防式换号打断正常结束的会话等问题
+- **其他** — 会话答完后侧边栏绿点仍一直闪；Codex 整屏重绘时视口跳到顶部；AI 生成提交消息 / 记忆不再在会话列表留记录；手机端聊天页只看回复卡、不再刷终端流
 
 ### v6.2.4 (2026-10-14)
 
