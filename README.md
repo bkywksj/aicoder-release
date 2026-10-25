@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.4.3
+### 最新版本: v6.4.4
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.4.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.3/AICoder_6.4.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.4.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.3/AICoder_6.4.3_aarch64.dmg) |
-| macOS Intel | [AICoder_6.4.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.3/AICoder_6.4.3_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.3/AICoder_6.4.3_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.3/AICoder_6.4.3_amd64.AppImage) |
+| Windows x64 | [AICoder_6.4.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.4.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_aarch64.dmg) |
+| macOS Intel | [AICoder_6.4.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.3_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.4_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,38 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.4.4 (2026-10-26)
+
+会话正文留存、Claude 安全防护与两处界面修复：
+
+**新功能**
+
+- **会话正文默认保留 90 天** — Claude Code 默认只留 30 天对话记录、到期整份删除，续聊和读正文就落空了。现在你没设过时智码补成 90 天（自己设过的不动），并在后台定期把正文收进归档；正文被清理后，历史查看器和 MCP 读正文仍能读到，重开会话也不会覆盖旧归档
+- **Claude 安全防护** — 设置 → Claude → Hooks 里新增两个开关，默认开，每个实例只管自己的配置：
+  - 临时文件落点保护（Windows）：不让 AI 把编译日志、草稿脚本丢到盘符根目录或 Git 安装目录，不在 Bash 里写 `> nul`（会建出名为 nul 的真实文件），不写只有 LF 换行的 `.cmd`。项目目录与临时目录不受影响
+  - 宿主进程保护：不让 AI 用 `taskkill /IM node.exe`、`Stop-Process -Name pwsh` 这类命令按名字批量结束进程——Claude Code 自己跑在 node 里，一杀会话当场断开。按 PID 结束不受影响
+
+**问题修复**
+
+- **手机画幅四周露出另一个页面** — 后台标签页切换设备后被摆进可视区，手机画幅周围露出别的页面的桌面版
+- **远程审批弹窗主题不一致** — 底色、按钮白边、浅色标签现在跟随软件主题
+
+### v6.4.3 (2026-10-23)
+
+Mac 上 Antigravity 添加账号修复，新增「最近提交」面板：
+
+**新功能**
+
+- **最近提交** — 工作区提交面板下方显示最近 10 条提交和与远端的同步状态（未推送标记、落后提示），可直接推送 / 拉取、复制哈希或提交信息。工作区干净时默认展开，有变更时折叠成一行
+- **多开共用一份额度监控** — 同时开多个智码实例时只由一个实例探测额度，其余直接读取结果，不再重复探测、重复通知
+- **远程审批独立置顶窗** — 网页 AI 发起需要确认的操作时，审批窗出现在屏幕中间并置顶，不再只在主窗口右下角提示，智码最小化时也看得到
+- **browser_eval_save** — 浏览器自动化新增：页面求值结果由智码直接写成文件，大段数据不再经过 AI 上下文
+
+**问题修复**
+
+- **Mac 上 Antigravity 新建账号存不成档案** — 登录已经成功，添加账号弹窗却一直停在「等待登录完成」，「当前登录账号」也不显示。原因是 macOS 钥匙串里的凭据带编码前缀，智码没有解码。现改为与 agy 一致的方式读写钥匙串，切换账号也不会再弹出钥匙串授权框
+- **Codex 闲置会话报「未找到」** — 兼容 codex-cli 0.164 压缩保存的会话记录（`.jsonl.zst`），闲置会话能正常打开，启动时也不会再被清掉
 
 ### v6.4.2 (2026-10-23)
 
