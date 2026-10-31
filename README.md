@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.4.4
+### 最新版本: v6.5.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.4.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.4.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_aarch64.dmg) |
-| macOS Intel | [AICoder_6.4.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.4.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.4.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.4.4/AICoder_6.4.4_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.4.4_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,28 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.0 (2026-10-31)
+
+聊天模式扩展到 heng-agent、Kimi、OpenCode、CodeBuddy：
+
+**新功能**
+
+- **四家工具的聊天模式** — heng-agent、Kimi、OpenCode、CodeBuddy 的标签可以在「终端 / 聊天」之间切换。聊天界面与 Claude 聊天同一套（代码上色、文件改动卡片、权限确认、图片、语音输入），终端与聊天接着同一段对话；API 档案指定的模型在聊天里同样生效
+- **CodeBuddy 登录引导** — 需要登录时在聊天里列出它支持的登录方式，由你自己点一个，不会替你换着试
+- **heng-agent 设置页** — 新增 MCP 管理（新增 / 编辑 / 删除 / 停用）、常用设置（权限模式、思考、代理等）、config.json 编辑器、API 档案「测试连接」；升级 heng-agent 时先停下正在用它的会话，升级完自动恢复
+
+**改进**
+
+- **OpenCode 自定义模型** — API 档案里中转站自定义的模型会登记进 OpenCode 配置，终端与聊天模式都能用
+- **Codex 滚轮不再卡住** — 本机 Codex 会话默认不占用备用屏幕
+- **侧边栏更流畅** — 滚动只重绘列表本身；编排子会话交差后 5 分钟收起，你看过的离开后再留 15 分钟
+
+**问题修复**
+
+- **终端画面卡在「生成中」** — 会话 id 探测到之后终端被当成隐藏，输出不再显示
+- **新建会话弹窗出现横向滚动条** — 弹窗宽度按 CLI 工具栏自适应
+- **聊天进程残留** — 页面重新加载后没恢复的聊天标签，它的后台进程会被回收
 
 ### v6.4.4 (2026-10-26)
 
