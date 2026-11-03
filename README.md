@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.0
+### 最新版本: v6.5.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.0/AICoder_6.5.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.1/AICoder_6.5.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.1/AICoder_6.5.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.1/AICoder_6.5.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.1/AICoder_6.5.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.1/AICoder_6.5.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,32 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.1 (2026-11-03)
+
+稳定性修复，AI 操作内置浏览器和远程接入更顺手：
+
+**问题修复**
+
+- **周期性崩溃重启** — 修复智码运行一段时间后崩溃并自动重启的问题（窗口事件处理中的引用计数竞争）
+
+**新功能**
+
+- **一键安装托管 Node.js** — 没有 Node.js 的电脑，可以在 CLI 卡片里一键安装「智码托管 Node.js」
+- **额度面板** — 档案浮层加宽，额度标签直接显示重置倒计时，顶部显示额度更新时间并支持手动刷新
+
+**AI 自动化（内置浏览器）**
+
+- **操作后自动反馈** — 点击、输入、跳转后自动等页面稳定，直接告诉 AI 发生了什么：是否跳转、弹出的提示消息、打开或关闭的对话框、控制台报错、失败的请求
+- **按文字定位元素** — 可以直接按页面上的文字找按钮和输入框，不必再写选择器
+- **看懂图标按钮** — 页面快照能识别纯图标按钮的名称和用途
+- **报错更准确** — 脚本执行失败时说清是页面跳转了，还是脚本本身太慢
+
+**远程接入**
+
+- **审批窗更清楚** — 分开显示「AI 说明」和「智码核实的危险操作」，结束进程时显示具体是哪个程序
+- **访问信任目录之外的路径** — 远程 AI 直接调用就会弹窗审批，不再需要先去设置里添加
+- **转接本机 MCP 自动恢复** — Sigil 等本机 MCP 断线后自动重连，不再需要重启智码
 
 ### v6.5.0 (2026-10-31)
 
