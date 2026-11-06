@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.2
+### 最新版本: v6.5.3
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.2/AICoder_6.5.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.2/AICoder_6.5.2_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.2/AICoder_6.5.2_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.2/AICoder_6.5.2_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.2/AICoder_6.5.2_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.2_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.3_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,21 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.3 (2026-11-05)
+
+修复长回复显示被截断、双屏窗口跑到副屏等问题：
+
+**问题修复**
+
+- **Windows 终端长回复被截断** — 修复带大表格等长回复「从中间开始、前面一截凭空消失」、重绘也恢复不了的问题。原因是 Windows 系统自带的终端组件会丢行，现在随安装包附带微软新版终端组件，直接转发程序的原始输出
+- **双屏窗口跑到副屏** — 修复双屏用户合盖、或第二天先开副屏后，窗口跑到副屏、重启后也打开在副屏的问题。现在系统临时挪动窗口时不再改写你的偏好，笔记本屏回来后窗口会自动回去
+- **Codex 误报「登录失效」** — Codex 启动时因网络或代理读取账号失败，不再提示重新登录；会先自动重试一次，仍失败再提示检查网络和代理
+
+**改进**
+
+- **内置浏览器能调到前台** — AI 需要你看页面时，可以把内置浏览器调到前台；网页需要登录、验证时自动切到前台；远程 AI 打开浏览器时，主窗口右下角会有通知，一键查看
+- **临时任务** — AI 启动的临时服务正常退出后，自动从任务列表移除；悬停时钟图标可以看到是哪个会话创建的；任务区和会话列表之间的间距更宽松
 
 ### v6.5.2 (2026-11-03)
 
