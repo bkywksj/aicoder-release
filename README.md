@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.3
+### 最新版本: v6.5.4
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.3/AICoder_6.5.3_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.3_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.4_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,24 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.4 (2026-11-10)
+
+修复内置浏览器部分链接点了没反应、合盖或插拔副屏后窗口错位等问题：
+
+**问题修复**
+
+- **内置浏览器部分链接点了没反应** — 网页内嵌区域里要开新窗口的链接（例如谷歌账号菜单里的「添加账号」）现在会开新标签页；页面未经点击自动弹出的窗口仍会被拦下
+- **合盖、插拔副屏后主窗口跑错屏** — 窗口会回到该在的屏幕
+- **显示器切换后界面变小** — 切换显示器后界面大小保持正常，被系统最小化的窗口也会自动恢复
+- **暗色主题下额度胶囊看不清** — 额度用完的胶囊改为白字加粗
+- **AI 验收应用时误结束无关进程** — 停止验收实例时不再结束无关进程
+
+**改进**
+
+- **终端更流畅** — 终端有焦点时不再被光标闪烁动画占满主线程
+- **一键接入 Antigravity** — MCP 接入页支持一键把智码 MCP 接入 Antigravity
+- **Antigravity 子会话** — AI 下派的 Antigravity 会话默认带跳过权限参数
 
 ### v6.5.3 (2026-11-05)
 
