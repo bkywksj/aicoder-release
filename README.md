@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.4
+### 最新版本: v6.5.5
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.4_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.4_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.4_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.4_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.4_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.4/AICoder_6.5.4_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.5_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.5_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.5_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.5_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.5_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.4_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.5_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,24 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.5 (2026-11-12)
+
+降低终端 CPU 占用，修复安装升级与远程档案切换等问题：
+
+**问题修复**
+
+- **手动运行安装包升级提示卸载** — 现在直接装回原目录，不再弹卸载提示
+- **升级时外部 AI 会话掉线** — 升级过程中已接入智码 MCP 的外部 AI 会话不再断开
+- **远程主机切换档案不生效** — 在远程主机上切换 Codex / Gemini / OpenCode 档案后，远端配置跟着换，重启会话即用上新账号；自定义网关档案在远端也能用了
+- **设了 socks5 代理连不上** — 设了 socks5 代理环境变量时，检查更新、授权确认不再失败
+- **最近项目出现两条一样的** — 同一目录的 `\` 与 `/` 两种写法不再被记成两个项目
+
+**改进**
+
+- **终端更省 CPU** — Claude 回答时可见终端不再每半秒整屏重画
+- **应用内更新** — 改用新的更新模块
+- **「用 IDEA / VS Code 打开」** — 统一显示内置 logo
 
 ### v6.5.4 (2026-11-10)
 
