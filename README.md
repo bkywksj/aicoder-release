@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.5
+### 最新版本: v6.5.6
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.5_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.5_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.5_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.5_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.5_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.5/AICoder_6.5.5_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.6_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.6_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.6_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.6_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.6_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.5_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.6_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,26 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.6 (2026-11-13)
+
+账号登录不再顶掉在用账号、导出默认隐藏密钥、新增知识库助手：
+
+**新功能**
+
+- **知识库助手** — 知识库 MCP 只在助手目录里挂载，不碰全局配置；知识库重装到别的目录后，老的助手会话也能连上
+- **导出默认隐藏密钥** — 会话分享导出默认隐藏密钥，提示隐藏了几处，可一键改为原文导出；按文件夹批量导出同样提示
+
+**问题修复**
+
+- **登录别的账号把正在用的换掉** — 在设置里给别的账号登录（Claude / Codex / Grok / Kimi / Antigravity），不再把正在回答的会话换号；只有一个账号或重登当前账号时照常生效
+- **Pi 的 MCP 起不来就整个崩掉** — MCP 起不来不再拖垮 Pi，Windows 上 npx / npm 类 MCP 也能用了；登录时 Pi 没起来不再把 `/login` 敲进 shell
+- **nvm-desktop 装的 CLI 认不出** — 不再误报「认不出安装方式」和「PATH 上还有其它安装」
+- **有后台任务的会话被自动关掉** — 还有后台任务没回来的会话，不再被内存 / 数量触发自动关掉
+
+**改进**
+
+- **打码规则校准** — 用真实会话校准，修掉误伤、补上漏网
 
 ### v6.5.5 (2026-11-12)
 
