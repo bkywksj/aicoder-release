@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.6
+### 最新版本: v6.5.7
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.6_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.6_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.6_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.6_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.6_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.6/AICoder_6.5.6_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.7_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.7_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.7_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.7_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.7_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.6_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.7_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,28 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.7 (2026-11-18)
+
+启动恢复改为确认框、经 SSH 远程调用智码 MCP 能力补齐、修复拔插外接屏后回复重复：
+
+**新功能**
+
+- **启动恢复上次会话改为确认框** — 启动（含升级后重启）时弹出「全部恢复 / 选择恢复 / 暂不恢复」，可勾「记住我的选择」，设置 → 通用里也能改；暂不恢复时标签栏右上角保留「上次会话 N」入口
+- **官方 Claude 未开代理时启动前确认** — 新增「取消」，取消后不启动进程，标签页上留「启动」入口；同时启动多个会话只问一次，设置 → 通用可关
+- **经 SSH 远程调用智码 MCP** — 通过 Reeve 在别的电脑上拉起时，截图直接附图带回；也能转接本机 MCP、跑命令、看 git，按信任目录、转接名单、审批同一套规则判定，审计来源记「SSH 远程调用（来自 IP）」
+
+**问题修复**
+
+- **拔插外接屏后回复被重复画几份** — 屏幕变化后等窗口位置纠偏结束，再按最终尺寸重画一次（插拔屏后终端约 7.5 秒重新铺满）
+- **恢复确认框压在用户协议上** — 改为等用户协议 / 新手引导关掉后再弹
+
+**改进**
+
+- **用户协议升级到 1.3.0** — 补齐数据外发、个人信息告知、多账号轮换风险与经营主体信息，已有用户会重新确认一次
+- **内置浏览器不再预设境外站点名单** — 哪些站走代理只由用户规则、AI 指定和自动学习决定
+- **开启额度自动轮换前提示条款风险** — 以前勾过「不再提示」的也会再看到一次
+- **宣传文案去掉绝对化说法** — 如实说明默认行为与例外
 
 ### v6.5.6 (2026-11-13)
 
