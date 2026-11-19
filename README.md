@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.7
+### 最新版本: v6.5.8
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.7_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.7_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.7_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.7_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.7_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.7/AICoder_6.5.7_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.8_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.8_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.8_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.8_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.8_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.7_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.8_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,22 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.8 (2026-11-19)
+
+新建会话「获取模型」、接入 Fable 5.2、演示模式：
+
+**新功能**
+
+- **新建会话「获取模型」** — 所有 CLI（CodeBuddy 除外）的模型下拉旁都有「获取模型」，按当前账号 / 档案拉取真实可用的模型，取法与设置里各家的「获取」一致；拉回后可一键还原
+- **Antigravity 现拉模型清单** — 跑 `agy models` 取本账号真实可用的模型，不再只靠内置表
+- **接入 Claude Fable 5.2** — 状态栏、新建会话、设置、编排候选与 OpenCode 模型表均可选（Claude Code CLI 需 2.1.321 及以上）
+- **演示模式** — 录屏 / 分享屏幕时一键打码账号、密钥和家目录用户名，标题栏按钮为眼睛 / 斜线眼睛
+
+**改进**
+
+- **Antigravity 内置模型表按官方文档更新** — 换成 Gemini 4 Neon / Carbon / Argon / Hydrogen、Orchestrator 等，去掉 2026-11-18 已下线的 Claude 4.6 与 GPT-OSS 120B
+- **用量统计按小版本分开** — Fable 5.2 按官方价（$8 / $40 每百万 token）计价，仪表盘不再与 Fable 5 合并成一行
 
 ### v6.5.7 (2026-11-18)
 
