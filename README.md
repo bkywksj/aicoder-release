@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.9
+### 最新版本: v6.6.0
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.9_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.9_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.9_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.9_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.9_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_amd64.AppImage) |
+| Windows x64 | [AICoder_6.6.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.6.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_aarch64.dmg) |
+| macOS Intel | [AICoder_6.6.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.6.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.6.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.9_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.6.0_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,20 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.6.0 (2026-11-21)
+
+Codex 接入 GPT-6.2、排队任务重启不丢：
+
+**新功能**
+
+- **Codex 接入 GPT-6.2 Sol / Astra 与 GPT-6.1 Terra** — 模型下拉、OpenCode openai 清单均可选，顺序照官方模型目录；6.2 需 Codex CLI 0.171.0 及以上
+- **编排候选升一代** — 最强档换成 GPT-6.2 Astra，异构验收首选换成 GPT-6.2 Sol，GPT-6.1 Sol 留作上一代退路
+- **用量统计按新价计价** — 6.2 Sol $2 / $10、6.2 Astra $8 / $40、6.1 Terra $1 / $5（每百万 token，含长上下文档）
+
+**改进**
+
+- **排队任务重启不丢** — 重启智码或「重启这个 Tab」后，排队任务连同自动 / 手动模式一起恢复；恢复后先暂停，确认无误点恢复即继续发送；关掉会话时一并清除
 
 ### v6.5.9 (2026-11-21)
 
