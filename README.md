@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.5.8
+### 最新版本: v6.5.9
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.5.8_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.5.8_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_aarch64.dmg) |
-| macOS Intel | [AICoder_6.5.8_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.8_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.8_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.8/AICoder_6.5.8_amd64.AppImage) |
+| Windows x64 | [AICoder_6.5.9_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.5.9_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_aarch64.dmg) |
+| macOS Intel | [AICoder_6.5.9_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.5.9_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.5.9_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.5.9/AICoder_6.5.9_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.8_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.5.9_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,28 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.5.9 (2026-11-21)
+
+配置写入安全加固（全部为修复，无新功能）：
+
+**一键接入 / 取消接入 / 规则托管块**
+
+- **读不准就不写** — 配置读失败、解析失败时不再当空文件覆盖写回；改写前留 `.aicoder.orig`（只建一次）与 `.aicoder.bak`（每次）两份备份
+- **取消接入删干净** — 删掉文件里所有智码规则块，确认框说明会改 CLAUDE.md / AGENTS.md；Codex 取消接入不再丢注释
+- **损坏的托管块不再反复提示** — 报错不写，也不进启动时的「规则过期」提示
+
+**token**
+
+- **先写后吊销** — 写好配置才吊销旧 token，AICoder 助手不再每次打开都把全局条目的 token 作废；同名换发加锁，并发不误删
+- **Grok 接入不暴露 token** — token 不再出现在命令行里；项目目录里的配置不再留带 token 的备份
+
+**改名覆盖空档 / 远端 / 防崩溃**
+
+- **改名覆盖瞬间不再冲掉配置** — 启动引导、账号邮箱同步、Codex 档案、切 OAuth 档案、Codex 切官方等路径等文件稳定再读
+- **远端写配置** — 原文差分补丁，保留 BOM / CRLF / 符号链接 / 权限；只读文件可写；失败清临时文件；带注释的远端 JSON 能正常读；路径里的 `${…}` 只展开开头的常量写法
+- **不再崩溃** — MCP 面板遇到形状不对的 `.claude.json`、hooks 形状不对时报错而不是 panic 或冲成空文件
+- **多开实例** — 不再互相抢 OpenCode / heng-agent / Antigravity 的共享条目；0 字节配置不再把好的 `.bak` 冲成空的
 
 ### v6.5.8 (2026-11-19)
 
