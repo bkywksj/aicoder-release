@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.6.0
+### 最新版本: v6.6.1
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.6.0_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.6.0_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_aarch64.dmg) |
-| macOS Intel | [AICoder_6.6.0_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.6.0_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.6.0_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.0/AICoder_6.6.0_amd64.AppImage) |
+| Windows x64 | [AICoder_6.6.1_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.1/AICoder_6.6.1_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.6.1_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.1/AICoder_6.6.1_aarch64.dmg) |
+| macOS Intel | [AICoder_6.6.1_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.1/AICoder_6.6.1_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.6.1_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.1/AICoder_6.6.1_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.6.1_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.1/AICoder_6.6.1_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.6.0_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.6.1_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,23 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.6.1 (2026-11-23)
+
+切模型不再丢会话、编排队列卡住会提示：
+
+**修复**
+
+- **Codex 切模型不再变成新会话** — 新建的 Codex 会话在状态栏切模型后接着原来的对话，不再另起一个空会话
+- **任务队列被扣住不再静默** — Codex 恢复会话时问「要不要恢复之前暂停的 goal」，排队的消息会等你选，几秒后在会话里提示你去选；每次扣住的原因与时长写进诊断日志
+- **老系统开终端说清原因** — 系统不支持 ConPTY 时直接说明，不再只报「response channel closed」
+- **添加 Claude 账号不踢下线** — 改在隔离目录里登录，正在回答的会话不受影响
+- **重登列表不误切账号** — 没激活的账号不再因磁盘上残留的身份被切成激活
+
+**改进**
+
+- **编排回执更短** — 子会话回复里连续重复的行合并成一行，摘录只留结尾 12 行；明确要求总控处置完就停下等通知，不要定时自查
+- **状态栏就地重登** — 点「需重新登录」直接弹登录窗，并扩到 Grok / Antigravity / Kimi
 
 ### v6.6.0 (2026-11-21)
 
