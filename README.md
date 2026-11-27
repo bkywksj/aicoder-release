@@ -66,7 +66,7 @@
 
 ## 下载安装
 
-### 最新版本: v6.6.2
+### 最新版本: v6.6.3
 
 > 🔐 **本版本 Windows 安装包已正规 EV 代码签名**，消除 Windows 智能应用控制的「未验证开发者」提示。
 > 🍎 **macOS 安装包已 Developer ID 签名并通过 Apple 公证**，双架构均为 Accepted。
@@ -74,16 +74,16 @@
 
 | 平台 | 下载链接 |
 |------|---------|
-| Windows x64 | [AICoder_6.6.2_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.2/AICoder_6.6.2_x64-setup.exe) |
-| macOS Apple Silicon | [AICoder_6.6.2_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.2/AICoder_6.6.2_aarch64.dmg) |
-| macOS Intel | [AICoder_6.6.2_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.2/AICoder_6.6.2_x64.dmg) |
-| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.6.2_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.2/AICoder_6.6.2_amd64.deb) |
-| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.6.2_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.2/AICoder_6.6.2_amd64.AppImage) |
+| Windows x64 | [AICoder_6.6.3_x64-setup.exe](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.3/AICoder_6.6.3_x64-setup.exe) |
+| macOS Apple Silicon | [AICoder_6.6.3_aarch64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.3/AICoder_6.6.3_aarch64.dmg) |
+| macOS Intel | [AICoder_6.6.3_x64.dmg](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.3/AICoder_6.6.3_x64.dmg) |
+| Linux Debian/Ubuntu ⭐ **推荐** | [AICoder_6.6.3_amd64.deb](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.3/AICoder_6.6.3_amd64.deb) |
+| Linux AppImage（仅 22.04 一带旧发行版） | [AICoder_6.6.3_amd64.AppImage](https://pub-9d9e6c0cb6934fb0a0c505e3c64f39b2.r2.dev/aicoder/releases/v6.6.3/AICoder_6.6.3_amd64.AppImage) |
 
 > 🐧 **Linux 用户请优先用 `.deb`**。AppImage 在 Ubuntu 22.04 上构建、捆绑了当时的 glib / WebKitGTK，
 > 在 **Ubuntu 24.04+ 上会因符号不匹配直接崩溃**（`WebKitNetworkProcess` 起不来 → 进程 `code=-1`）。
 > 自 v5.1.5 起 AppImage 已注入 glib 隔离修复（断开包内旧 glib 与系统新 gio 模块的混用），但**尚未在
-> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.6.2_amd64.deb` 自动解依赖。
+> 24.04 真机上逐一验证**，稳妥起见仍建议优先 `.deb`：`sudo apt install ./AICoder_6.6.3_amd64.deb` 自动解依赖。
 
 ### 移动端伴侣 · v0.9.2
 
@@ -337,6 +337,26 @@ AI 回复完成时可以响一声提示音了：
 ---
 
 ## 版本历史
+
+### v6.6.3 (2026-11-27)
+
+按项目名找项目、状态栏一键升级 CLI 与若干修复：
+
+**新功能**
+
+- **按项目名找项目** — 让 AI「参考 / 看看 X 项目」时，可以直接说项目名（如 tauri-cc、智码、reeve），不用给完整路径；最近打开过的项目里没有，会以它们为起点逐层扩大搜索本机磁盘，认不准时列出候选让你选
+- **状态栏一键升级更多 CLI** — Antigravity、Grok、heng-agent 的版本号也能点开升级到最新；本机升级 heng-agent 时会先停掉相关会话，升级完自动恢复
+
+**修复**
+
+- **heng-agent 状态不再一直闪** — 答完或按 ESC 打断后，圆点和标签图标会正常停下
+- **用默认浏览器打开本地页** — 中文路径带 ?参数 的本地网页不再弹「Windows 找不到文件」
+- **危险命令确认框** — 长提示词不再把弹窗撑出主窗口；多行派活提示词里的中文说明提到危险命令时不再误弹确认
+- **本地模型「测试」更宽容** — 本地模型端点的测试超时放宽到 90 秒，超时提示改为「可能还在加载」
+
+**改进**
+
+- **授权** — 试用按硬件去重，设备指纹补一道格式检查
 
 ### v6.6.2 (2026-11-25)
 
